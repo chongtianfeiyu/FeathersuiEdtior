@@ -25,18 +25,11 @@ package feditor
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
     import feathers.display.TiledImage;
-    import feathers.layout.HorizontalLayout;
-    import feathers.layout.VerticalLayout;
     import feathers.themes.MetalWorksDesktopTheme;
     import feditor.Root;
-    import feditor.TestCase;
     import feditor.utils.Assets;
     import feditor.utils.Builder;
-    import feditor.utils.Geom;
-    import flash.display.NativeMenu;
-    import flash.display.NativeMenuItem;
     import flash.display.Sprite;
-    import flash.display.StageDisplayState;
     import flash.events.Event;
     import flash.filesystem.File;
     import flash.geom.Rectangle;
