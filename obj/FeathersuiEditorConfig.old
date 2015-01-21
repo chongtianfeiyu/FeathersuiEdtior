@@ -33,18 +33,18 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>E:\flash_works\FeathersuiEditor\src</path-element>
-      <path-element>E:\flash_works\FeathersuiEditor\source</path-element>
+      <path-element>E:\opensource\FeathersuiEdtior\src</path-element>
+      <path-element>E:\opensource\FeathersuiEdtior\source</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>E:\flash_works\FeathersuiEditor\libs\MetalWorksDesktopTheme.swc</path-element>
-      <path-element>E:\flash_works\FeathersuiEditor\libs\PureMVC_AS3_MultiCore_1_0_5.swc</path-element>
-      <path-element>E:\flash_works\FeathersuiEditor\libs\starling.swc</path-element>
+      <path-element>E:\opensource\FeathersuiEdtior\libs\MetalWorksDesktopTheme.swc</path-element>
+      <path-element>E:\opensource\FeathersuiEdtior\libs\PureMVC_AS3_MultiCore_1_0_5.swc</path-element>
+      <path-element>E:\opensource\FeathersuiEdtior\libs\starling.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>E:\flash_works\FeathersuiEditor\src\feditor\Main.as</path-element>
+    <path-element>E:\opensource\FeathersuiEdtior\src\feditor\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
