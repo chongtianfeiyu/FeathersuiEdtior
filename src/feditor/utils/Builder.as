@@ -1,10 +1,16 @@
 package feditor.utils 
 {
     import feathers.controls.Button;
+    import feathers.controls.ImageLoader;
     import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
     import feathers.controls.ProgressBar;
+    import feathers.controls.text.StageTextTextEditor;
+    import feathers.controls.text.TextBlockTextEditor;
     import feathers.controls.text.TextBlockTextRenderer;
+    import feathers.controls.text.TextFieldTextEditor;
+    import feathers.controls.text.TextFieldTextRenderer;
+    import feathers.controls.TextInput;
     import feathers.controls.ToggleButton;
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
@@ -12,12 +18,14 @@ package feditor.utils
     import feathers.layout.HorizontalLayout;
     import feathers.layout.ILayout;
     import feathers.layout.VerticalLayout;
+    import feathers.text.StageTextField;
     import feathers.textures.Scale3Textures;
     import feathers.textures.Scale9Textures;
     import feditor.Root;
     import flash.geom.Rectangle;
     import flash.text.engine.ElementFormat;
     import flash.text.engine.FontDescription;
+    import flash.text.TextFormat;
     import flash.utils.Dictionary;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -46,10 +54,12 @@ package feditor.utils
             
             fieldsMethod = new Dictionary(true);
             fieldsMethod[Label] = setLabelFields;
+            fieldsMethod[TextInput] = setTextInputFields;
             fieldsMethod[Image] = setImageFields;
             fieldsMethod[Scale3Image] = setImageFields;
             fieldsMethod[Scale9Image] = setImageFields;
             fieldsMethod[TiledImage] = setImageFields;
+            fieldsMethod[ImageLoader] = setImageLoaderFields;
             fieldsMethod[Button] = setButtonFields;
             fieldsMethod[ToggleButton] = setToggleButtonFields;
             fieldsMethod[LayoutGroup] = setLayoutGroupFields;
@@ -263,6 +273,119 @@ package feditor.utils
             return label;
         }
         
+        private static function setTextInputFields(textInput:TextInput,valueMap:Object):TextInput
+        {   
+            if (!textInput.textEditorProperties.elementFormat)
+            {
+                textInput.styleProvider = null;
+                textInput.textEditorProperties.elementFormat = FontWorker.defaultElementFormat;
+            }
+            
+            if (!textInput.promptProperties.elementFormat)
+            {
+                textInput.promptProperties.elementFormat = FontWorker.defaultElementFormat;
+            }
+            
+            if (FieldConst.FONT_COLOR in valueMap || 
+                FieldConst.FONT_SIZE in valueMap ||
+                FieldConst.FONT_NAME in valueMap ||
+                FieldConst.FONT_WEIGHT in valueMap
+            )
+            {
+                var fmt:Object = ObjectUtil.copy(textInput.textEditorProperties.elementFormat);
+                var des:Object = fmt?ObjectUtil.copy(textInput.textEditorProperties.elementFormat.fontDescription):null;
+                if (fmt) ObjectUtil.mapping(valueMap, fmt);
+                if (des) ObjectUtil.mapping(valueMap,des);
+                if (fmt) 
+                {
+                    var pColor:int = textInput.promptProperties.elementFormat.color;
+                    var elmentFormat:ElementFormat = getElementFormat(getFontDescription(des), fmt);
+                    
+                    textInput.promptProperties.elementFormat = elmentFormat;
+                    textInput.textEditorProperties.elementFormat = elmentFormat;
+                }
+                
+                delete valueMap[FieldConst.FONT_COLOR];
+                delete valueMap[FieldConst.FONT_SIZE];
+                delete valueMap[FieldConst.FONT_NAME];
+                delete valueMap[FieldConst.FONT_WEIGHT];
+            }
+            
+            if (FieldConst.TEXT_INPUT_PROMPT_COLOR in valueMap)
+            {
+                trace("Build.setTextInputFields - > TextInput 的文本属性映射不成功")
+                //trace(textInput.promptProperties.elmentFormat);
+                //textInput.promptProperties.elmentFormat.color = parseInt(valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR],16);
+                delete valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR];
+            }
+            
+            //try 
+            //{
+                //textInput.textEditorProperties[FieldConst.FONT_WEIGHT] = valueMap[FieldConst.FONT_WEIGHT];
+                //textInput.textEditorProperties[FieldConst.FONT_NAME] = valueMap[FieldConst.FONT_NAME];
+                //textInput.textEditorProperties[FieldConst.FONT_COLOR] = valueMap[FieldConst.FONT_COLOR];
+                //textInput.textEditorProperties[FieldConst.FONT_SIZE] = valueMap[FieldConst.FONT_SIZE];
+                //
+                //textInput.textEditorProperties.
+            //}
+            //catch (err:Error)
+            //{
+                //trace("TextInput setField error");
+            //}
+            
+            
+            if (FieldConst.TEXT_INPUT_BACKGROUND_SKIN in valueMap)
+            {
+                textInput.backgroundSkin = Assets.getImage(valueMap[FieldConst.TEXT_INPUT_BACKGROUND_SKIN]);
+            }
+            
+            if (FieldConst.TEXT_INPUT_DEFAULT_ICON in valueMap)
+            {
+                textInput.defaultIcon = Assets.getImage(valueMap[FieldConst.TEXT_INPUT_DEFAULT_ICON]);
+            }
+            
+            delete valueMap[FieldConst.TEXT_INPUT_BACKGROUND_SKIN];
+            delete valueMap[FieldConst.TEXT_INPUT_DEFAULT_ICON];
+            
+            
+            //textInput.prompt
+            //others
+            setDisplayObjectFields(textInput, valueMap);
+            return textInput;
+        }
+        
+        private static function setTxtFields(txt:*,valueMap:Object):*
+        {
+            if (txt is StageTextTextEditor || txt is StageTextField)
+            {
+                if (FieldConst.FONT_COLOR in valueMap) txt.color = valueMap[FieldConst.FONT_COLOR];
+                if (FieldConst.FONT_NAME in valueMap) txt.fontFamily = valueMap[FieldConst.FONT_NAME];
+                if (FieldConst.FONT_SIZE in valueMap) txt.fontSize = valueMap[FieldConst.FONT_SIZE];
+                if (FieldConst.FONT_WEIGHT in valueMap) txt.fontWeight = valueMap[FieldConst.FONT_WEIGHT];
+            }
+            else if(txt is TextBlockTextEditor || txt is TextBlockTextRenderer)
+            {
+                var elment:ElementFormat = txt.elementFormat || FontWorker.defaultElementFormat;
+                txt.elementFormat = getElementFormat(elment.fontDescription, valueMap);
+            }
+            else if (txt is TextFieldTextEditor || txt is TextFieldTextRenderer)
+            {
+                var fmt:TextFormat = txt.textFormat;
+                if (FieldConst.FONT_WEIGHT in valueMap) fmt.bold = valueMap[FieldConst.FONT_WEIGHT] == FieldConst.FONT_BOLD;
+                if (FieldConst.FONT_NAME in valueMap) fmt.font = valueMap[FieldConst.FONT_NAME];
+                if (FieldConst.FONT_SIZE in valueMap) fmt.size = valueMap[FieldConst.FONT_SIZE];
+                if (FieldConst.FONT_COLOR in valueMap) fmt.color = valueMap[FieldConst.FONT_COLOR];
+                txt.textFormat = fmt;
+            }
+            
+            delete valueMap[FieldConst.FONT_WEIGHT];
+            delete valueMap[FieldConst.FONT_SIZE];
+            delete valueMap[FieldConst.FONT_NAME];
+            delete valueMap[FieldConst.FONT_COLOR];
+            
+            return txt;
+        }
+        
         private static function setDisplayObjectFields(display:DisplayObject,valueMap:Object):DisplayObject
         {
             for (var name:String in valueMap) 
@@ -275,7 +398,7 @@ package feditor.utils
                     }
                     else if (name == "color")
                     {
-                        display[name] = parseFloat(valueMap[name]);
+                        display[name] = parseInt(valueMap[name],16);
                     }
                     else
                     {
@@ -370,6 +493,39 @@ package feditor.utils
             
             setDisplayObjectFields(image,valueMap);
             return image;
+        }
+        
+        private static function setImageLoaderFields(imageLoader:ImageLoader,valueMap:Object):ImageLoader
+        {
+            if (FieldConst.IMAGE_LOADER_MAINTAIN_ASPECT_RATIO in valueMap)
+            {
+                imageLoader.maintainAspectRatio = valueMap[FieldConst.IMAGE_LOADER_MAINTAIN_ASPECT_RATIO];
+                delete valueMap[FieldConst.IMAGE_LOADER_MAINTAIN_ASPECT_RATIO];
+            }
+            
+            if (FieldConst.IMAGE_LOADER_SOURCE in valueMap)
+            {
+                imageLoader.source = valueMap[FieldConst.IMAGE_LOADER_SOURCE];
+                delete valueMap[FieldConst.IMAGE_LOADER_SOURCE];
+            }
+            
+            if (FieldConst.IMAGE_LOADER_ERROR_TEXTURE in valueMap)
+            {
+                var errorTexture:Texture = Assets.assets.getTexture(valueMap[FieldConst.IMAGE_LOADER_ERROR_TEXTURE]);
+                if (errorTexture) imageLoader.errorTexture = errorTexture;
+                delete valueMap[FieldConst.IMAGE_LOADER_ERROR_TEXTURE];
+            }
+            
+            if (FieldConst.IMAGE_LOADER_LOADING_TEXTURE in valueMap)
+            {
+                var loadingTexture:Texture = Assets.assets.getTexture(valueMap[FieldConst.IMAGE_LOADER_ERROR_TEXTURE]);
+                if(loadingTexture) imageLoader.loadingTexture = loadingTexture;
+                delete valueMap[FieldConst.IMAGE_LOADER_LOADING_TEXTURE];
+            }
+            
+            
+            setDisplayObjectFields(imageLoader,valueMap);
+            return imageLoader;
         }
         
         private static function setButtonFields(button:Button,valueMap:Object):Button

@@ -47,7 +47,7 @@ package feditor.models
             return surportedList;
         }
         
-        public function getDescription(name:String):Object
+        public function getDescriptionMap(name:String):Object
         {
             var result:Object = propertiesMap[name];
             if (!result && xml)

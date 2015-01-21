@@ -12,10 +12,24 @@ package feditor.utils
         static public const FONT_SIZE:String = "fontSize";
         static public const FONT_NAME:String = "fontName";
         static public const FONT_WEIGHT:String = "fontWeight";
+        static public const FONT_BOLD:String = "bold";
+        static public const FONT_NORMAL:String = "normal";
+        
+        //TextInput
+        static public const TEXT_INPUT_DEFAULT_ICON:String = "defaultIcon";
+        static public const TEXT_INPUT_BACKGROUND_SKIN:String = "backgroundSkin";
+        static public const TEXT_INPUT_PROMPT_COLOR:String = "promptColor";
         
         //Image
         static public const IMAGE_TEXTURE:String = "texture";
-		static public const TILE:String = "tile";
+        static public const TILE:String = "tile";
+        
+        //ImageLoader
+        static public const IMAGE_LOADER_LOADING_TEXTURE:String = "loadingTexture";
+        static public const IMAGE_LOADER_ERROR_TEXTURE:String = "errorTexture";
+        static public const IMAGE_LOADER_SOURCE:String = "source";
+        static public const IMAGE_LOADER_MAINTAIN_ASPECT_RATIO:String = "maintainAspectRatio";
+        
         
         //Button
         static public const BUTTON_DEFAULT_ICON:String = "defaultIcon";

@@ -53,8 +53,19 @@ package feditor.views.cmp
             
             if (input.text != _data.value)
             {
-                _data.value = input.text;
-                dispatchEventWith(Event.CHANGE, true, _data);
+                if (_data.name == "color" || _data.name == "promptColor")
+                {
+                    if (parseInt(_data.value) != parseInt(input.text, 16))
+                    {
+                        _data.value = input.text;
+                        dispatchEventWith(Event.CHANGE, true, _data);
+                    }
+                }
+                else
+                {
+                    _data.value = input.text;
+                    dispatchEventWith(Event.CHANGE, true, _data);
+                }
             }
         }
         
@@ -86,10 +97,18 @@ package feditor.views.cmp
                 title.text = value.name;
                 switch (value.name) 
                 {
+                    case "promptColor":
                     case "color":
                         if (/0x/.test(value.value) == false)
                         {
-                            input.text ="0x"+parseInt(value.value).toString(16);
+                            if (value.value)
+                            {
+                                input.text ="0x"+parseInt(value.value).toString(16);
+                            }
+                            else
+                            {
+                                input.text = "";
+                            }
                         }
                         else
                         {
@@ -97,7 +116,7 @@ package feditor.views.cmp
                         }
                         break;
                     default:
-                    input.text = value.value;
+                        input.text = value.value;
                 }
                 
                 input.touchable = value.editable;

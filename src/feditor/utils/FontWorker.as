@@ -1,6 +1,7 @@
 package feditor.utils 
 {
     import feathers.controls.text.StageTextTextEditor;
+    import feathers.controls.text.TextBlockTextEditor;
     import feathers.controls.text.TextBlockTextRenderer;
     import feathers.core.FeathersControl;
     import flash.text.engine.CFFHinting;
@@ -58,8 +59,9 @@ package feditor.utils
             return new TextBlockTextRenderer();
         }
         
-        static public function textEditorFactory():StageTextTextEditor
+        static public function textEditorFactory():*
         {
+            //return new TextBlockTextEditor();
             return new StageTextTextEditor();
         }
         
@@ -89,7 +91,8 @@ package feditor.utils
         {
             if (!_defaultElement)
             {
-                _defaultElement = new ElementFormat(defaultBoldFontDescription,48,0xfffff);
+                _defaultElement = new ElementFormat(defaultBoldFontDescription, 48, 0xffffff);
+                _defaultElement.locked = false;
             }
             
             return _defaultElement;

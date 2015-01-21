@@ -74,6 +74,7 @@ package feditor.controllers
             facade.registerCommand(NS.CMD_LAYER_DOWN, LayerDownCmd);
             facade.registerCommand(NS.CMD_FONTLIB_INJECT, FontLibInjectCmd);
             facade.registerCommand(NS.CMD_IMPORT_PICTURE, ImportPictureCmd);
+            facade.registerCommand(NS.CMD_OPEN_CONFIG, OpenConfigDirectoryCmd);
         }
         
         private function regiseterProxy():void

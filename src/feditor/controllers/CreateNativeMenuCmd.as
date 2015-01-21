@@ -26,11 +26,15 @@ package feditor.controllers
             var menuTree:Array = [
                 {
                     "name":"file", 
-                    "sub":["New Project","open", "save","fullScreen","importPicture"] 
+                    "sub":["New Project","open","save",] 
+                },
+                {
+                    "name":"tools",
+                    "sub":["fullScreen","import picture","config"]
                 },
                 {
                     "name":"help",
-                    "sub":["information","version 1.0.0"]
+                    "sub":["version : test 1.0.0"]
                 }
             ];
             
@@ -51,8 +55,11 @@ package feditor.controllers
                     case "fullScreen":
                         Starling.current.nativeStage.displayState = StageDisplayState.FULL_SCREEN;
                         break;
-                    case "importPicture":
+                    case "import picture":
                         AppFacade.getInstance().sendNotification(NS.CMD_IMPORT_PICTURE);
+                        break;
+                    case "config":
+                        AppFacade.getInstance().sendNotification(NS.CMD_OPEN_CONFIG);
                         break;
                     default:
                 }

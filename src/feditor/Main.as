@@ -65,6 +65,7 @@ package feditor
                 "Scale3Image":Scale3Image,
                 "Scale9Image":Scale9Image,
                 "TiledImage":TiledImage,
+                "ImageLoader":ImageLoader,
                 "Label":Label,
                 "Button":Button,
                 "TextArea":TextArea,

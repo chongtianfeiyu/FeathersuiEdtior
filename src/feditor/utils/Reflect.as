@@ -1,9 +1,16 @@
 package feditor.utils 
 {
     import feathers.controls.Button;
+    import feathers.controls.ImageLoader;
     import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
     import feathers.controls.ProgressBar;
+    import feathers.controls.text.StageTextTextEditor;
+    import feathers.controls.text.TextBlockTextEditor;
+    import feathers.controls.text.TextBlockTextRenderer;
+    import feathers.controls.text.TextFieldTextEditor;
+    import feathers.controls.text.TextFieldTextRenderer;
+    import feathers.controls.TextInput;
     import feathers.controls.ToggleButton;
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
@@ -15,6 +22,8 @@ package feditor.utils
     import feditor.vo.FieldVO;
     import flash.text.engine.ElementFormat;
     import flash.text.engine.FontDescription;
+    import flash.text.TextField;
+    import flash.text.TextFormat;
     import flash.utils.Dictionary;
     import flash.utils.getDefinitionByName;
     import flash.utils.getQualifiedClassName;
@@ -45,10 +54,12 @@ package feditor.utils
                 fieldMethodMap[Scale9Image] = getImageProperties;
                 fieldMethodMap[TiledImage] = getImageProperties;
                 fieldMethodMap[Label] = getLabelProperties;
+                fieldMethodMap[TextInput] = getTextInputProperties;
                 fieldMethodMap[Button] = getButtonProperties;
                 fieldMethodMap[ToggleButton] = getToggleButtonProperties;
                 fieldMethodMap[LayoutGroup] = getLayoutGroupProperties;
                 fieldMethodMap[ProgressBar] = getProgressbarProerties;
+                fieldMethodMap[ImageLoader] = getImageLoaderProperties;
             }
             
             var result:Object = { };
@@ -167,7 +178,7 @@ package feditor.utils
             result ||= { };
             if (label)
             {
-                result = getElementFormatProperties(label.textRendererProperties.elementFormat, result);
+                result = getElementFormatProperties(label.textRendererProperties.elementFormat,result);
                 result.text = label.text;
                 result.touchable = label.touchable;
             }
@@ -280,6 +291,98 @@ package feditor.utils
                 result[FieldConst.IMAGE_TEXTURE] = TextureMap.getTextureName(tile.texture);
             }
             
+            return result;
+        }
+        
+        private static function getImageLoaderProperties(imageLoader:ImageLoader,result:Object):Object
+        {
+            result ||= { };
+            if (imageLoader)
+            {
+                result.source = imageLoader.source;
+                result.errorTexture = TextureMap.getTextureName(imageLoader.errorTexture);
+                result.loadingTexture = TextureMap.getTextureName(imageLoader.loadingTexture);
+                result.maintainAspectRatio = imageLoader.maintainAspectRatio;
+            }
+            return result;
+        }
+        
+        private static function getTextInputProperties(textInput:TextInput,result:Object):Object
+        {
+            result ||= { };
+            if (textInput)
+            {
+                var skins:Array = [FieldConst.TEXT_INPUT_BACKGROUND_SKIN,FieldConst.TEXT_INPUT_BACKGROUND_SKIN];
+                for each (var skinName:String in skins) 
+                {
+                    var skinProperties:Object = getImageProperties(textInput[skinName]);
+                    result[skinName] = skinProperties?skinProperties[FieldConst.IMAGE_TEXTURE]:"";
+                }
+                
+                result.text = textInput.text;
+                result.prompt = textInput.prompt;
+                result.displayAsPassword = textInput.displayAsPassword;
+                result.isEditable = textInput.isEditable;
+                result.gap = textInput.gap;
+                result.padding = textInput.padding;
+                result.paddingLeft = textInput.paddingLeft;
+                result.paddingRight = textInput.paddingRight;
+                result.paddingTop = textInput.paddingTop;
+                result.paddingBottom = textInput.paddingBottom;
+                
+                getElementFormatProperties(textInput.textEditorProperties.elmentFormat, result);
+                var promptProperties:Object = getElementFormatProperties(textInput.promptProperties.elmentFormat);
+                result[FieldConst.TEXT_INPUT_PROMPT_COLOR] = promptProperties.color;
+                
+                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_WEIGHT))
+                //{
+                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_WEIGHT];
+                //}
+                //
+                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_NAME))
+                //{
+                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_NAME];
+                //}
+                //
+                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_COLOR))
+                //{
+                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_COLOR];
+                //}
+                //
+                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_SIZE))
+                //{
+                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_SIZE];
+                //}
+            }
+            return result;
+        }
+        
+        private static function getTextProperties(txt:*,result:Object):Object
+        {
+            result ||= { };
+            if (txt)
+            {
+                if (txt is StageTextTextEditor)
+                {
+                    var stageText:StageTextTextEditor = StageTextTextEditor(txt);
+                    result.fontFamily = stageText.fontFamily;
+                    result.fontSize = stageText.fontSize;
+                    result.fontWeight = stageText.fontWeight;
+                    result.color = stageText.color;
+                }
+                else if (txt is TextFieldTextEditor || txt is TextFieldTextRenderer)
+                {
+                    var textFormat:TextFormat = txt.textFormat;
+                    result.color = textFormat.color;
+                    result.fontSize = textFormat.size;
+                    result.fontName = textFormat.font;
+                    result.fontWeight = textFormat.bold?"bold":"normal";
+                }
+                else if (txt is TextBlockTextEditor || txt is TextBlockTextRenderer)
+                {
+                    getElementFormatProperties(txt.elementFormat, result);
+                }
+            }
             return result;
         }
         

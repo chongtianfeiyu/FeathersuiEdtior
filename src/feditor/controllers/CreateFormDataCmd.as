@@ -107,7 +107,7 @@ package feditor.controllers
         {
             result ||= [];
             var child:Array = [];
-            var map:Object = descriptionProxy.getDescription(ns);
+            var map:Object = descriptionProxy.getDescriptionMap(ns);
             for (var name:String in map) 
             {
                 var has:Boolean = false;
@@ -124,13 +124,7 @@ package feditor.controllers
                 
                 var fvo:FieldVO = new FieldVO();
                 fvo.name = name;
-                fvo.value = "";
                 child.push(fvo);
-                
-                if (name == "color")
-                {
-                    trace(name);
-                }
             }
             
             result.push.apply(null, child);

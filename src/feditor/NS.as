@@ -14,6 +14,7 @@ package feditor
         public static const CMD_DELETE_SELECT:String                = "cmd_delete_select_items";
         public static const CMD_GROUP_SELECT:String                 = "cmd_group_select_items";
         public static const CMD_UN_GROUP_SELECT:String              = "cmd_ungroup_select_items";
+        public static const CMD_OPEN_CONFIG:String                  = "cmd_open_config";
         public static const CMD_CUT:String                          = "cmd_cut";
         public static const CMD_COPY:String                         = "cmd_copy";
         public static const CMD_SELECT_ALL:String                   = "cmd_select_all";
