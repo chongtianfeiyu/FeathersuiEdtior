@@ -3,6 +3,8 @@ bin/
 bin-debug/
 bin-release/
 icons/
+obj/
+bat/
 
 # Other files and folders
 .settings/
