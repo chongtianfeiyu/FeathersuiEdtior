@@ -12,6 +12,8 @@ Label
 Button
 ToggleButton
 LayoutGroup (^_^ ->Powerful)
+TextInput
+List
 
 [编辑器主要功能]
 组合 ctrl + g (组合。组合之后是一个LayoutGroup)
@@ -39,13 +41,14 @@ click 选中
 资源预览
 资源库拖拽到舞台
 控件库拖拽到舞台
+主流分辨率尺寸模板
 
 /************************************************
 NEXT VSERSION TODO
 /************************************************
 
 [添加的控件]
-TextInput
+
 ToggleSwitch
 Check
 Panel
@@ -55,7 +58,6 @@ Slider
 
 [功能增强]
 多语言自动匹配
-主流分辨率尺寸模板
 标尺工具实现
 测量工具实现
 
