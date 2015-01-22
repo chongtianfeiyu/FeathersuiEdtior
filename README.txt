@@ -36,6 +36,9 @@ click 选中
 
 编辑器字库配置
 编辑器资源配置
+资源预览
+资源库拖拽到舞台
+控件库拖拽到舞台
 
 /************************************************
 NEXT VSERSION TODO
@@ -45,16 +48,12 @@ NEXT VSERSION TODO
 TextInput
 ToggleSwitch
 Check
-ImageLoader
 Panel
 Radio
 ScrollBar
 Slider
 
 [功能增强]
-资源预览
-资源库拖拽到舞台
-控件库拖拽到舞台
 多语言自动匹配
 主流分辨率尺寸模板
 标尺工具实现

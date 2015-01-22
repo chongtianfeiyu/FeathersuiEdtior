@@ -1,6 +1,8 @@
 package feditor.views.pnl 
 {
     import feathers.controls.Button;
+	import feathers.controls.Callout;
+	import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
     import feathers.controls.ScrollContainer;
@@ -8,6 +10,9 @@ package feditor.views.pnl
     import feathers.data.ListCollection;
     import feathers.layout.VerticalLayout;
     import feditor.AppFacade;
+	import feditor.events.EventType;
+	import feditor.views.cmp.AssetListItemRenderer;
+	import feditor.views.cmp.ControlListItenRenderer;
     import flash.events.MouseEvent;
     import starling.core.Starling;
     import starling.events.Event;
@@ -20,9 +25,6 @@ package feditor.views.pnl
      */
     public class CmpPanel extends LayoutGroup 
     {
-        public static const PREVIEW:String = "preview";
-        public static const SELECT_CMP:String = "select_cmp";
-        
         public var cmpList:List;
         public var tabBar:TabBar;
         public var assetsList:List;
@@ -51,10 +53,12 @@ package feditor.views.pnl
             addChild(box);
             
             cmpList = new List();
+			cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer()};
             box.addChild(cmpList);
             
             var textureNames:* = AppFacade.getInstance().assets.getTextureNames();
             assetsList = new List();
+			assetsList.itemRendererFactory = function():*{ return new AssetListItemRenderer()};
             assetsList.dataProvider = new ListCollection(textureNames);
             box.addChild(assetsList);
             assetsList.visible = false;
@@ -64,22 +68,27 @@ package feditor.views.pnl
             Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
             
             cmpList.addEventListener(Event.CHANGE, cmpSelectHandler);
-            assetsList.addEventListener(Event.CHANGE, assetsSelectHandler);
+            //assetsList.addEventListener(Event.CHANGE, assetsSelectHandler);
         }
         
-        private function assetsSelectHandler(e:Event):void 
-        {
-            var selectedAsset:String = String(assetsList.selectedItem)||"";
-            dispatchEventWith(PREVIEW,false,selectedAsset);
-            Starling.current.nativeStage.addEventListener(MouseEvent.CLICK, function(e:*):void {
-                System.setClipboard(selectedAsset);
-                Starling.current.nativeStage.removeEventListener(e.type, arguments.callee);
-                });
-        }
+        //private function assetsSelectHandler(e:Event):void 
+        //{
+            //var selectedAsset:String = String(assetsList.selectedItem)||"";
+            //Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP, nativeStageClickHandler);
+        //}
+		//
+		//private function nativeStageClickHandler(e:*):void
+		//{
+			//System.setClipboard(String(assetsList.selectedItem));
+			//var lbl:Label = new Label();
+			//lbl.text = "copy:" + assetsList.selectedItem;
+			//Callout.show(lbl,this);
+			//Starling.current.nativeStage.removeEventListener(MouseEvent.MOUSE_UP, nativeStageClickHandler);
+		//}
         
         private function cmpSelectHandler(e:Event):void 
         {
-            dispatchEventWith(SELECT_CMP, false, cmpList.selectedItem);
+            dispatchEventWith(EventType.SELECT_CMP, false, cmpList.selectedItem);
         }
         
         private function touchHandler(e:TouchEvent):void 

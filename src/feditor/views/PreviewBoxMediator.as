@@ -1,5 +1,6 @@
 package feditor.views 
 {
+	import feditor.events.EventType;
     import feditor.NS;
     import feditor.views.cmp.PreviewBox;
     import org.puremvc.as3.multicore.interfaces.INotification;
@@ -25,6 +26,17 @@ package feditor.views
                 NS.NOTE_PREVIEW
             ];
         }
+		
+		override public function onRegister():void 
+		{
+			super.onRegister();
+			pnl.addEventListener(EventType.ASSET_PLACE,assetPlaceHandler);
+		}
+		
+		private function assetPlaceHandler(e:Event):void 
+		{
+			sendNotification(NS.NOTE_PLACE_CONTROL_TO_STAGE,e.data);
+		}
         
         override public function handleNotification(notification:INotification):void 
         {
@@ -32,34 +44,22 @@ package feditor.views
             {
                 case NS.NOTE_PREVIEW:
                     var arr:Array = notification.getBody() as Array;
-                    if (arr && arr[0] as DisplayObject)
-                    {
-                        pnl.showBox.apply(null, arr);
-                        validateAddAction();
-                    }
+					if (arr) 
+					{
+						if (arr[0] is XML || arr[0] is XMLList)
+						{
+							pnl.previewControl.apply(null,arr)
+						}
+						else
+						{
+							pnl.previewImage.apply(null, arr);
+						}
+					}
                 break;
                 default:
             }
         }
-        
-        private function validateAddAction():void
-        {
-            pnl.addButton.addEventListener(Event.TRIGGERED,addButtonHandler);
-        }
-        
-        private function addButtonHandler():void
-        {
-            var display:DisplayObject = pnl.getPreviewObject();
-            pnl.addButton.removeEventListener(Event.TRIGGERED, addButtonHandler);
-            pnl.hideBox();
-            
-            if (display)
-            {
-                sendNotification(NS.NOTE_PLACE_CONTROL_TO_STAGE,display);
-            }
-        }
-        
-        
+		
         public function get pnl():PreviewBox
         {
             return viewComponent as PreviewBox;

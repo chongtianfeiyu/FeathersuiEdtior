@@ -1,8 +1,11 @@
 package feditor 
 {
     import feathers.controls.ButtonGroup;
+	import feathers.controls.Check;
     import feathers.controls.LayoutGroup;
+	import feathers.controls.Radio;
     import feathers.controls.ScrollContainer;
+	import feathers.controls.ToggleSwitch;
     import feathers.data.ListCollection;
     import feathers.layout.HorizontalLayout;
     import feathers.layout.VerticalLayout;
@@ -22,7 +25,7 @@ package feditor
         public var form:Form;
         public var cmpPanel:CmpPanel;
         public var editorStage:EditorStage;
-        private var stageContainer:ScrollContainer;
+        public var stageContainer:ScrollContainer;
         private var stageLayout:HorizontalLayout;
         
         private var hasStartup:Boolean = false;
@@ -68,6 +71,12 @@ package feditor
             hasStartup = true;
             
             addEventListener(EditorStage.INIT_EDITOR, updateLayout);
+			
+			//
+			//addChild(new ToggleSwitch());
+			//addChild(new Radio());
+			
+			//addChild(new Check());
         }
         
         public function updateLayout():void
@@ -87,7 +96,7 @@ package feditor
             var w:int = width - cmpPanel.width - form.width;
             var h:int = height;
             
-            cmpPanel.maxHeight = height;
+            cmpPanel.maxHeight = height-20;
             
             if(w != stageContainer.width) stageContainer.width = w;
             if(h != stageContainer.height) stageContainer.height = h;

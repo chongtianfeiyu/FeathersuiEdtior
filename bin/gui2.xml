@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:0514d886f54ff69fcbdf1db6880b91c1$ -->
+<TextureAtlas imagePath="gui2.png">
+    <SubTexture name="guang4" x="1246" y="2" width="800" height="612" frameX="0" frameY="-24" frameWidth="800" frameHeight="660"/>
+    <SubTexture name="bg-result-title" x="2" y="364" width="1242" height="344" frameX="0" frameY="-3" frameWidth="1242" frameHeight="348"/>
+    <SubTexture name="pve-myself-blue" x="399" y="710" width="375" height="1048" frameX="0" frameY="0" frameWidth="375" frameHeight="1136"/>
+    <SubTexture name="pve-npc-red" x="2" y="710" width="395" height="1132" frameX="0" frameY="-4" frameWidth="395" frameHeight="1136"/>
+    <SubTexture name="vs" x="1246" y="616" width="422" height="510" frameX="-1" frameY="0" frameWidth="426" frameHeight="510"/>
+    <SubTexture name="zhuantou" x="2" y="2" width="1242" height="360"/>
+</TextureAtlas>

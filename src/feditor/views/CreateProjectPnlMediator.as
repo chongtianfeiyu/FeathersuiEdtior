@@ -1,5 +1,6 @@
 package feditor.views 
 {
+	import feditor.models.DevicesProxy;
     import feditor.models.EStageProxy;
     import feditor.NS;
     import feditor.views.pnl.CreateProjectPnl;
@@ -19,10 +20,11 @@ package feditor.views
             super(NAME, viewComponent);
         }
         
-        private function closeHandler(e:Event):void 
+        private function deviceSelectHandler(e:Event):void 
         {
-            pnl.removeEventListener(Event.CLOSE, closeHandler);
-            sendNotification(NS.CMD_ESTAGE_INIT,pnl.stageVO);
+			pnl.removeEventListener(Event.SELECT, deviceSelectHandler);
+			pnl.hide();
+            sendNotification(NS.CMD_ESTAGE_INIT,e.data);
         }
         
         override public function listNotificationInterests():Array 
@@ -38,8 +40,8 @@ package feditor.views
             {
                 case NS.NOTE_CREATE_PORJECT:
                     pnl.show();
-                    pnl.sedDefault(estageProxy.witdth,estageProxy.height,estageProxy.color,estageProxy.projectName);
-                    pnl.addEventListener(Event.CLOSE, closeHandler);
+					if (!pnl.hasData) pnl.setDeviceList(deviceProxy.getDevicesList());
+                    pnl.addEventListener(Event.SELECT, deviceSelectHandler);
                 break;
                 default:
             }
@@ -54,6 +56,11 @@ package feditor.views
         {
             return facade.retrieveProxy(EStageProxy.NAME) as EStageProxy;
         }
+		
+		private function get deviceProxy():DevicesProxy
+		{
+			return facade.retrieveProxy(DevicesProxy.NAME) as DevicesProxy;
+		}
     }
 
 }

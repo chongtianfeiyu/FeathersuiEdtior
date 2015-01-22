@@ -347,7 +347,6 @@ package feditor.utils
             delete valueMap[FieldConst.TEXT_INPUT_BACKGROUND_SKIN];
             delete valueMap[FieldConst.TEXT_INPUT_DEFAULT_ICON];
             
-            
             //textInput.prompt
             //others
             setDisplayObjectFields(textInput, valueMap);
@@ -392,7 +391,12 @@ package feditor.utils
             {
                 try 
                 {    
-                    if (name == "visible")
+                    if (name == "visible" || 
+						name == "touchable" || 
+						name == "isSelected" || 
+						name == "isEditable" ||
+						name == "displayAsPassword"
+						)
                     {
                         display[name] = valueMap[name]=="false"?false:true;
                     }
@@ -676,6 +680,8 @@ package feditor.utils
                 
                 delete valueMap[FieldConst.LAYOUT];
             }
+			
+			setDisplayObjectFields(layoutGroup, valueMap);
             
             return layoutGroup;
         }

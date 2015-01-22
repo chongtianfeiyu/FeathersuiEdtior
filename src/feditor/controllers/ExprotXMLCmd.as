@@ -1,6 +1,7 @@
 package feditor.controllers 
 {
     import feditor.models.EStageProxy;
+	import feditor.models.ProjectProxy;
     import feditor.utils.Builder;
     import feditor.utils.describeView;
     import feditor.utils.Reflect;
@@ -29,14 +30,20 @@ package feditor.controllers
             var xml:XML = describeView(editorRoot);
             delete xml.@* ;
             
+			
+			if (!projectProxy.projectName)
+			{
+				projectProxy.projectName = String(new Date().time);
+			}
+			
             xml.setName(Builder.XMLROOT);
             xml.@stageWidth = estageProxy.witdth;
             xml.@stageHeight = estageProxy.height;
             xml.@stageColor = "0x" + estageProxy.color.toString(16);
-            xml.@projectName = estageProxy.projectName;
+            xml.@projectName = projectProxy.projectName;
             
             var fileRef:FileReference = new FileReference();
-            fileRef.save(xml,(estageProxy.projectName||"View")+".xml");
+            fileRef.save(xml,(projectProxy.projectName)+".xml");
         }
         
         private function get editorRoot():DisplayObjectContainer
@@ -44,6 +51,11 @@ package feditor.controllers
             var editor:EditorStage = (facade.retrieveMediator(EdiatorStageMediator.NAME) as EdiatorStageMediator).pnl;
             return editor.childContainer; 
         }
+		
+		private function get projectProxy():ProjectProxy
+		{
+			return facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy;
+		}
         
         private function get estageProxy():EStageProxy
         {

@@ -59,6 +59,8 @@ package feditor.views
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
                     pnl.placeControl(notification.getBody() as DisplayObject);
+					selectProxy.clear();
+                    selectProxy.addItem(notification.getBody() as DisplayObject);
                     break;
                 case NS.NOTE_ESTAGE_REFRESH:
                     pnl.initEStage(estageProxy.witdth,estageProxy.height,estageProxy.color);

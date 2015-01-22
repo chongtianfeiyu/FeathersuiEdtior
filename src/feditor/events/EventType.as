@@ -7,11 +7,12 @@ package feditor.events
      */
     public class EventType
     {
-        public static const CUT:String = "cut";
-        public static const PASTE:String = "paste";
-        public static const INFORMATION:String = "information";
-        
-        public static const DRAG_RECT:String = "drag_rect";
+		public static const PREVIEW:String = "preview";
+		public static const SELECT_CMP:String = "select_cmp";
+		public static const DRAG_RECT:String = "drag_select";
+		public static const ASSET_PLACE:String	= "asset_place";
+		
+		
     }
 
 }

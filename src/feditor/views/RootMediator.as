@@ -1,5 +1,6 @@
 package feditor.views 
 {
+	import feditor.events.EventType;
     import feditor.models.ClipBordProxy;
     import feditor.models.ControlDescriptionProxy;
     import feditor.models.DefaultControlProxy;
@@ -35,16 +36,26 @@ package feditor.views
         {
             super.onRegister();
             
-            pnl.cmpPanel.addEventListener(CmpPanel.SELECT_CMP, cmpChangeHandler);
-            pnl.cmpPanel.addEventListener(CmpPanel.PREVIEW, assetPreviewHandler);
+            pnl.cmpPanel.addEventListener(EventType.SELECT_CMP, cmpChangeHandler);
+            pnl.cmpPanel.addEventListener(EventType.PREVIEW, previewHandler);
             
             pnl.form.addEventListener(Event.CHANGE, propertyChangeHandler);
         }
         
-        private function assetPreviewHandler(e:Event):void 
+        private function previewHandler(e:Event):void 
         {
-            clipBordProxy.storeString(String(e.data));
-            sendNotification(NS.NOTE_PREVIEW,[Assets.getImage(String(e.data)),pnl.cmpPanel.width,100]);
+			var arr:Array = e.data as Array;
+			arr[1] = pnl.stageContainer.x;
+			
+			if (defaultControlProxy.getNameList().indexOf(arr[0])!=-1)
+			{
+				arr[0] = defaultControlProxy.getControlXML(arr[0]);
+				sendNotification(NS.NOTE_PREVIEW,arr);
+			}
+			else
+			{
+				sendNotification(NS.NOTE_PREVIEW,arr);
+			}
         }
         
         private function cmpChangeHandler(e:Event):void 

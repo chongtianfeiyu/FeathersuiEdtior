@@ -50,8 +50,8 @@ package feditor.views.pnl
         {
             PopUpManager.addPopUp(this);
             menu.minWidth = width;
-            padding = 20;
-            paddingBottom = 50;
+            //padding = 20;
+            //paddingBottom = 50;
         }
         
         public function hide():void
