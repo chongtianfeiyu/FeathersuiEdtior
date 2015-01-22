@@ -28,9 +28,6 @@ package feditor.views.pnl
         {
             super.initialize();
             headerProperties.title = "Wellcome Feathersui Editor";
-            
-            
-            
             var box:LayoutGroup = new LayoutGroup();
             box.layout = new VerticalLayout();
             box.layout["gap"] = 20;
@@ -43,15 +40,14 @@ package feditor.views.pnl
             menu = new ButtonGroup();
             menu.dataProvider = new ListCollection(["New Project", "Open Project"]);
             menu.buttonProperties.minHeight = 36;
+			menu.width = 400;
+			menu.paddingBottom = 30;
             box.addChild(menu);
         }
         
         public function show():void
         {
             PopUpManager.addPopUp(this);
-            menu.minWidth = width;
-            //padding = 20;
-            //paddingBottom = 50;
         }
         
         public function hide():void

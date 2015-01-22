@@ -4,6 +4,7 @@ package feditor.utils
     import feathers.controls.ImageLoader;
     import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
+    import feathers.controls.List;
     import feathers.controls.ProgressBar;
     import feathers.controls.text.StageTextTextEditor;
     import feathers.controls.text.TextBlockTextEditor;
@@ -60,6 +61,7 @@ package feditor.utils
                 fieldMethodMap[LayoutGroup] = getLayoutGroupProperties;
                 fieldMethodMap[ProgressBar] = getProgressbarProerties;
                 fieldMethodMap[ImageLoader] = getImageLoaderProperties;
+                fieldMethodMap[List] = getListProperties;
             }
             
             var result:Object = { };
@@ -404,6 +406,26 @@ package feditor.utils
                     result[skinName] = skinProperties?skinProperties[FieldConst.IMAGE_TEXTURE]:"";
                 }
             }
+            return result;
+        }
+        
+        private static function getListProperties(list:List,result:Object):Object
+        {
+            result ||= { };
+            if (list)
+            {
+                var skinProperties:Object = getImageProperties(list.backgroundSkin);
+                result.backgroundSkin = skinProperties?skinProperties[FieldConst.IMAGE_TEXTURE]:"";
+                getLayoutProperties(list.layout, result);
+                result.padding = list.padding;
+                result.paddingLeft = list.paddingLeft;
+                result.paddingRight = list.paddingRight;
+                result.paddingTop = list.paddingTop;
+                result.paddingBottom = list.paddingBottom;
+                
+                result[FieldConst.LIST_ITEM_RENDERER] = list.itemRendererProperties.name;
+            }
+            
             return result;
         }
     }

@@ -4,7 +4,9 @@ package feditor.utils
     import feathers.controls.ImageLoader;
     import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
+    import feathers.controls.List;
     import feathers.controls.ProgressBar;
+	import feathers.controls.renderers.DefaultListItemRenderer;
     import feathers.controls.text.StageTextTextEditor;
     import feathers.controls.text.TextBlockTextEditor;
     import feathers.controls.text.TextBlockTextRenderer;
@@ -12,6 +14,7 @@ package feditor.utils
     import feathers.controls.text.TextFieldTextRenderer;
     import feathers.controls.TextInput;
     import feathers.controls.ToggleButton;
+    import feathers.data.ListCollection;
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
     import feathers.display.TiledImage;
@@ -27,9 +30,12 @@ package feditor.utils
     import flash.text.engine.FontDescription;
     import flash.text.TextFormat;
     import flash.utils.Dictionary;
+    import flash.utils.setInterval;
+    import flash.utils.setTimeout;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
     import starling.display.Image;
+    import starling.events.Event;
     import starling.textures.Texture;
     /**
      * ...
@@ -38,6 +44,9 @@ package feditor.utils
     public class Builder 
     {
         //default
+        public static const LIB_NAME:String = "libName";
+        public static const INJECT_FLAG:String = "name";
+        public static const SCRIPT_FLAG:String = "script";
         public static const XMLROOT:String = "View";
         private static var surportClassPool:Object;
         private static var fieldsMethod:Dictionary;
@@ -64,6 +73,7 @@ package feditor.utils
             fieldsMethod[ToggleButton] = setToggleButtonFields;
             fieldsMethod[LayoutGroup] = setLayoutGroupFields;
             fieldsMethod[ProgressBar] = setProgressBarFields;
+            fieldsMethod[List] = setListFields;
             Builder.isEditor = isEditor;
         }
         
@@ -75,12 +85,26 @@ package feditor.utils
         public static function build(container:DisplayObjectContainer, xml:*):DisplayObject
         {
             building = true;
-            var result:* = createView(container, xml, container);
+            var scriptResult:Object = {};
+            var result:* = createView(container, xml, container,scriptResult);
             building = false;
+            
+            for(var funcName:String in scriptResult) 
+            {
+                try 
+                {
+                    scriptResult[funcName]();
+                }
+                catch (err:Error)
+                {
+                    trace("Builder.build - script call error: -" + funcName);
+                }
+            }
+            
             return result;
         }
         
-        private static function createView(container:DisplayObjectContainer, xml:*,root:DisplayObjectContainer):DisplayObject
+        private static function createView(container:DisplayObjectContainer, xml:*,root:DisplayObjectContainer,scriptResult:Object):DisplayObject
         {
             var son:*;
             
@@ -95,10 +119,23 @@ package feditor.utils
                 for each (var attr:XML in xml.attributes()) 
                 {
                     var fieldName:String = String(attr.name());
-                    properties[fieldName] = String(attr);
-                    if (fieldName == "name")
+                    
+                    switch (fieldName) 
                     {
-                        inject = fieldName;
+                        case LIB_NAME:
+                            break;
+                        case INJECT_FLAG:
+                            inject = String(attr);
+                            properties[fieldName] = String(attr);
+                            break;
+                        case SCRIPT_FLAG:
+                            if (scriptResult && root.hasOwnProperty(fieldName) && root[fieldName] is Function)
+                            {
+                                scriptResult[fieldName] = root[String(attr)];
+                            }
+                            break;
+                        default:
+                            properties[fieldName] = String(attr);
                     }
                 }
                 
@@ -123,7 +160,7 @@ package feditor.utils
             //grandson nodes
             for each (var grandson:* in xml.children()) 
             {
-                DisplayObjectContainer(son).addChild(build(son,grandson));
+                DisplayObjectContainer(son).addChild(createView(son,grandson,root,scriptResult));
             }
             return son;
         }
@@ -743,6 +780,97 @@ package feditor.utils
             }
             
             return layout as ILayout;
+        }
+        
+        private static function setListFields(list:List,valueMap:Object):List
+        {
+            if ((isEditor || building) && list.itemRendererProperties.name != valueMap[FieldConst.LIST_ITEM_RENDERER])
+            {
+                list.styleProvider = null;
+            }
+            
+            if (FieldConst.LIST_ITEM_RENDERER in valueMap)
+            {
+                list.itemRendererFactory = ItemRendererBuilder.getItemRendererFactory(valueMap[FieldConst.LIST_ITEM_RENDERER]);
+                list.itemRendererProperties.name = valueMap[FieldConst.LIST_ITEM_RENDERER];
+                delete valueMap[FieldConst.LIST_ITEM_RENDERER];
+            }
+            
+            if (FieldConst.LIST_DATA_NUM in valueMap && isEditor)
+            {
+                var arr:Array = [];
+                for (var i:int = 0; i < valueMap[FieldConst.LIST_DATA_NUM]; i++) 
+                {
+					//this is very import
+                    arr.push({"label":String(i)+"?????"});
+                }
+                list.dataProvider = new ListCollection(arr);
+                delete valueMap[FieldConst.LIST_DATA_NUM];
+            }
+            
+            if (FieldConst.LIST_BACKGROUND_SKIN in valueMap)
+            {
+                list.backgroundSkin = Assets.getImage(valueMap[FieldConst.LIST_BACKGROUND_SKIN]);
+                delete valueMap[FieldConst.LIST_BACKGROUND_SKIN];
+            }
+            
+            if (FieldConst.LAYOUT_PADDING in valueMap)
+            {
+                list.padding = valueMap[FieldConst.LAYOUT_PADDING];
+                delete valueMap[FieldConst.LAYOUT_PADDING];
+            }
+            
+            if (FieldConst.LAYOUT_PADDING_LEFT in valueMap)
+            {
+                list.padding = valueMap[FieldConst.LAYOUT_PADDING_LEFT];
+                delete valueMap[FieldConst.LAYOUT_PADDING_LEFT];
+            }
+            
+            if (FieldConst.LAYOUT_PADDING_RIGHT in valueMap)
+            {
+                list.padding = valueMap[FieldConst.LAYOUT_PADDING_RIGHT];
+                delete valueMap[FieldConst.LAYOUT_PADDING_RIGHT];
+            }
+            
+            if (FieldConst.LAYOUT_PADDING_TOP in valueMap)
+            {
+                list.padding = valueMap[FieldConst.LAYOUT_PADDING_TOP];
+                delete valueMap[FieldConst.LAYOUT_PADDING_TOP];
+            }
+            
+            if (FieldConst.LAYOUT_PADDING_BOTTOM in valueMap)
+            {
+                list.padding = valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
+                delete valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
+            }
+            
+            if (FieldConst.LAYOUT in valueMap ||
+                FieldConst.LAYOUT_GAP in valueMap ||
+                FieldConst.LAYOUT_HORIZONTAL_ALIGN in valueMap ||
+                FieldConst.LAYOUT_VERTICAL_ALIGN in valueMap
+            )
+            {
+                var layout:*=list.layout;
+                if (valueMap[FieldConst.LAYOUT] == FieldConst.LAYOUT_HORIZONTAL)
+                {
+                    layout = (list.layout is HorizontalLayout)?list.layout:new HorizontalLayout();
+                }
+                else
+                {
+                    layout = (list.layout is VerticalLayout)?list.layout:new VerticalLayout();
+                }
+                
+                if (layout)
+                {
+                   list.layout = setLayoutFields(layout, valueMap);
+                }
+                
+                delete valueMap[FieldConst.LAYOUT];
+            }
+            
+            setDisplayObjectFields(list, valueMap);
+            
+            return list;
         }
     }
 }

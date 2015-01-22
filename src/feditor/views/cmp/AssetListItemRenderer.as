@@ -58,7 +58,6 @@ package feditor.views.cmp
 			}
 			else image.visible = false;
 		}
-		
 	}
 
 }

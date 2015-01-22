@@ -3,6 +3,7 @@ package feditor
     import feathers.controls.ButtonGroup;
 	import feathers.controls.Check;
     import feathers.controls.LayoutGroup;
+    import feathers.controls.List;
 	import feathers.controls.Radio;
     import feathers.controls.ScrollContainer;
 	import feathers.controls.ToggleSwitch;
@@ -10,6 +11,7 @@ package feditor
     import feathers.layout.HorizontalLayout;
     import feathers.layout.VerticalLayout;
     import feditor.views.cmp.Form;
+    import feditor.views.cmp.VirtualItemRenderer;
     import feditor.views.pnl.CmpPanel;
     import feditor.views.pnl.EditorStage;
     import flash.display.NativeMenu;
@@ -71,12 +73,6 @@ package feditor
             hasStartup = true;
             
             addEventListener(EditorStage.INIT_EDITOR, updateLayout);
-			
-			//
-			//addChild(new ToggleSwitch());
-			//addChild(new Radio());
-			
-			//addChild(new Check());
         }
         
         public function updateLayout():void

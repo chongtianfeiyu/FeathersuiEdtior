@@ -57,12 +57,6 @@ package feditor.views.pnl
             
             addChild(_childContainer);
             addChild(selectContainer);
-            
-            //Starling.current.stage.addEventListener(TouchEvent.TOUCH, function() {
-                //trace("stage,", x, y);
-                //trace("selectRect,", selectContainer.x, selectContainer.y);
-                //trace("childRect,", _childContainer.x, _childContainer.y);
-                //});
         }
         
         public function getChildrens():Vector.<DisplayObject>
@@ -123,6 +117,11 @@ package feditor.views.pnl
         {
             if (displayObject)
             {
+				if (parent)
+				{
+					if(parent.x <0) displayObject.x -= int(parent.x);
+					if(parent.y <0) displayObject.y -= int(parent.y);
+				}
                 childContainer.addChild(displayObject);
             }
         }

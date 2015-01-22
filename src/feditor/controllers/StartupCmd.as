@@ -21,6 +21,7 @@ package feditor.controllers
     import feditor.views.RectSelectMediator;
     import feditor.views.RootMediator;
     import feditor.views.WellcomPnlMediator;
+	import flash.utils.setTimeout;
     import org.puremvc.as3.multicore.interfaces.INotification;
     import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
     
@@ -48,6 +49,7 @@ package feditor.controllers
             sendNotification(NS.CMD_FONTLIB_INJECT);
             sendNotification(NS.APP_INITIALIZED);
             sendNotification(NS.NOTE_WELLECOM);
+            sendNotification(NS.CMD_RENER_BUILDER_INIT);
         }
         
         private function registerCommand():void
@@ -77,6 +79,7 @@ package feditor.controllers
             facade.registerCommand(NS.CMD_FONTLIB_INJECT, FontLibInjectCmd);
             facade.registerCommand(NS.CMD_IMPORT_PICTURE, ImportPictureCmd);
             facade.registerCommand(NS.CMD_OPEN_CONFIG, OpenConfigDirectoryCmd);
+            facade.registerCommand(NS.CMD_RENER_BUILDER_INIT, ItemRendererBuilderInitCmd);
         }
         
         private function regiseterProxy():void

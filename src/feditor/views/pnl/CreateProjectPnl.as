@@ -56,6 +56,7 @@ package feditor.views.pnl
 			var projBoxLayout:HorizontalLayout = new HorizontalLayout();
 			projBoxLayout.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
 			projBox.layout = projBoxLayout;
+            projBoxLayout.paddingBottom = 20;
 			addChild(projBox);
 			
 			var projTitle:Label = new Label();
@@ -69,7 +70,7 @@ package feditor.views.pnl
 			projBox.addChild(projInput);
 			
 			desLabel = new Label();
-			desLabel.paddingTop = 20;
+            //desLabel.la
 			desLabel.text = "Popular devices";
 			addChild(desLabel);
 			
@@ -81,11 +82,11 @@ package feditor.views.pnl
 			deviceList.buttonProperties.minHeight = 40;
 			deviceList.buttonProperties.paddingLeft = 60;
 			deviceList.buttonProperties.horizontalAlign = HorizontalLayout.HORIZONTAL_ALIGN_LEFT;
+            deviceList.paddingBottom = 20;
 			
 			
 			desLabel = new Label();
 			desLabel.text = "Customize stage size";
-			desLabel.paddingTop = 20;
 			addChild(desLabel);
 			
 			inputArr = [];

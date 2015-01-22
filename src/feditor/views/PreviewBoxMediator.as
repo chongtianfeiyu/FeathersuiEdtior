@@ -23,7 +23,8 @@ package feditor.views
         override public function listNotificationInterests():Array 
         {
             return [
-                NS.NOTE_PREVIEW
+                NS.NOTE_PREVIEW,
+				NS.NOTE_PREVIEW_HIDE
             ];
         }
 		
@@ -55,7 +56,10 @@ package feditor.views
 							pnl.previewImage.apply(null, arr);
 						}
 					}
-                break;
+					break;
+				case NS.NOTE_PREVIEW_HIDE:
+					pnl.hide();
+					break;
                 default:
             }
         }

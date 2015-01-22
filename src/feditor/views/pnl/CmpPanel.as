@@ -42,8 +42,8 @@ package feditor.views.pnl
         {
             super.initialize();
             
-            var l:VerticalLayout = new VerticalLayout();
-            layout = l;            
+            var boxLayout:VerticalLayout = new VerticalLayout();
+            layout = boxLayout;            
             
             tabBar = new TabBar();
             tabBar.dataProvider = new ListCollection([ { "label":"Controls" }, { "label":"Assets" } ]);
@@ -53,48 +53,21 @@ package feditor.views.pnl
             addChild(box);
             
             cmpList = new List();
-			cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer()};
+			cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer() };
+			cmpList.itemRendererProperties.minHeight = 30;
+			cmpList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(cmpList);
             
             var textureNames:* = AppFacade.getInstance().assets.getTextureNames();
             assetsList = new List();
 			assetsList.itemRendererFactory = function():*{ return new AssetListItemRenderer()};
             assetsList.dataProvider = new ListCollection(textureNames);
+			assetsList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(assetsList);
             assetsList.visible = false;
             
             //evts
             tabBar.addEventListener(Event.CHANGE, tabChangeHandler);
-            Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
-            
-            cmpList.addEventListener(Event.CHANGE, cmpSelectHandler);
-            //assetsList.addEventListener(Event.CHANGE, assetsSelectHandler);
-        }
-        
-        //private function assetsSelectHandler(e:Event):void 
-        //{
-            //var selectedAsset:String = String(assetsList.selectedItem)||"";
-            //Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP, nativeStageClickHandler);
-        //}
-		//
-		//private function nativeStageClickHandler(e:*):void
-		//{
-			//System.setClipboard(String(assetsList.selectedItem));
-			//var lbl:Label = new Label();
-			//lbl.text = "copy:" + assetsList.selectedItem;
-			//Callout.show(lbl,this);
-			//Starling.current.nativeStage.removeEventListener(MouseEvent.MOUSE_UP, nativeStageClickHandler);
-		//}
-        
-        private function cmpSelectHandler(e:Event):void 
-        {
-            dispatchEventWith(EventType.SELECT_CMP, false, cmpList.selectedItem);
-        }
-        
-        private function touchHandler(e:TouchEvent):void 
-        {
-            var isTouchCmp:Boolean = e.getTouch(cmpList) == null;
-            if (isTouchCmp) cmpList.selectedItem = null;
         }
         
         private function tabChangeHandler(e:Event):void 
@@ -113,16 +86,6 @@ package feditor.views.pnl
                 default:
             }
         }
-        
-        override protected function validateChildren():void 
-        {
-            super.validateChildren();
-            cmpList.minWidth = width;
-            assetsList.minWidth = width;
-            cmpList.height = height;
-            assetsList.height = height;
-        }
-        
     }
 
 }

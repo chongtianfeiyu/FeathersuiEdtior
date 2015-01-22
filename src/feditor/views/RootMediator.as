@@ -65,6 +65,7 @@ package feditor.views
             {
                 var xml:* = defaultControlProxy.getControlXML(data);
                 Builder.build(pnl.editorStage.childContainer, xml);
+				sendNotification(NS.NOTE_PREVIEW_HIDE);
             }
         }
         

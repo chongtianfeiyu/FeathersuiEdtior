@@ -16,7 +16,7 @@ package feditor.views.cmp
 		public function ControlListItenRenderer() 
 		{
 			super();
-			addEventListener(TouchEvent.TOUCH,touchHandler);
+			addEventListener(TouchEvent.TOUCH, touchHandler);
 		}
 		
 		protected function touchHandler(event:TouchEvent):void 

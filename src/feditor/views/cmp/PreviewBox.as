@@ -95,6 +95,13 @@ package feditor.views.cmp
 			{
 				return;
 			}
+            
+            if (control && contains(control))
+            {
+                control.dispose();
+                removeChild(control);
+                control = null;
+            }
 			
 			if (!image)
 			{

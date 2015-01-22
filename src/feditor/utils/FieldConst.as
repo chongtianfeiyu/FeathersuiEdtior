@@ -58,6 +58,11 @@ package feditor.utils
         static public const TOGGLE_BUTTON_DEFAULT_SELECTED_SKIN:String = "defaultSelectedSkin";
         static public const TOGGLE_BUTTON_DEFAULT_SELECTED_ICON:String = "defaultSelectedIcon";
         static public const TOGGLE_BUTTON_IS_SELECTED:String = "isSelected";
+        
+        //list
+        static public const LIST_BACKGROUND_SKIN:String = "backgroundSkin";
+        static public const LIST_ITEM_RENDERER:String = "itemRenderer";
+        static public const LIST_DATA_NUM:String = "dataNum";
     }
 
 }

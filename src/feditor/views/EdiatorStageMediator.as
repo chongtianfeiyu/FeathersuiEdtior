@@ -187,19 +187,27 @@ package feditor.views
                     break;
                 case Keyboard.LEFT:
                 case Keyboard.W:
-                    if(selectProxy.hasData) sendNotification(NS.CMD_MOVE_LEFT);
+                    if(!e.ctrlKey && selectProxy.hasData) sendNotification(NS.CMD_MOVE_LEFT);
                     break;
                 case Keyboard.RIGHT:
                 case Keyboard.D:
-                    if(selectProxy.hasData) sendNotification(NS.CMD_MOVE_RIGHT);
+					if (selectProxy.hasData)
+					{
+						if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
+						else sendNotification(NS.CMD_MOVE_RIGHT);
+					}
                     break;
                 case Keyboard.UP:
                 case Keyboard.W:
-                    if(selectProxy.hasData) sendNotification(NS.CMD_MOVE_UP);
+					if (selectProxy.hasData)
+					{
+						if (e.ctrlKey) sendNotification(NS.CMD_LAYER_UP);
+						else sendNotification(NS.CMD_MOVE_UP);
+					}
                     break;
                 case Keyboard.DOWN:
                 case Keyboard.S:
-                    if(selectProxy.hasData) sendNotification(NS.CMD_MOVE_DOWN);
+                    if(!e.ctrlKey && selectProxy.hasData) sendNotification(NS.CMD_MOVE_DOWN);
                     break;
                 case Keyboard.X:
                     if (e.ctrlKey) sendNotification(NS.CMD_CUT);
@@ -219,11 +227,6 @@ package feditor.views
                 case Keyboard.G:
                     if (e.ctrlKey) sendNotification(NS.CMD_GROUP_SELECT);
                     break;
-                case Keyboard.W:
-                    if (e.ctrlKey) sendNotification(NS.CMD_LAYER_UP);
-                    break;
-                case Keyboard.S:
-                    if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
                     break;
                 case Keyboard.Z:
                     if (e.ctrlKey) trace("TODO:: undo command is not be implemented");

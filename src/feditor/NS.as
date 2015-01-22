@@ -34,10 +34,12 @@ package feditor
         public static const CMD_OPEN_PROJECT:String                 = "cmd_open_project";
         public static const CMD_ESTAGE_INIT:String                  = "cmd_estage_init";
         public static const CMD_CREATE_NATIVE_MENU:String           = "cmd_create_native_menu";
+        public static const CMD_RENER_BUILDER_INIT:String           = "cmd_render_builder_init";
         
         public static const NOTE_WELLECOM:String                    = "note_wellcome";
         public static const NOTE_SHOW_PROPERTY:String               = "note_show_property";
         public static const NOTE_PREVIEW:String                     = "note_preview";
+		public static const NOTE_PREVIEW_HIDE:String                = "note_preview_hide";
         public static const NOTE_RECT_SELECT:String                 = "note_rect_select";
         public static const NOTE_UN_RECT_SELECT:String              = "note_un_rect_select";
         public static const NOTE_RECT_CHECK:String                  = "note_rect_check";

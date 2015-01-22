@@ -225,4 +225,31 @@
         <maxWidth/>
         <maxHeight/>
     </ProgressBar>
+    <List>
+        <name/>
+        <x/>
+        <y/>
+        <width/>
+        <height/>
+        <backgroundSkin/>
+        <alpha/>
+        <visible/>
+        <touchable/>
+        <minWidth/>
+        <minHeight/>
+        <maxWidth/>
+        <maxHeight/>
+        <!-- layout properites -->
+        <layout/>
+        <gap/>
+        <padding/>
+        <paddingLeft/>
+        <paddingRight/>
+        <paddingTop/>
+        <horizontalAlign/>
+        <verticalAlign/>
+        <!-- virtual -->
+        <itemRenderer/>
+        <dataNum/><!-- only for editor -->
+    </List>
 </suprot>
