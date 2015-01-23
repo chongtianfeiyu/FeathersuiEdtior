@@ -25,16 +25,16 @@ package feditor.controllers
         {
             var menuTree:Array = [
                 {
-                    "name":"file", 
-                    "sub":["New Project","open","save",] 
+                    "name":"Poject", 
+                    "sub":["New","Open","Import","Save",] 
                 },
                 {
                     "name":"tools",
-                    "sub":["fullScreen","import picture","config"]
+                    "sub":["fullScreen","import design picture","config"]
                 },
                 {
                     "name":"help",
-                    "sub":["version : test 1.0.0"]
+                    "sub":["version : beta 1.0.0"]
                 }
             ];
             
@@ -43,19 +43,22 @@ package feditor.controllers
                 var item:NativeMenuItem = e.currentTarget as NativeMenuItem;
                 switch (item.label) 
                 {
-                    case "New Project":
+                    case "New":
                         AppFacade.getInstance().sendNotification(NS.CMD_CREATE_PROJECT);
                         break;
-                    case "open":
-                        AppFacade.getInstance().sendNotification(NS.CMD_IMPORT_XML);
+                    case "Open":
+                        AppFacade.getInstance().sendNotification(NS.CMD_OPEN_PROJECT);
                         break;
-                    case "save":
+                    case "Import":
+                        AppFacade.getInstance().sendNotification(NS.CMD_IMPORT_PROJECT);
+                        break;
+                    case "Save":
                         AppFacade.getInstance().sendNotification(NS.CMD_EXPORT_XML);
                         break;
                     case "fullScreen":
                         Starling.current.nativeStage.displayState = StageDisplayState.FULL_SCREEN;
                         break;
-                    case "import picture":
+                    case "import design picture":
                         AppFacade.getInstance().sendNotification(NS.CMD_IMPORT_PICTURE);
                         break;
                     case "config":

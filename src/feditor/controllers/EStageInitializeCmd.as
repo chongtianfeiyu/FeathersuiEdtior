@@ -1,6 +1,8 @@
 package feditor.controllers 
 {
+    import feathers.controls.PickerList;
     import feditor.models.EStageProxy;
+    import feditor.models.ProjectProxy;
     import feditor.NS;
     import feditor.vo.ProjectVO;
     import org.puremvc.as3.multicore.interfaces.INotification;
@@ -24,6 +26,7 @@ package feditor.controllers
             
             stageProxy.setSize(projectVO.width, projectVO.height);
             stageProxy.setBackgroundColor(projectVO.color);
+            projectProxy.projectName = projectVO.projectName;
             
             sendNotification(NS.NOTE_ESTAGE_REFRESH, projectVO);
         }
@@ -31,6 +34,11 @@ package feditor.controllers
         public function get stageProxy():EStageProxy
         {
             return facade.retrieveProxy(EStageProxy.NAME) as EStageProxy;
+        }
+        
+        public function get projectProxy():ProjectProxy
+        {
+            return facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy;
         }
         
     }

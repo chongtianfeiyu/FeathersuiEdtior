@@ -17,8 +17,11 @@ package feditor.controllers
      */
     public class ImportXMLCmd extends SimpleCommand 
     {
+        public static const IMPORT_PROJECT:String = "importProject";
+        public static const OPEN_PROJECT:String = "open_project";
         
         private var fileRef:FileReference;
+        private var type:String;
         
         public function ImportXMLCmd() 
         {
@@ -31,6 +34,7 @@ package feditor.controllers
             fileRef.browse([new FileFilter("XML(*.xml)", "*.xml")]);
             fileRef.addEventListener(Event.SELECT, fileSelectHandler);
             fileRef.addEventListener(Event.COMPLETE, fileCompleteHandler);
+            type = notification.getBody() as String;
         }
         
         private function fileSelectHandler(e:Event):void 
@@ -45,14 +49,18 @@ package feditor.controllers
             var byte:ByteArray = fileRef.data;
             var xml:XML = new XML(byte);
             
-            var projectVO:ProjectVO = new ProjectVO();
-            projectVO.width = parseInt(xml.@stageWidth);
-            projectVO.height = parseInt(xml.@stageHeight);
-            projectVO.color = parseInt(xml.@stageColor, 16);
+            if (type == OPEN_PROJECT)
+            {
+                var projectVO:ProjectVO = new ProjectVO();
+                projectVO.width = parseInt(xml.@stageWidth);
+                projectVO.height = parseInt(xml.@stageHeight);
+                projectVO.color = parseInt(xml.@stageColor, 16);
+                projectVO.projectName = xml.@projectName;
+                
+                (facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy).projectName = xml.@projectName;
+                sendNotification(NS.CMD_ESTAGE_INIT,projectVO);
+            }
             
-            (facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy).projectName = xml.@projectName;
-            
-            sendNotification(NS.CMD_ESTAGE_INIT,projectVO);
             sendNotification(NS.NOTE_IMPORT_XML_COMPLETE, xml);
         }
     }

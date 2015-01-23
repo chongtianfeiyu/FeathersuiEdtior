@@ -80,6 +80,7 @@ package feditor.controllers
             facade.registerCommand(NS.CMD_IMPORT_PICTURE, ImportPictureCmd);
             facade.registerCommand(NS.CMD_OPEN_CONFIG, OpenConfigDirectoryCmd);
             facade.registerCommand(NS.CMD_RENER_BUILDER_INIT, ItemRendererBuilderInitCmd);
+            facade.registerCommand(NS.CMD_IMPORT_PROJECT, ImportProjectCmd);
         }
         
         private function regiseterProxy():void

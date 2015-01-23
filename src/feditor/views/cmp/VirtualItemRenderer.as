@@ -2,12 +2,17 @@ package feditor.views.cmp
 {
     import feathers.controls.renderers.BaseDefaultItemRenderer;
     import feathers.controls.renderers.DefaultListItemRenderer;
+    import feathers.display.Scale3Image;
+    import feathers.display.Scale9Image;
+    import feathers.skins.SmartDisplayObjectStateValueSelector;
+    import feathers.skins.StyleNameFunctionStyleProvider;
     import feditor.AppFacade;
     import feditor.models.DefaultControlProxy;
     import feditor.utils.Assets;
     import feditor.utils.Builder;
     import flash.utils.setInterval;
     import starling.display.DisplayObject;
+    import starling.display.Quad;
     
     /**
      * only for eidtor show.
@@ -30,7 +35,7 @@ package feditor.views.cmp
             
             this.libName = libName;
             
-            this.styleProvider = null;
+            styleProvider = null;
             
             var xml:* = defaultControlProxy.getControlXML(libName);
             if (xml)
@@ -46,6 +51,7 @@ package feditor.views.cmp
         {
             super.commitData();
             this.label = "";
+            
         }
         
         private function get defaultControlProxy():DefaultControlProxy
@@ -56,6 +62,16 @@ package feditor.views.cmp
         public function get itemRenderBg():DisplayObject 
         {
             return _itemRenderBg;
+        }
+        
+        override public function get width():Number 
+        {
+            return super.width;
+        }
+        
+        override public function set width(value:Number):void 
+        {
+            super.width = value;
         }
         
         public function set itemRenderBg(value:DisplayObject):void 

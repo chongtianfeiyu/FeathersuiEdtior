@@ -41,7 +41,8 @@ package feditor.views
                 NS.NOTE_ESTAGE_REFRESH,
                 NS.NOTE_CREATE_PORJECT,
                 NS.NOTE_IMPORT_PICTURE,
-                NS.NOTE_IMPORT_PICTURE_APLHA
+                NS.NOTE_IMPORT_PICTURE_APLHA,
+                NS.NOTE_CLEAR_EDITOR_STAGE
             ];
         }
         
@@ -53,7 +54,6 @@ package feditor.views
                     var xml:XML = notification.getBody() as XML;
                     if (xml)
                     {
-                        pnl.clearStage();
                         Builder.build(pnl.childContainer,xml);
                     }
                     break;
@@ -75,6 +75,10 @@ package feditor.views
                 case NS.NOTE_IMPORT_PICTURE_APLHA:
                     estageProxy.designImageAlpha = Number(notification.getBody());
                     pnl.setDesignImageAlpha(Number(notification.getBody()));
+                    break;
+                case NS.NOTE_CLEAR_EDITOR_STAGE:
+                    selectProxy.clear();
+                    pnl.clearStage();
                     break;
                 default:
             }
@@ -193,8 +197,7 @@ package feditor.views
                 case Keyboard.D:
                     if (selectProxy.hasData)
                     {
-                        if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
-                        else sendNotification(NS.CMD_MOVE_RIGHT);
+                        sendNotification(NS.CMD_MOVE_RIGHT);
                     }
                     break;
                 case Keyboard.UP:
@@ -207,7 +210,11 @@ package feditor.views
                     break;
                 case Keyboard.DOWN:
                 case Keyboard.S:
-                    if(!e.ctrlKey && selectProxy.hasData) sendNotification(NS.CMD_MOVE_DOWN);
+                    if (selectProxy.hasData)
+                    {
+                        if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
+                        else sendNotification(NS.CMD_MOVE_DOWN)
+                    }
                     break;
                 case Keyboard.X:
                     if (e.ctrlKey) sendNotification(NS.CMD_CUT);

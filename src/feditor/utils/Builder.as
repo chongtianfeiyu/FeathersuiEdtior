@@ -6,7 +6,6 @@ package feditor.utils
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
     import feathers.controls.ProgressBar;
-    import feathers.controls.renderers.DefaultListItemRenderer;
     import feathers.controls.text.StageTextTextEditor;
     import feathers.controls.text.TextBlockTextEditor;
     import feathers.controls.text.TextBlockTextRenderer;
@@ -21,21 +20,18 @@ package feditor.utils
     import feathers.layout.HorizontalLayout;
     import feathers.layout.ILayout;
     import feathers.layout.VerticalLayout;
+    import feathers.skins.StyleNameFunctionStyleProvider;
     import feathers.text.StageTextField;
     import feathers.textures.Scale3Textures;
     import feathers.textures.Scale9Textures;
-    import feditor.Root;
     import flash.geom.Rectangle;
     import flash.text.engine.ElementFormat;
     import flash.text.engine.FontDescription;
     import flash.text.TextFormat;
     import flash.utils.Dictionary;
-    import flash.utils.setInterval;
-    import flash.utils.setTimeout;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
     import starling.display.Image;
-    import starling.events.Event;
     import starling.textures.Texture;
     /**
      * ...

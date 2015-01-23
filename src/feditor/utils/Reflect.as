@@ -79,28 +79,6 @@ package feditor.utils
             return result;
         }
         
-        /**
-         * 返回Builder 支持的属性数组 [FieldVO]
-         * @param obj
-         * @return
-         */
-        public static function getFieldVOList(obj:Object):Array
-        {
-            var result:Array = [];
-            
-            var properties:Object = getFieldMap(obj);
-            
-            for (var name:String in properties) 
-            {
-                var field:FieldVO = new FieldVO();
-                field.name = name;
-                field.value = properties[name]?String(properties[name]):"";
-                result.push(field);
-            }
-            
-            return result;
-        }
-        
         public static function getDefinition(obj:Object):*
         {
             var ns:String = getQualifiedClassName(obj).replace("::", ".");

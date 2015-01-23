@@ -8,21 +8,17 @@ package feditor.controllers
      * ...
      * @author gray
      */
-    public class OpenProjectCmd extends SimpleCommand 
+    public class ImportProjectCmd extends SimpleCommand 
     {
         
-        public function OpenProjectCmd() 
+        public function ImportProjectCmd() 
         {
             super();
         }
         
-        
         override public function execute(notification:INotification):void 
         {
-            //TODO Other
-            
-            sendNotification(NS.NOTE_CLEAR_EDITOR_STAGE);
-            sendNotification(NS.CMD_IMPORT_XML,ImportXMLCmd.OPEN_PROJECT);
+            sendNotification(NS.CMD_IMPORT_XML,ImportXMLCmd.IMPORT_PROJECT);
         }
     }
 

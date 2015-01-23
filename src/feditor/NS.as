@@ -31,6 +31,7 @@ package feditor
         public static const CMD_IMPORT_XML:String                   = "cmd_import_xml";
         public static const CMD_IMPORT_PICTURE:String               = "cmd_import_picture";
         public static const CMD_CREATE_PROJECT:String               = "cmd_create_project";
+        public static const CMD_IMPORT_PROJECT:String               = "cmd_import_project";
         public static const CMD_OPEN_PROJECT:String                 = "cmd_open_project";
         public static const CMD_ESTAGE_INIT:String                  = "cmd_estage_init";
         public static const CMD_CREATE_NATIVE_MENU:String           = "cmd_create_native_menu";
@@ -51,6 +52,7 @@ package feditor
         public static const NOTE_ESTAGE_REFRESH:String              = "note_estage_refresh";
         public static const NOTE_IMPORT_PICTURE:String              = "note_import_picture";
         public static const NOTE_IMPORT_PICTURE_APLHA:String        = "note_import_picture_alpha";
+        public static const NOTE_CLEAR_EDITOR_STAGE:String          = "note_clear_stage";
         
         
         public function NS() 

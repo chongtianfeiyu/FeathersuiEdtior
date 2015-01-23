@@ -149,9 +149,31 @@ package feditor.views
         
         private function getFieldVOListOf(displayObject:DisplayObject):Array
         {
-            var fields:Array = Reflect.getFieldVOList(displayObject) || [];
+            var fields:Array = getFieldVOList(displayObject) || [];
             var ns:String = getQualifiedClassName(displayObject);
             return fields;
+        }
+        
+        /**
+         * 返回Builder 支持的属性数组 [FieldVO]
+         * @param obj
+         * @return
+         */
+        public static function getFieldVOList(obj:Object):Array
+        {
+            var result:Array = [];
+            
+            var properties:Object = Reflect.getFieldMap(obj);
+            
+            for (var name:String in properties) 
+            {
+                var field:FieldVO = new FieldVO();
+                field.name = name;
+                field.value = properties[name]?String(properties[name]):"";
+                result.push(field);
+            }
+            
+            return result;
         }
         
         public function get pnl():RectSelect
