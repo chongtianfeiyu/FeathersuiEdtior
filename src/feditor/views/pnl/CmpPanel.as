@@ -55,19 +55,24 @@ package feditor.views.pnl
             cmpList = new List();
             cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer() };
             cmpList.itemRendererProperties.minHeight = 30;
-            cmpList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(cmpList);
             
             var textureNames:* = AppFacade.getInstance().assets.getTextureNames();
             assetsList = new List();
             assetsList.itemRendererFactory = function():*{ return new AssetListItemRenderer()};
             assetsList.dataProvider = new ListCollection(textureNames);
-            assetsList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(assetsList);
             assetsList.visible = false;
             
             //evts
             tabBar.addEventListener(Event.CHANGE, tabChangeHandler);
+        }
+        
+        override protected function refreshViewPortBounds():void 
+        {
+            super.refreshViewPortBounds();
+            cmpList.maxHeight = Starling.current.stage.stageHeight -10;
+            assetsList.maxHeight = Starling.current.stage.stageHeight -10;
         }
         
         private function tabChangeHandler(e:Event):void 
