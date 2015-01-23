@@ -2,7 +2,7 @@ package feditor.controllers
 {
     import feditor.models.EStageProxy;
     import feditor.NS;
-	import feditor.vo.ProjectVO;
+    import feditor.vo.ProjectVO;
     import org.puremvc.as3.multicore.interfaces.INotification;
     import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
     
@@ -20,8 +20,8 @@ package feditor.controllers
         
         override public function execute(notification:INotification):void 
         {
-			var projectVO:ProjectVO = notification.getBody() as ProjectVO;
-			
+            var projectVO:ProjectVO = notification.getBody() as ProjectVO;
+            
             stageProxy.setSize(projectVO.width, projectVO.height);
             stageProxy.setBackgroundColor(projectVO.color);
             

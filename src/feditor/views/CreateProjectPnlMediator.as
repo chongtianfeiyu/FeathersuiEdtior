@@ -1,6 +1,6 @@
 package feditor.views 
 {
-	import feditor.models.DevicesProxy;
+    import feditor.models.DevicesProxy;
     import feditor.models.EStageProxy;
     import feditor.NS;
     import feditor.views.pnl.CreateProjectPnl;
@@ -22,8 +22,8 @@ package feditor.views
         
         private function deviceSelectHandler(e:Event):void 
         {
-			pnl.removeEventListener(Event.SELECT, deviceSelectHandler);
-			pnl.hide();
+            pnl.removeEventListener(Event.SELECT, deviceSelectHandler);
+            pnl.hide();
             sendNotification(NS.CMD_ESTAGE_INIT,e.data);
         }
         
@@ -40,7 +40,7 @@ package feditor.views
             {
                 case NS.NOTE_CREATE_PORJECT:
                     pnl.show();
-					if (!pnl.hasData) pnl.setDeviceList(deviceProxy.getDevicesList());
+                    if (!pnl.hasData) pnl.setDeviceList(deviceProxy.getDevicesList());
                     pnl.addEventListener(Event.SELECT, deviceSelectHandler);
                 break;
                 default:
@@ -56,11 +56,11 @@ package feditor.views
         {
             return facade.retrieveProxy(EStageProxy.NAME) as EStageProxy;
         }
-		
-		private function get deviceProxy():DevicesProxy
-		{
-			return facade.retrieveProxy(DevicesProxy.NAME) as DevicesProxy;
-		}
+        
+        private function get deviceProxy():DevicesProxy
+        {
+            return facade.retrieveProxy(DevicesProxy.NAME) as DevicesProxy;
+        }
     }
 
 }

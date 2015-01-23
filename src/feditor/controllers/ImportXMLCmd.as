@@ -1,9 +1,9 @@
 package feditor.controllers 
 {
     import feditor.models.EStageProxy;
-	import feditor.models.ProjectProxy;
+    import feditor.models.ProjectProxy;
     import feditor.NS;
-	import feditor.vo.ProjectVO;
+    import feditor.vo.ProjectVO;
     import flash.events.Event;
     import flash.net.FileFilter;
     import flash.net.FileReference;
@@ -45,12 +45,12 @@ package feditor.controllers
             var byte:ByteArray = fileRef.data;
             var xml:XML = new XML(byte);
             
-			var projectVO:ProjectVO = new ProjectVO();
+            var projectVO:ProjectVO = new ProjectVO();
             projectVO.width = parseInt(xml.@stageWidth);
             projectVO.height = parseInt(xml.@stageHeight);
             projectVO.color = parseInt(xml.@stageColor, 16);
-			
-			(facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy).projectName = xml.@projectName;
+            
+            (facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy).projectName = xml.@projectName;
             
             sendNotification(NS.CMD_ESTAGE_INIT,projectVO);
             sendNotification(NS.NOTE_IMPORT_XML_COMPLETE, xml);

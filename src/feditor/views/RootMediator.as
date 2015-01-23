@@ -1,6 +1,6 @@
 package feditor.views 
 {
-	import feditor.events.EventType;
+    import feditor.events.EventType;
     import feditor.models.ClipBordProxy;
     import feditor.models.ControlDescriptionProxy;
     import feditor.models.DefaultControlProxy;
@@ -44,18 +44,18 @@ package feditor.views
         
         private function previewHandler(e:Event):void 
         {
-			var arr:Array = e.data as Array;
-			arr[1] = pnl.stageContainer.x;
-			
-			if (defaultControlProxy.getNameList().indexOf(arr[0])!=-1)
-			{
-				arr[0] = defaultControlProxy.getControlXML(arr[0]);
-				sendNotification(NS.NOTE_PREVIEW,arr);
-			}
-			else
-			{
-				sendNotification(NS.NOTE_PREVIEW,arr);
-			}
+            var arr:Array = e.data as Array;
+            arr[1] = pnl.stageContainer.x;
+            
+            if (defaultControlProxy.getNameList().indexOf(arr[0])!=-1)
+            {
+                arr[0] = defaultControlProxy.getControlXML(arr[0]);
+                sendNotification(NS.NOTE_PREVIEW,arr);
+            }
+            else
+            {
+                sendNotification(NS.NOTE_PREVIEW,arr);
+            }
         }
         
         private function cmpChangeHandler(e:Event):void 
@@ -65,7 +65,7 @@ package feditor.views
             {
                 var xml:* = defaultControlProxy.getControlXML(data);
                 Builder.build(pnl.editorStage.childContainer, xml);
-				sendNotification(NS.NOTE_PREVIEW_HIDE);
+                sendNotification(NS.NOTE_PREVIEW_HIDE);
             }
         }
         

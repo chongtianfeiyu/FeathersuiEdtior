@@ -6,7 +6,7 @@ package feditor.utils
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
     import feathers.controls.ProgressBar;
-	import feathers.controls.renderers.DefaultListItemRenderer;
+    import feathers.controls.renderers.DefaultListItemRenderer;
     import feathers.controls.text.StageTextTextEditor;
     import feathers.controls.text.TextBlockTextEditor;
     import feathers.controls.text.TextBlockTextRenderer;
@@ -429,11 +429,11 @@ package feditor.utils
                 try 
                 {    
                     if (name == "visible" || 
-						name == "touchable" || 
-						name == "isSelected" || 
-						name == "isEditable" ||
-						name == "displayAsPassword"
-						)
+                        name == "touchable" || 
+                        name == "isSelected" || 
+                        name == "isEditable" ||
+                        name == "displayAsPassword"
+                        )
                     {
                         display[name] = valueMap[name]=="false"?false:true;
                     }
@@ -717,8 +717,8 @@ package feditor.utils
                 
                 delete valueMap[FieldConst.LAYOUT];
             }
-			
-			setDisplayObjectFields(layoutGroup, valueMap);
+            
+            setDisplayObjectFields(layoutGroup, valueMap);
             
             return layoutGroup;
         }
@@ -801,7 +801,7 @@ package feditor.utils
                 var arr:Array = [];
                 for (var i:int = 0; i < valueMap[FieldConst.LIST_DATA_NUM]; i++) 
                 {
-					//this is very import
+                    //this is very import
                     arr.push({"label":String(i)+"?????"});
                 }
                 list.dataProvider = new ListCollection(arr);

@@ -8,7 +8,7 @@ package feditor.views.cmp
     import feditor.utils.Builder;
     import flash.utils.setInterval;
     import starling.display.DisplayObject;
-	
+    
     /**
      * only for eidtor show.
      * @author gray
@@ -29,8 +29,8 @@ package feditor.views.cmp
             super.initialize();
             
             this.libName = libName;
-			
-			this.styleProvider = null;
+            
+            this.styleProvider = null;
             
             var xml:* = defaultControlProxy.getControlXML(libName);
             if (xml)
@@ -45,7 +45,7 @@ package feditor.views.cmp
         override protected function commitData():void 
         {
             super.commitData();
-			this.label = "";
+            this.label = "";
         }
         
         private function get defaultControlProxy():DefaultControlProxy
@@ -57,18 +57,6 @@ package feditor.views.cmp
         {
             return _itemRenderBg;
         }
-		
-		override public function get width():Number 
-		{
-			return super.width;
-		}
-		
-		override public function set width(value:Number):void 
-		{
-			super.width = value;
-			defaultSkin.width = value;
-			trace(value);
-		}
         
         public function set itemRenderBg(value:DisplayObject):void 
         {

@@ -1,8 +1,8 @@
 package feditor.views.pnl 
 {
     import feathers.controls.Button;
-	import feathers.controls.Callout;
-	import feathers.controls.Label;
+    import feathers.controls.Callout;
+    import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
     import feathers.controls.ScrollContainer;
@@ -10,9 +10,9 @@ package feditor.views.pnl
     import feathers.data.ListCollection;
     import feathers.layout.VerticalLayout;
     import feditor.AppFacade;
-	import feditor.events.EventType;
-	import feditor.views.cmp.AssetListItemRenderer;
-	import feditor.views.cmp.ControlListItenRenderer;
+    import feditor.events.EventType;
+    import feditor.views.cmp.AssetListItemRenderer;
+    import feditor.views.cmp.ControlListItenRenderer;
     import flash.events.MouseEvent;
     import starling.core.Starling;
     import starling.events.Event;
@@ -53,16 +53,16 @@ package feditor.views.pnl
             addChild(box);
             
             cmpList = new List();
-			cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer() };
-			cmpList.itemRendererProperties.minHeight = 30;
-			cmpList.maxHeight = Starling.current.stage.stageHeight -30;
+            cmpList.itemRendererFactory = function():*{ return new ControlListItenRenderer() };
+            cmpList.itemRendererProperties.minHeight = 30;
+            cmpList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(cmpList);
             
             var textureNames:* = AppFacade.getInstance().assets.getTextureNames();
             assetsList = new List();
-			assetsList.itemRendererFactory = function():*{ return new AssetListItemRenderer()};
+            assetsList.itemRendererFactory = function():*{ return new AssetListItemRenderer()};
             assetsList.dataProvider = new ListCollection(textureNames);
-			assetsList.maxHeight = Starling.current.stage.stageHeight -30;
+            assetsList.maxHeight = Starling.current.stage.stageHeight -30;
             box.addChild(assetsList);
             assetsList.visible = false;
             

@@ -59,7 +59,7 @@ package feditor.views
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
                     pnl.placeControl(notification.getBody() as DisplayObject);
-					selectProxy.clear();
+                    selectProxy.clear();
                     selectProxy.addItem(notification.getBody() as DisplayObject);
                     break;
                 case NS.NOTE_ESTAGE_REFRESH:
@@ -191,19 +191,19 @@ package feditor.views
                     break;
                 case Keyboard.RIGHT:
                 case Keyboard.D:
-					if (selectProxy.hasData)
-					{
-						if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
-						else sendNotification(NS.CMD_MOVE_RIGHT);
-					}
+                    if (selectProxy.hasData)
+                    {
+                        if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
+                        else sendNotification(NS.CMD_MOVE_RIGHT);
+                    }
                     break;
                 case Keyboard.UP:
                 case Keyboard.W:
-					if (selectProxy.hasData)
-					{
-						if (e.ctrlKey) sendNotification(NS.CMD_LAYER_UP);
-						else sendNotification(NS.CMD_MOVE_UP);
-					}
+                    if (selectProxy.hasData)
+                    {
+                        if (e.ctrlKey) sendNotification(NS.CMD_LAYER_UP);
+                        else sendNotification(NS.CMD_MOVE_UP);
+                    }
                     break;
                 case Keyboard.DOWN:
                 case Keyboard.S:

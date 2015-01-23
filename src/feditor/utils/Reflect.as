@@ -324,8 +324,8 @@ package feditor.utils
                 getElementFormatProperties(textInput.textEditorProperties.elmentFormat, result);
                 var promptProperties:Object = getElementFormatProperties(textInput.promptProperties.elmentFormat);
                 result[FieldConst.TEXT_INPUT_PROMPT_COLOR] = promptProperties.color;
-				
-				result.text = textInput.text;
+                
+                result.text = textInput.text;
                 result.prompt = textInput.prompt;
                 result.displayAsPassword = textInput.displayAsPassword;
                 result.isEditable = textInput.isEditable;

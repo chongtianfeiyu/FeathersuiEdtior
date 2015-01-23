@@ -117,11 +117,11 @@ package feditor.views.pnl
         {
             if (displayObject)
             {
-				if (parent)
-				{
-					if(parent.x <0) displayObject.x -= int(parent.x);
-					if(parent.y <0) displayObject.y -= int(parent.y);
-				}
+                if (parent)
+                {
+                    if(parent.x <0) displayObject.x -= int(parent.x);
+                    if(parent.y <0) displayObject.y -= int(parent.y);
+                }
                 childContainer.addChild(displayObject);
             }
         }

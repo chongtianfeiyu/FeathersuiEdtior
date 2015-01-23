@@ -2,9 +2,9 @@ package feditor.controllers
 {
     import feditor.models.ClipBordProxy;
     import feditor.models.DefaultControlProxy;
-	import feditor.models.DevicesProxy;
+    import feditor.models.DevicesProxy;
     import feditor.models.EStageProxy;
-	import feditor.models.ProjectProxy;
+    import feditor.models.ProjectProxy;
     import feditor.models.SelectElementsProxy;
     import feditor.models.ControlDescriptionProxy;
     import feditor.NS;
@@ -21,7 +21,7 @@ package feditor.controllers
     import feditor.views.RectSelectMediator;
     import feditor.views.RootMediator;
     import feditor.views.WellcomPnlMediator;
-	import flash.utils.setTimeout;
+    import flash.utils.setTimeout;
     import org.puremvc.as3.multicore.interfaces.INotification;
     import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
     
@@ -89,8 +89,8 @@ package feditor.controllers
             facade.registerProxy(new ClipBordProxy());
             facade.registerProxy(new SelectElementsProxy());
             facade.registerProxy(new EStageProxy());
-			facade.registerProxy(new DevicesProxy());
-			facade.registerProxy(new ProjectProxy());
+            facade.registerProxy(new DevicesProxy());
+            facade.registerProxy(new ProjectProxy());
         }
         
         private function registerMediator():void

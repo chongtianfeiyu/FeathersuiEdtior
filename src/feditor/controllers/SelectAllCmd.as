@@ -4,9 +4,9 @@ package feditor.controllers
     import feditor.views.EdiatorStageMediator;
     import feditor.views.pnl.EditorStage;
     import org.puremvc.as3.multicore.interfaces.INotification;
-	import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
+    import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
     import starling.display.DisplayObject;
-	
+    
     /**
      * ...
      * @author gray

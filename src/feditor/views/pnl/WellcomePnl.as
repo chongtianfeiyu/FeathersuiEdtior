@@ -40,8 +40,8 @@ package feditor.views.pnl
             menu = new ButtonGroup();
             menu.dataProvider = new ListCollection(["New Project", "Open Project"]);
             menu.buttonProperties.minHeight = 36;
-			menu.width = 400;
-			menu.paddingBottom = 30;
+            menu.width = 400;
+            menu.paddingBottom = 30;
             box.addChild(menu);
         }
         
