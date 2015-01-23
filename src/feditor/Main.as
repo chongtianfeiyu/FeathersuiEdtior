@@ -62,7 +62,35 @@ package feditor
         private function initializeTools():void
         {
             //
-            Builder.initialize({"Image": Image, "Scale3Image": Scale3Image, "Scale9Image": Scale9Image, "TiledImage": TiledImage, "ImageLoader": ImageLoader, "Label": Label, "Button": Button, "TextArea": TextArea, "TextInput": TextInput, "ToggleSwitch": ToggleSwitch, "ToggleButton": ToggleButton, "ButtonGroup": ButtonGroup, "TabBar": TabBar, "ProgressBar": ProgressBar, "Check": Check, "ImageLoader": ImageLoader, "Panel": Panel, "NumericStepper": NumericStepper, "Radio": Radio, "ScrollBar": ScrollBar, "ScreenNavigator": ScreenNavigator, "Screen": Screen, "Header": Header, "PageIndicator": PageIndicator, "PanelScreen": PanelScreen, "Slider": Slider, "LayoutGroup": LayoutGroup, "List": List}, true);
+            Builder.initialize( { 
+                "Image": Image, 
+                "Scale3Image": Scale3Image, 
+                "Scale9Image": Scale9Image, 
+                "TiledImage": TiledImage, 
+                "ImageLoader": ImageLoader, 
+                "Label": Label, 
+                "Button": Button, 
+                "TextArea": TextArea, 
+                "TextInput": TextInput, 
+                "ToggleSwitch": ToggleSwitch, 
+                "ToggleButton": ToggleButton, 
+                "ButtonGroup": ButtonGroup, 
+                "TabBar": TabBar, 
+                "ProgressBar": ProgressBar, 
+                "Check": Check, 
+                "ImageLoader": ImageLoader, 
+                "Panel": Panel, 
+                "NumericStepper": NumericStepper, 
+                "Radio": Radio, 
+                "ScrollBar": ScrollBar, 
+                "ScreenNavigator": ScreenNavigator, 
+                "Screen": Screen, 
+                "Header": Header, 
+                "PageIndicator": PageIndicator, 
+                "PanelScreen": PanelScreen, 
+                "Slider": Slider, 
+                "LayoutGroup": LayoutGroup, 
+                "List": List}, true);
             
             //ItemRendererBuilder.initialize({},VirtualItemRenderer);
             

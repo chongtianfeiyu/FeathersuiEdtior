@@ -11,7 +11,7 @@
     <SubTexture name="bg-head[46,32]" x="1910" y="921" width="114" height="64" frameX="-3" frameY="-2" frameWidth="120" frameHeight="66"/>
     <SubTexture name="bg-input[40,80]" x="1534" y="1655" width="164" height="164"/>
     <SubTexture name="bg-item-list[40,40,200,200]" x="1232" y="927" width="292" height="292"/>
-    <SubTexture name="bg-item[0,0,60,120]" x="1182" y="1377" width="260" height="260"/>
+    <SubTexture name="bg-item[60,60,120,120]" x="1182" y="1377" width="260" height="260"/>
     <SubTexture name="bg-name" x="674" y="244" width="440" height="162" frameX="0" frameY="-4" frameWidth="440" frameHeight="166"/>
     <SubTexture name="bg-photo[60,60,160,160]" x="2" y="1646" width="284" height="284"/>
     <SubTexture name="bg-photo[60,60,160,160]" x="2" y="1646" width="284" height="284"/>
