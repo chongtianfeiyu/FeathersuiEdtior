@@ -3,6 +3,9 @@ package feditor.views.cmp
     import feathers.controls.renderers.DefaultListItemRenderer;
     import feditor.events.EventType;
     import feditor.utils.Assets;
+	import flash.events.MouseEvent;
+	import flash.system.System;
+	import starling.core.Starling;
     import starling.display.Image;
     import starling.events.Touch;
     import starling.events.TouchEvent;
@@ -29,7 +32,7 @@ package feditor.views.cmp
             image = new Image(defaultTexture);
             defaultIcon = image;
             
-            this.addEventListener(TouchEvent.TOUCH,touchHandler);
+            this.addEventListener(TouchEvent.TOUCH, touchHandler);
         }
         
         protected function touchHandler(event:TouchEvent):void 

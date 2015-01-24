@@ -26,6 +26,7 @@ package feditor.controllers
                     if (item)
                     {
                         if (item.parent) item.parent.removeChild(item);
+						item.dispose();
                     }
                 }
                 

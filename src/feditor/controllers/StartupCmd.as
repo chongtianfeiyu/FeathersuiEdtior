@@ -1,29 +1,32 @@
 package feditor.controllers 
 {
-    import feditor.models.ClipBordProxy;
-    import feditor.models.DefaultControlProxy;
-    import feditor.models.DevicesProxy;
-    import feditor.models.EStageProxy;
-    import feditor.models.ProjectProxy;
-    import feditor.models.SelectElementsProxy;
-    import feditor.models.ControlDescriptionProxy;
-    import feditor.NS;
-    import feditor.Root;
-    import feditor.views.cmp.RectCheck;
-    import feditor.views.cmp.RectSelect;
-    import feditor.views.CmpPnlMediator;
-    import feditor.views.CreateProjectPnlMediator;
-    import feditor.views.EdiatorStageMediator;
-    import feditor.views.pnl.CreateProjectPnl;
-    import feditor.views.pnl.WellcomePnl;
-    import feditor.views.PreviewBoxMediator;
-    import feditor.views.RectCheckMediator;
-    import feditor.views.RectSelectMediator;
-    import feditor.views.RootMediator;
-    import feditor.views.WellcomPnlMediator;
-    import flash.utils.setTimeout;
-    import org.puremvc.as3.multicore.interfaces.INotification;
-    import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
+	import feditor.models.ClipBordProxy;
+	import feditor.models.ColorDropperProxy;
+	import feditor.models.ControlDescriptionProxy;
+	import feditor.models.DefaultControlProxy;
+	import feditor.models.DevicesProxy;
+	import feditor.models.EStageProxy;
+	import feditor.models.ProjectProxy;
+	import feditor.models.SelectElementsProxy;
+	import feditor.models.SnapshotProxy;
+	import feditor.NS;
+	import feditor.Root;
+	import feditor.views.cmp.ColorDropper;
+	import feditor.views.cmp.RectCheck;
+	import feditor.views.cmp.RectSelect;
+	import feditor.views.CmpPnlMediator;
+	import feditor.views.ColorDropperMediator;
+	import feditor.views.CreateProjectPnlMediator;
+	import feditor.views.EdiatorStageMediator;
+	import feditor.views.pnl.CreateProjectPnl;
+	import feditor.views.pnl.WellcomePnl;
+	import feditor.views.PreviewBoxMediator;
+	import feditor.views.RectCheckMediator;
+	import feditor.views.RectSelectMediator;
+	import feditor.views.RootMediator;
+	import feditor.views.WellcomPnlMediator;
+	import org.puremvc.as3.multicore.interfaces.INotification;
+	import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
     
     /**
      * ...
@@ -81,6 +84,9 @@ package feditor.controllers
             facade.registerCommand(NS.CMD_OPEN_CONFIG, OpenConfigDirectoryCmd);
             facade.registerCommand(NS.CMD_RENER_BUILDER_INIT, ItemRendererBuilderInitCmd);
             facade.registerCommand(NS.CMD_IMPORT_PROJECT, ImportProjectCmd);
+			facade.registerCommand(NS.CMD_ALIGN, AlignCmd);
+			facade.registerCommand(NS.CMD_CREATE_SNAPSHOT, CreateSnapshotCmd);
+			facade.registerCommand(NS.CMD_UNDO, UndoCmd);
         }
         
         private function regiseterProxy():void
@@ -92,6 +98,8 @@ package feditor.controllers
             facade.registerProxy(new EStageProxy());
             facade.registerProxy(new DevicesProxy());
             facade.registerProxy(new ProjectProxy());
+			facade.registerProxy(new ColorDropperProxy());
+			facade.registerProxy(new SnapshotProxy(100));
         }
         
         private function registerMediator():void
@@ -104,6 +112,7 @@ package feditor.controllers
             facade.registerMediator(new EdiatorStageMediator(root.editorStage));
             facade.registerMediator(new RectCheckMediator(new RectCheck(root.editorStage.selectContainer)));
             facade.registerMediator(new RectSelectMediator(new RectSelect(root.editorStage.selectContainer)));
+			//facade.registerMediator(new ColorDropperMediator(root.colorDropper));
         }
         
     }

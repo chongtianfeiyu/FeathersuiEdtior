@@ -4,12 +4,14 @@ package feditor
     import feathers.controls.Check;
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
+	import feathers.controls.PickerList;
     import feathers.controls.Radio;
     import feathers.controls.ScrollContainer;
     import feathers.controls.ToggleSwitch;
     import feathers.data.ListCollection;
     import feathers.layout.HorizontalLayout;
     import feathers.layout.VerticalLayout;
+	import feditor.views.cmp.ColorDropper;
     import feditor.views.cmp.Form;
     import feditor.views.cmp.VirtualItemRenderer;
     import feditor.views.pnl.CmpPanel;
@@ -30,6 +32,7 @@ package feditor
         public var cmpPanel:CmpPanel;
         public var editorStage:EditorStage;
         public var stageContainer:ScrollContainer;
+		public var colorDropper:ColorDropper;
         
         private var stageLayout:HorizontalLayout;
         private var hasStartup:Boolean = false;
@@ -60,6 +63,9 @@ package feditor
         
         public function startup():void
         {
+			var rightBox:LayoutGroup = new LayoutGroup();
+			rightBox.layout = new VerticalLayout();
+			
             //panel of control properties.Right
             form = new Form();
             form.width = 280;
@@ -67,12 +73,12 @@ package feditor
             addChild(form);
             
             //left panel
-            var vbox:LayoutGroup = new LayoutGroup();
-            vbox.layout = new VerticalLayout();
-            addChild(vbox);
+            var leftBox:LayoutGroup = new LayoutGroup();
+            leftBox.layout = new VerticalLayout();
+            addChild(leftBox);
             
             cmpPanel = new CmpPanel();
-            vbox.addChild(cmpPanel);
+            leftBox.addChild(cmpPanel);
             
             //editor stage
             stageContainer = new ScrollContainer();
@@ -85,6 +91,9 @@ package feditor
             
             editorStage = new EditorStage();
             stageContainer.addChild(editorStage);
+			
+			//colorDropper = new ColorDropper();
+			//addChild(colorDropper);
             
             addEventListener(EditorStage.INIT_EDITOR, updateLayout);
             Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);

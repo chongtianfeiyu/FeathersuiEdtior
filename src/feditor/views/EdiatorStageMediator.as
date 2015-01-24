@@ -58,6 +58,7 @@ package feditor.views
                     }
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
+					sendNotification(NS.CMD_CREATE_SNAPSHOT);
                     pnl.placeControl(notification.getBody() as DisplayObject);
                     selectProxy.clear();
                     selectProxy.addItem(notification.getBody() as DisplayObject);
@@ -187,16 +188,25 @@ package feditor.views
             switch (e.keyCode)
             {
                 case Keyboard.DELETE:
-                    if(selectProxy.hasData) sendNotification(NS.CMD_DELETE_SELECT);
+                    if (selectProxy.hasData) 
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_DELETE_SELECT);
+					}
                     break;
                 case Keyboard.LEFT:
                 case Keyboard.W:
-                    if(!e.ctrlKey && selectProxy.hasData) sendNotification(NS.CMD_MOVE_LEFT);
+                    if (!e.ctrlKey && selectProxy.hasData) 
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_MOVE_LEFT);
+					}
                     break;
                 case Keyboard.RIGHT:
                 case Keyboard.D:
                     if (selectProxy.hasData)
                     {
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
                         sendNotification(NS.CMD_MOVE_RIGHT);
                     }
                     break;
@@ -204,6 +214,7 @@ package feditor.views
                 case Keyboard.W:
                     if (selectProxy.hasData)
                     {
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
                         if (e.ctrlKey) sendNotification(NS.CMD_LAYER_UP);
                         else sendNotification(NS.CMD_MOVE_UP);
                     }
@@ -212,12 +223,17 @@ package feditor.views
                 case Keyboard.S:
                     if (selectProxy.hasData)
                     {
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
                         if (e.ctrlKey) sendNotification(NS.CMD_LAYER_DOWN);
                         else sendNotification(NS.CMD_MOVE_DOWN)
                     }
                     break;
                 case Keyboard.X:
-                    if (e.ctrlKey) sendNotification(NS.CMD_CUT);
+                    if (e.ctrlKey) 
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_CUT);
+					}
                     break;
                 case Keyboard.A:
                     if (e.ctrlKey) sendNotification(NS.CMD_SELECT_ALL);
@@ -226,17 +242,32 @@ package feditor.views
                     if (e.ctrlKey) sendNotification(NS.CMD_COPY);
                     break;
                 case Keyboard.V:
-                    if (e.ctrlKey) sendNotification(NS.CMD_PASTE);
+                    if (e.ctrlKey)
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_PASTE);
+					}
                     break;
                 case Keyboard.B:
-                    if (e.ctrlKey) sendNotification(NS.CMD_UN_GROUP_SELECT);
+                    if (e.ctrlKey) 
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_UN_GROUP_SELECT);
+					}
                     break;
                 case Keyboard.G:
-                    if (e.ctrlKey) sendNotification(NS.CMD_GROUP_SELECT);
+                    if (e.ctrlKey) 
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+						sendNotification(NS.CMD_GROUP_SELECT);
+					}
                     break;
                     break;
                 case Keyboard.Z:
-                    if (e.ctrlKey) trace("TODO:: undo command is not be implemented");
+                    if (e.ctrlKey)
+					{
+						sendNotification(NS.CMD_UNDO);
+					}
                     break;
                 default:
             }

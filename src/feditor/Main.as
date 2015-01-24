@@ -1,42 +1,43 @@
 package feditor
 {
-    import feathers.controls.Button;
-    import feathers.controls.ButtonGroup;
-    import feathers.controls.Check;
-    import feathers.controls.Header;
-    import feathers.controls.ImageLoader;
-    import feathers.controls.Label;
-    import feathers.controls.LayoutGroup;
-    import feathers.controls.List;
-    import feathers.controls.NumericStepper;
-    import feathers.controls.PageIndicator;
-    import feathers.controls.Panel;
-    import feathers.controls.PanelScreen;
-    import feathers.controls.ProgressBar;
-    import feathers.controls.Radio;
-    import feathers.controls.Screen;
-    import feathers.controls.ScreenNavigator;
-    import feathers.controls.ScrollBar;
-    import feathers.controls.Slider;
-    import feathers.controls.TabBar;
-    import feathers.controls.TextArea;
-    import feathers.controls.TextInput;
-    import feathers.controls.ToggleButton;
-    import feathers.controls.ToggleSwitch;
-    import feathers.display.Scale3Image;
-    import feathers.display.Scale9Image;
-    import feathers.display.TiledImage;
-    import feathers.themes.MetalWorksDesktopTheme;
-    import feditor.Root;
-    import feditor.utils.Assets;
-    import feditor.utils.Builder;
-    import feditor.utils.ItemRendererBuilder;
-    import flash.display.Sprite;
-    import flash.events.Event;
-    import flash.filesystem.File;
-    import flash.geom.Rectangle;
-    import starling.core.Starling;
-    import starling.display.Image;
+	import feathers.controls.Button;
+	import feathers.controls.ButtonGroup;
+	import feathers.controls.Check;
+	import feathers.controls.Header;
+	import feathers.controls.ImageLoader;
+	import feathers.controls.Label;
+	import feathers.controls.LayoutGroup;
+	import feathers.controls.List;
+	import feathers.controls.NumericStepper;
+	import feathers.controls.PageIndicator;
+	import feathers.controls.Panel;
+	import feathers.controls.PanelScreen;
+	import feathers.controls.ProgressBar;
+	import feathers.controls.Radio;
+	import feathers.controls.Screen;
+	import feathers.controls.ScreenNavigator;
+	import feathers.controls.ScrollBar;
+	import feathers.controls.Slider;
+	import feathers.controls.TabBar;
+	import feathers.controls.TextArea;
+	import feathers.controls.TextInput;
+	import feathers.controls.ToggleButton;
+	import feathers.controls.ToggleSwitch;
+	import feathers.display.Scale3Image;
+	import feathers.display.Scale9Image;
+	import feathers.display.TiledImage;
+	import feathers.themes.MetalWorksDesktopTheme;
+	import feditor.Root;
+	import feditor.utils.Assets;
+	import feditor.utils.Builder;
+	import feditor.views.cmp.ColorDropper;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.filesystem.File;
+	import flash.geom.Rectangle;
+	import starling.core.Starling;
+	import starling.display.Image;
+	import starling.text.BitmapFont;
     
     /**
      *
@@ -117,6 +118,9 @@ package feditor
             stage.nativeWindow.maximize();
             
             new MetalWorksDesktopTheme();
+			//new MinimalDesktopTheme();
+			//new AeonDesktopTheme();
+			
             (starling.root as Root).setSize(stage.stageWidth, stage.stageHeight);
             
             var dir:File = File.applicationDirectory;

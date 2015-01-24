@@ -1,5 +1,6 @@
 package feditor.views 
 {
+	import feditor.events.EventType;
     import feditor.models.EStageProxy;
     import feditor.models.SelectElementsProxy;
     import feditor.NS;
@@ -24,6 +25,8 @@ package feditor.views
     public class RectSelectMediator extends Mediator 
     {
         public static const NMAE:String = "RectSelectMediator";
+		private var isChanged:Boolean = false;
+		
         public function RectSelectMediator(viewComponent:Object=null) 
         {
             super(NMAE, viewComponent);
@@ -33,10 +36,21 @@ package feditor.views
         {
             super.onRegister();
             pnl.addEventListener(Event.CHANGE, changeHandler);
+			pnl.addEventListener(EventType.DROP,dropHandler);
         }
+		
+		private function dropHandler(e:Event):void 
+		{
+			isChanged = false;
+		}
         
         private function changeHandler(e:Event):void 
         {
+			if (isChanged == false)
+			{
+				isChanged = true;
+				sendNotification(NS.CMD_CREATE_SNAPSHOT);
+			}
             formDataReady();
         }
         
@@ -49,7 +63,7 @@ package feditor.views
                 NS.NOTE_CREATE_PORJECT
             ];
         }
-        
+		
         override public function handleNotification(notification:INotification):void 
         {
             switch (notification.getName()) 
@@ -70,6 +84,7 @@ package feditor.views
                         pnl.startJob();
                     }
                     formDataReady();
+					isChanged = false;
                     break;
                 default:
             }
@@ -159,7 +174,7 @@ package feditor.views
          * @param obj
          * @return
          */
-        public static function getFieldVOList(obj:Object):Array
+        private function getFieldVOList(obj:Object):Array
         {
             var result:Array = [];
             

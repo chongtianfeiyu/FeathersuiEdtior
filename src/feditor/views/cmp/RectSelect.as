@@ -2,6 +2,7 @@ package feditor.views.cmp
 {
     import feathers.controls.Button;
     import feathers.controls.LayoutGroup;
+	import feditor.events.EventType;
     import flash.geom.Rectangle;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -23,6 +24,7 @@ package feditor.views.cmp
         protected var oldy:int;
         protected var oldW:int;
         protected var oldH:int;
+		protected var hasChanged:Boolean = false;
         
         public function RectSelect(container:DisplayObjectContainer) 
         {
@@ -77,6 +79,7 @@ package feditor.views.cmp
             if (parent) parent.removeChild(this);
             isValid = false;
             refreshControlsByClip();
+			hasChanged = false;
         }
         
         protected function getActiveControl(e:TouchEvent):Button
@@ -115,33 +118,26 @@ package feditor.views.cmp
             
             oldW = clip.width;
             oldH = clip.height;
+			hasChanged = false;
         }
         
         override protected function touchError(e:TouchEvent):void 
         {
             //not todo super's method
+			hasChanged = false;
         }
         
         override protected function touchEndHandler(e:TouchEvent):void 
         {
             super.touchEndHandler(e);
-            
-            //命令冲突无法再此处实现
-            //if (e.ctrlKey)
-            //{
-                //var touchObj:DisplayObject = getTouchChild(e);
-                //if (touchObj)
-                //{
-                    //var index:int = childrens.indexOf(touchObj);
-                    //if (index != -1)
-                    //{
-                        //childrens.splice(index, 1);
-                        //refreshFocusByChildren();
-                    //}
-                //}
-            //}
-            
             handObj = null;
+			
+			if (e.getTouch(this) && hasChanged)
+			{
+				dispatchEventWith(EventType.DROP);
+			}
+			
+			hasChanged = false;
         }
         
         override protected function touchMoveHandler(e:TouchEvent):void 
@@ -150,6 +146,11 @@ package feditor.views.cmp
             
             var moveX:int = posEnd.x - posStart.x;
             var moveY:int = posEnd.y - posStart.y;
+			
+			if (e.getTouch(this))
+			{
+				hasChanged = true;
+			}
             
             if (handObj is Image)
             {

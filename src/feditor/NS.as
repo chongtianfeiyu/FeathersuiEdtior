@@ -36,6 +36,9 @@ package feditor
         public static const CMD_ESTAGE_INIT:String                  = "cmd_estage_init";
         public static const CMD_CREATE_NATIVE_MENU:String           = "cmd_create_native_menu";
         public static const CMD_RENER_BUILDER_INIT:String           = "cmd_render_builder_init";
+		public static const CMD_ALIGN:String           				= "cmd_align";
+		public static const CMD_CREATE_SNAPSHOT:String           	= "cmd_create_snapshot";
+		public static const CMD_UNDO:String           				= "cmd_undo";
         
         public static const NOTE_WELLECOM:String                    = "note_wellcome";
         public static const NOTE_SHOW_PROPERTY:String               = "note_show_property";
@@ -53,6 +56,9 @@ package feditor
         public static const NOTE_IMPORT_PICTURE:String              = "note_import_picture";
         public static const NOTE_IMPORT_PICTURE_APLHA:String        = "note_import_picture_alpha";
         public static const NOTE_CLEAR_EDITOR_STAGE:String          = "note_clear_stage";
+		public static const NOTE_SHOW_COLOR_DROPPER:String					= "note_show_color_dropper";
+		public static const NOTE_HIDE_COLOR_DROPPER:String					= "note_hide_color_dropper";
+		public static const NOTE_SHOW_DROP_COLOR:String					= "note_show_dorp_color";
         
         
         public function NS() 

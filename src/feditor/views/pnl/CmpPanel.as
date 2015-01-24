@@ -1,23 +1,19 @@
 package feditor.views.pnl 
 {
-    import feathers.controls.Button;
-    import feathers.controls.Callout;
-    import feathers.controls.Label;
-    import feathers.controls.LayoutGroup;
-    import feathers.controls.List;
-    import feathers.controls.ScrollContainer;
-    import feathers.controls.TabBar;
-    import feathers.data.ListCollection;
-    import feathers.layout.VerticalLayout;
-    import feditor.AppFacade;
-    import feditor.events.EventType;
-    import feditor.views.cmp.AssetListItemRenderer;
-    import feditor.views.cmp.ControlListItenRenderer;
-    import flash.events.MouseEvent;
-    import starling.core.Starling;
-    import starling.events.Event;
-    import starling.events.TouchEvent;
-    import flash.system.System;
+	import feathers.controls.Button;
+	import feathers.controls.LayoutGroup;
+	import feathers.controls.List;
+	import feathers.controls.ScrollContainer;
+	import feathers.controls.TabBar;
+	import feathers.data.ListCollection;
+	import feathers.layout.VerticalLayout;
+	import feditor.AppFacade;
+	import feditor.views.cmp.AssetListItemRenderer;
+	import feditor.views.cmp.ControlListItenRenderer;
+	import flash.events.MouseEvent;
+	import flash.system.System;
+	import starling.core.Starling;
+	import starling.events.Event;
     
     /**
      * ...
@@ -66,7 +62,21 @@ package feditor.views.pnl
             
             //evts
             tabBar.addEventListener(Event.CHANGE, tabChangeHandler);
+			Starling.current.nativeStage.addEventListener(MouseEvent.CLICK, nativeStageClickHandler);
         }
+		
+		private function nativeStageClickHandler(e:MouseEvent):void 
+		{
+			if (assetsList.visible && 
+				e.stageX > assetsList.x &&
+				e.stageX < assetsList.x + assetsList.width && 
+				e.stageY > assetsList.y &&
+				e.stageY < assetsList.y + assetsList.height
+				)
+			{
+				System.setClipboard(String(assetsList.selectedItem));
+			}
+		}
         
         override protected function refreshViewPortBounds():void 
         {

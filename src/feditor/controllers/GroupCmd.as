@@ -26,9 +26,9 @@ package feditor.controllers
         
         override public function execute(notification:INotification):void 
         {
-            if (selectProxy.selectedItems.length < 2)
+            if (selectProxy.selectedItems.length < 1)
             {
-                trace("GroupCmd -> select item less than 2.");
+                trace("GroupCmd -> select item less than 1.");
                 return;
             }
             
