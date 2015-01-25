@@ -2,18 +2,18 @@ package feditor.views
 {
     import feathers.data.ListCollection;
     import feditor.models.DefaultControlProxy;
-    import feditor.views.pnl.CmpPanel;
+    import feditor.views.pnl.LibraryPanel;
     import org.puremvc.as3.multicore.patterns.mediator.Mediator;
     
     /**
      * ...
      * @author gray
      */
-    public class CmpPnlMediator extends Mediator 
+    public class LibraryMediator extends Mediator 
     {
-        public static const NAME:String = "CmpPnlMediator";
+        public static const NAME:String = "LibraryMediator";
         
-        public function CmpPnlMediator(viewComponent:Object=null) 
+        public function LibraryMediator(viewComponent:Object=null) 
         {
             super(NAME, viewComponent);
         }
@@ -24,9 +24,9 @@ package feditor.views
             pnl.cmpList.dataProvider = new ListCollection(defaultControlProxy.getNameList());
         }
         
-        public function get pnl():CmpPanel
+        public function get pnl():LibraryPanel
         {
-            return viewComponent as CmpPanel;
+            return viewComponent as LibraryPanel;
         }
         
         public function get defaultControlProxy():DefaultControlProxy

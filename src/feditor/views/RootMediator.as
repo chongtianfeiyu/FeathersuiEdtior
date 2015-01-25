@@ -10,7 +10,7 @@ package feditor.views
     import feditor.utils.Builder;
     import feditor.utils.ObjectUtil;
     import feditor.utils.Reflect;
-    import feditor.views.pnl.CmpPanel;
+    import feditor.views.pnl.LibraryPanel;
     import feditor.views.pnl.EditorStage;
     import feditor.vo.FieldVO;
     import org.puremvc.as3.multicore.interfaces.INotification;
@@ -36,8 +36,8 @@ package feditor.views
         {
             super.onRegister();
             
-            pnl.cmpPanel.addEventListener(EventType.SELECT_CMP, cmpChangeHandler);
-            pnl.cmpPanel.addEventListener(EventType.PREVIEW, previewHandler);
+            pnl.libraryPanel.addEventListener(EventType.SELECT_CMP, cmpChangeHandler);
+            pnl.libraryPanel.addEventListener(EventType.PREVIEW, previewHandler);
             
             pnl.form.addEventListener(Event.CHANGE, propertyChangeHandler);
         }

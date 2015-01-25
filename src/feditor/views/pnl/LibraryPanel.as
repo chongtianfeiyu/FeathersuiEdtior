@@ -22,7 +22,7 @@ package feditor.views.pnl
      * ...
      * @author gray
      */
-    public class CmpPanel extends LayoutGroup 
+    public class LibraryPanel extends LayoutGroup 
     {
         public var cmpList:List;
         public var tabBar:TabBar;
@@ -32,7 +32,7 @@ package feditor.views.pnl
         private var box:ScrollContainer;
 		private var header:Header;
         
-        public function CmpPanel() 
+        public function LibraryPanel() 
         {
             super();
         }

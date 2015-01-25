@@ -14,7 +14,7 @@ package feditor
 	import feditor.views.pnl.ColorDropper;
     import feditor.views.cmp.Form;
     import feditor.views.cmp.VirtualItemRenderer;
-    import feditor.views.pnl.CmpPanel;
+    import feditor.views.pnl.LibraryPanel;
     import feditor.views.pnl.EditorStage;
 	import feditor.views.pnl.ToolPanel;
     import flash.display.NativeMenu;
@@ -32,7 +32,7 @@ package feditor
     {
 		public var toolBox:ToolPanel;
         public var form:Form;
-        public var cmpPanel:CmpPanel;
+        public var libraryPanel:LibraryPanel;
         public var editorStage:EditorStage;
         public var stageContainer:ScrollContainer;
 		public var colorDropper:ColorDropper;
@@ -54,15 +54,15 @@ package feditor
             rightBox.x = width - form.width;
 			//toolBox.width = 
             
-            var w:int = width - cmpPanel.width - form.width;
+            var w:int = width - libraryPanel.width - form.width;
             var h:int = height;
             
-            cmpPanel.maxHeight = height;
+            libraryPanel.maxHeight = height;
             
             if(w != stageContainer.width) stageContainer.width = w;
             if(h != stageContainer.height) stageContainer.height = h;
             
-            stageContainer.x = cmpPanel.width +  0.5 * (w - stageContainer.width);
+            stageContainer.x = libraryPanel.width +  0.5 * (w - stageContainer.width);
 			
 			super.refreshViewPortBounds();
 		}
@@ -87,9 +87,9 @@ package feditor
             leftBox.layout = new VerticalLayout();
             addChild(leftBox);
             
-            cmpPanel = new CmpPanel();
-			cmpPanel.width = 240;
-            leftBox.addChild(cmpPanel);
+            libraryPanel = new LibraryPanel();
+			libraryPanel.width = 240;
+            leftBox.addChild(libraryPanel);
             
             //editor stage
             stageContainer = new ScrollContainer();

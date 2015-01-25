@@ -14,7 +14,7 @@ package feditor.controllers
 	import feditor.views.pnl.ColorDropper;
 	import feditor.views.pnl.RectCheck;
 	import feditor.views.pnl.RectSelect;
-	import feditor.views.CmpPnlMediator;
+	import feditor.views.LibraryMediator;
 	import feditor.views.ColorDropperMediator;
 	import feditor.views.CreateProjectPnlMediator;
 	import feditor.views.EdiatorStageMediator;
@@ -110,7 +110,7 @@ package feditor.controllers
             facade.registerMediator(new RootMediator(root));
             facade.registerMediator(new CreateProjectPnlMediator(new CreateProjectPnl()));
             facade.registerMediator(new WellcomPnlMediator(new WellcomePnl()));
-            facade.registerMediator(new CmpPnlMediator(root.cmpPanel));
+            facade.registerMediator(new LibraryMediator(root.libraryPanel));
             facade.registerMediator(new EdiatorStageMediator(root.editorStage));
             facade.registerMediator(new RectCheckMediator(new RectCheck(root.editorStage.selectContainer)));
             facade.registerMediator(new RectSelectMediator(new RectSelect(root.editorStage.selectContainer)));
