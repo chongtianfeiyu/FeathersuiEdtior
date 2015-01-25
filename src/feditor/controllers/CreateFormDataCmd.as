@@ -93,7 +93,7 @@ package feditor.controllers
                 }
                 
                 var typeDes:FieldVO = new FieldVO();
-                typeDes.name = "Control Type";
+                typeDes.name = "The Type";
                 typeDes.value = ns;
                 typeDes.editable = false;
                 

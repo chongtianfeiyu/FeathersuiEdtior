@@ -114,8 +114,8 @@ package feditor.views
             {
                 cvo.target == "group";
                 var fvo:FieldVO = new FieldVO();
-                fvo.name = "many elements";
-                fvo.value = "TODO....";
+                fvo.name = "The Type";
+                fvo.value = "multiple elements";
                 fvo.editable = false;
                 cvo.fields = [fvo];
                 //
@@ -140,8 +140,8 @@ package feditor.views
             {
                 cvo.fields = [];
                 var tvo:FieldVO = new FieldVO();
-                tvo.name = "Control Type";
-                tvo.value = "stage";
+                tvo.name = "The Type";
+                tvo.value = "editor stage";
                 tvo.editable = false;
                 cvo.fields.push(tvo);
                 
@@ -158,14 +158,8 @@ package feditor.views
                 h.editable = false;
                 cvo.fields.push(h);
                 
-                var c:FieldVO = new FieldVO();
-                c.name = "color";
-                c.value = String(estageoProxy.color);
-                c.editable = false;
-                cvo.fields.push(c);
-                
                 var p:FieldVO = new FieldVO();
-                p.name = "img alpha";
+                p.name = "bg alpha";
                 p.value = String(estageoProxy.designImageAlpha);
                 cvo.fields.push(p);
             }

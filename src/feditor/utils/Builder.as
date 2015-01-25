@@ -316,6 +316,7 @@ package feditor.utils
             
             if (!textInput.promptProperties.elementFormat)
             {
+				textInput.promptProperties.styleProvider = null;
                 textInput.promptProperties.elementFormat = FontWorker.defaultElementFormat;
             }
             
@@ -325,18 +326,7 @@ package feditor.utils
                 FieldConst.FONT_WEIGHT in valueMap
             )
             {
-                var fmt:Object = ObjectUtil.copy(textInput.textEditorProperties.elementFormat);
-                var des:Object = fmt?ObjectUtil.copy(textInput.textEditorProperties.elementFormat.fontDescription):null;
-                if (fmt) ObjectUtil.mapping(valueMap, fmt);
-                if (des) ObjectUtil.mapping(valueMap,des);
-                if (fmt) 
-                {
-                    var pColor:int = textInput.promptProperties.elementFormat.color;
-                    var elmentFormat:ElementFormat = getElementFormat(getFontDescription(des), fmt);
-                    
-                    textInput.promptProperties.elementFormat = elmentFormat;
-                    textInput.textEditorProperties.elementFormat = elmentFormat;
-                }
+                textInput.textEditorProperties.elementFormat = buildElementFormat(textInput.textEditorProperties.elementFormat,valueMap);
                 
                 delete valueMap[FieldConst.FONT_COLOR];
                 delete valueMap[FieldConst.FONT_SIZE];
@@ -346,26 +336,11 @@ package feditor.utils
             
             if (FieldConst.TEXT_INPUT_PROMPT_COLOR in valueMap)
             {
-                trace("Build.setTextInputFields - > TextInput 的文本属性映射不成功")
-                //trace(textInput.promptProperties.elmentFormat);
-                //textInput.promptProperties.elmentFormat.color = parseInt(valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR],16);
+				var valueMapForPromp:Object = { };
+				valueMapForPromp[FieldConst.FONT_COLOR] = valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR];
+				textInput.promptProperties.elementFormat = buildElementFormat(textInput.promptProperties.elementFormat,valueMapForPromp);
                 delete valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR];
             }
-            
-            //try 
-            //{
-                //textInput.textEditorProperties[FieldConst.FONT_WEIGHT] = valueMap[FieldConst.FONT_WEIGHT];
-                //textInput.textEditorProperties[FieldConst.FONT_NAME] = valueMap[FieldConst.FONT_NAME];
-                //textInput.textEditorProperties[FieldConst.FONT_COLOR] = valueMap[FieldConst.FONT_COLOR];
-                //textInput.textEditorProperties[FieldConst.FONT_SIZE] = valueMap[FieldConst.FONT_SIZE];
-                //
-                //textInput.textEditorProperties.
-            //}
-            //catch (err:Error)
-            //{
-                //trace("TextInput setField error");
-            //}
-            
             
             if (FieldConst.TEXT_INPUT_BACKGROUND_SKIN in valueMap)
             {
@@ -385,6 +360,16 @@ package feditor.utils
             setDisplayObjectFields(textInput, valueMap);
             return textInput;
         }
+		
+		private static function buildElementFormat(elementFormat:ElementFormat,valueMap:Object):ElementFormat
+		{
+			elementFormat ||= FontWorker.defaultElementFormat;			
+			var fmt:Object = ObjectUtil.copy(elementFormat);
+			var des:Object = ObjectUtil.copy(elementFormat.fontDescription);
+			ObjectUtil.mapping(valueMap, fmt);
+			ObjectUtil.mapping(valueMap,des);
+			return getElementFormat(getFontDescription(des), fmt);
+		}
         
         private static function setTxtFields(txt:*,valueMap:Object):*
         {

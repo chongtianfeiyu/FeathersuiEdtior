@@ -1,11 +1,13 @@
 package feditor 
 {
+	import feathers.controls.Button;
     import feathers.controls.ButtonGroup;
     import feathers.controls.Check;
     import feathers.controls.LayoutGroup;
     import feathers.controls.List;
 	import feathers.controls.PickerList;
     import feathers.controls.Radio;
+	import feathers.controls.ScrollBar;
     import feathers.controls.ScrollContainer;
     import feathers.controls.ToggleSwitch;
     import feathers.data.ListCollection;
@@ -30,8 +32,9 @@ package feditor
      */
     public class Root extends LayoutGroup 
     {
-		public var toolBox:ToolPanel;
+		public var refreshButton:Button;
         public var form:Form;
+		public var toolBox:ToolPanel;
         public var libraryPanel:LibraryPanel;
         public var editorStage:EditorStage;
         public var stageContainer:ScrollContainer;
@@ -57,7 +60,7 @@ package feditor
             var w:int = width - libraryPanel.width - form.width;
             var h:int = height;
             
-            libraryPanel.maxHeight = height;
+            libraryPanel.maxHeight = height - refreshButton.height;
             
             if(w != stageContainer.width) stageContainer.width = w;
             if(h != stageContainer.height) stageContainer.height = h;
@@ -90,6 +93,12 @@ package feditor
             libraryPanel = new LibraryPanel();
 			libraryPanel.width = 240;
             leftBox.addChild(libraryPanel);
+			
+			refreshButton = new Button();
+			refreshButton.width = 240;
+			refreshButton.label = "refresh control library";
+			refreshButton.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
+			leftBox.addChild(refreshButton);
             
             //editor stage
             stageContainer = new ScrollContainer();

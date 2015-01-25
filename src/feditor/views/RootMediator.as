@@ -38,9 +38,14 @@ package feditor.views
             
             pnl.libraryPanel.addEventListener(EventType.SELECT_CMP, cmpChangeHandler);
             pnl.libraryPanel.addEventListener(EventType.PREVIEW, previewHandler);
-            
+            pnl.refreshButton.addEventListener(Event.TRIGGERED,refreshButtonHandler);
             pnl.form.addEventListener(Event.CHANGE, propertyChangeHandler);
         }
+		
+		private function refreshButtonHandler(e:Event):void 
+		{
+			sendNotification(NS.CMD_CONTROL_LIBRARY_REFRESH);
+		}
         
         private function previewHandler(e:Event):void 
         {

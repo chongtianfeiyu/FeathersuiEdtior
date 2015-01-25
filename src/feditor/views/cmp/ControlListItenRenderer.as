@@ -1,5 +1,6 @@
 package feditor.views.cmp 
 {
+	import feathers.controls.Button;
     import feathers.controls.renderers.DefaultListItemRenderer;
     import feditor.events.EventType;
     import starling.events.Touch;
@@ -18,6 +19,12 @@ package feditor.views.cmp
             super();
             addEventListener(TouchEvent.TOUCH, touchHandler);
         }
+		
+		override protected function initializeInternal():void 
+		{
+			super.initializeInternal();
+			this.horizontalAlign = Button.HORIZONTAL_ALIGN_RIGHT;
+		}
         
         protected function touchHandler(event:TouchEvent):void 
         {

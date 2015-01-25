@@ -23,6 +23,14 @@ package feditor.models
         {
             super(NAME, data);
         }
+		
+		public function updateXML():void
+		{
+			_xml = null;
+			nameList = null;
+			propertiesMap = { };
+			classMap = { };
+		}
         
         public function getNameList():Array
         {

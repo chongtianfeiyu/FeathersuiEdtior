@@ -89,6 +89,7 @@ package feditor.controllers
 			facade.registerCommand(NS.CMD_CREATE_SNAPSHOT, CreateSnapshotCmd);
 			facade.registerCommand(NS.CMD_UNDO, UndoCmd);
 			facade.registerCommand(NS.CMD_REDO, RedoCmd);
+			facade.registerCommand(NS.CMD_CONTROL_LIBRARY_REFRESH, RefreshLibraryCmd);
         }
         
         private function regiseterProxy():void

@@ -46,6 +46,7 @@ package feditor.views.pnl
 			button.width = 32;
 			button.height = 32;
 			button.addEventListener(Event.TRIGGERED, toolTriggeredHandler);
+			button.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
 			addChild(button);
 			
 			buttonArr = ["╞","╡","╤","╧","═","║"];
@@ -60,6 +61,7 @@ package feditor.views.pnl
 				var btn:Button = new Button();
 				btn.label = buttonArr[i];
 				btn.addEventListener(Event.TRIGGERED, toolTriggeredHandler);
+				btn.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
 				btn.width = 32;
 				btn.height = 32;
 				addChild(btn);

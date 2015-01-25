@@ -2,6 +2,7 @@ package feditor.views.cmp
 {
     import feathers.controls.Panel;
     import feathers.layout.VerticalLayout;
+	import flash.geom.Rectangle;
     
     /**
      * ...
@@ -50,7 +51,7 @@ package feditor.views.cmp
                 }
             }
         }
-        
+		
         private function getFormItem():FormItem
         {
             var result:FormItem;
@@ -62,6 +63,8 @@ package feditor.views.cmp
             {
                 result = new FormItem();
                 formItems.push(result);
+				result.maxWidth = width - 40;
+				result.width = width - 40;
             }
             
             p++;

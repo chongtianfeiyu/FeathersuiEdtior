@@ -17,7 +17,8 @@ package feditor.views.cmp
         private var title:Label;
         private var input:TextInput;
         private var _data:FieldVO;
-        
+        private const GAP:int = 5;
+		
         public function FormItem() 
         {
             super();
@@ -29,8 +30,9 @@ package feditor.views.cmp
             
             var hlayout:HorizontalLayout = new HorizontalLayout();
             hlayout.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
+			hlayout.horizontalAlign = HorizontalLayout.HORIZONTAL_ALIGN_RIGHT;
             layout = hlayout;
-            layout["gap"] = 5;
+            layout["gap"] = GAP;
             
             title = new Label();
             title.text = "title";
@@ -120,6 +122,7 @@ package feditor.views.cmp
                 }
                 
                 input.touchable = value.editable;
+				input.isEnabled = value.editable;
             }
         }
     }

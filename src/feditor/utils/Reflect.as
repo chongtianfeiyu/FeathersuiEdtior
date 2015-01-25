@@ -298,9 +298,9 @@ package feditor.utils
                     var skinProperties:Object = getImageProperties(textInput[skinName]);
                     result[skinName] = skinProperties?skinProperties[FieldConst.IMAGE_TEXTURE]:"";
                 }
-                
-                getElementFormatProperties(textInput.textEditorProperties.elmentFormat, result);
-                var promptProperties:Object = getElementFormatProperties(textInput.promptProperties.elmentFormat);
+				
+                getElementFormatProperties(textInput.textEditorProperties.elementFormat, result);
+                var promptProperties:Object = getElementFormatProperties(textInput.promptProperties.elementFormat);
                 result[FieldConst.TEXT_INPUT_PROMPT_COLOR] = promptProperties.color;
                 
                 result.text = textInput.text;
@@ -313,26 +313,6 @@ package feditor.utils
                 result.paddingRight = textInput.paddingRight;
                 result.paddingTop = textInput.paddingTop;
                 result.paddingBottom = textInput.paddingBottom;
-                
-                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_WEIGHT))
-                //{
-                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_WEIGHT];
-                //}
-                //
-                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_NAME))
-                //{
-                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_NAME];
-                //}
-                //
-                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_COLOR))
-                //{
-                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_COLOR];
-                //}
-                //
-                //if (textInput.textEditorProperties.hasOwnProperty(FieldConst.FONT_SIZE))
-                //{
-                    //result[FieldConst.FONT_WEIGHT] = textInput.textEditorProperties[FieldConst.FONT_SIZE];
-                //}
             }
             return result;
         }

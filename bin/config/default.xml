@@ -167,7 +167,7 @@
 				 y="989">
 		<Scale9Image height="214"
 					 texture="bg-renderer-light[60,60,120,120]"
-                     name="itemRenderBg"
+					 name="itemRenderBg"
 					 width="1170" />
 		<Label fontName="BRLN"
 			   color="16777215"

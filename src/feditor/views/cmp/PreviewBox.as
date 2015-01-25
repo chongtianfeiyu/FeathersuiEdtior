@@ -17,6 +17,7 @@ package feditor.views.cmp
     import starling.display.DisplayObject;
     import starling.display.Image;
     import starling.display.Quad;
+	import starling.events.Event;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
@@ -31,6 +32,8 @@ package feditor.views.cmp
         private var image:Image;
         private var xmlDefine:*;
         private var control:DisplayObject;
+		private var childX:int;
+		private var childY:int;
         
         public function PreviewBox()
         {
@@ -39,6 +42,9 @@ package feditor.views.cmp
         
         public function previewControl(xmlDefine:*,posx:int,posy:int):void
         {
+			childX = posx;
+			childY = posy;
+			
             if (image)
             {
                 image.dispose();
@@ -63,12 +69,7 @@ package feditor.views.cmp
                 Builder.build(this, xmlDefine);
                 control = getChildAt(0);
                 control.x = posx;
-                control.y = posy;
-                
-                if (control.y + control.height > Starling.current.stage.stageHeight)
-                {
-                    //control.y = Starling.current.stage.stageHeight - control.height;
-                }
+				control.y = posy;
             }
             else
             {
@@ -81,6 +82,16 @@ package feditor.views.cmp
                 Starling.current.stage.addEventListener(TouchEvent.TOUCH,touchHandler);
             }
         }
+		
+		override protected function child_resizeHandler(event:Event):void 
+		{
+			super.child_resizeHandler(event);
+			if (control)
+			{
+				control.y = childY - control.height * 0.5;
+				if (control.y < 0) control.y = 0;
+			}
+		}
         
         public function previewImage(imageName:String,posx:int=0,posy:int=0):void
         {
@@ -121,7 +132,7 @@ package feditor.views.cmp
             }
             
             image.x = posx;
-            image.y = posy;
+            image.y = posy - image.height*0.5;
             image.name = imageName;
             image.width = textrue.width;
             image.height = textrue.height;
