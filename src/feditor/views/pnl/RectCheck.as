@@ -1,6 +1,6 @@
-package feditor.views.cmp 
-{
+package feditor.views.pnl {
     import feditor.events.EventType;
+	import feditor.views.cmp.DragClip;
     import flash.geom.Rectangle;
     import starling.display.DisplayObjectContainer;
     import starling.events.TouchEvent;

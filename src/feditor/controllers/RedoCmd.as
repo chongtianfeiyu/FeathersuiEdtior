@@ -4,7 +4,6 @@ package feditor.controllers
 	import feditor.models.SelectElementsProxy;
 	import feditor.models.SnapshotProxy;
 	import feditor.utils.Builder;
-	import feditor.utils.describeView;
 	import feditor.views.EdiatorStageMediator;
 	import feditor.views.pnl.EditorStage;
 	import org.puremvc.as3.multicore.interfaces.INotification;
@@ -14,26 +13,19 @@ package feditor.controllers
 	 * ...
 	 * @author gray
 	 */
-	public class UndoCmd extends SimpleCommand 
+	public class RedoCmd extends SimpleCommand 
 	{
 		
-		public function UndoCmd() 
+		public function RedoCmd() 
 		{
 			super();
 		}
 		
 		override public function execute(notification:INotification):void 
 		{
-			var xml:* = snapshotProxy.getUndoSnaphot();
+			var xml:* = snapshotProxy.getRedoSnaphot();
 			if (xml)
 			{
-				if (!snapshotProxy.lastSnaphot)
-				{
-					var lastXml:* = describeView(estage.childContainer);
-					lastXml.setName(Builder.XMLROOT);
-					snapshotProxy.setLastSnapshot(lastXml);
-				}
-				
 				clipBordProxy.clearAll();
 				selectProxy.clear();
 				estage.childContainer.removeChildren();
@@ -60,7 +52,6 @@ package feditor.controllers
 		{
 			return facade.retrieveProxy(ClipBordProxy.NAME) as ClipBordProxy;
 		}
-		
 	}
 
 }

@@ -2,6 +2,7 @@ package feditor.views
 {
     import feditor.models.EStageProxy;
     import feditor.models.SelectElementsProxy;
+	import feditor.models.SnapshotProxy;
     import feditor.NS;
     import feditor.utils.Builder;
     import feditor.views.pnl.EditorStage;
@@ -58,10 +59,14 @@ package feditor.views
                     }
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
-					sendNotification(NS.CMD_CREATE_SNAPSHOT);
+					if (snapshotProxy.len == 0)
+					{
+						sendNotification(NS.CMD_CREATE_SNAPSHOT);
+					}
                     pnl.placeControl(notification.getBody() as DisplayObject);
                     selectProxy.clear();
                     selectProxy.addItem(notification.getBody() as DisplayObject);
+					sendNotification(NS.CMD_CREATE_SNAPSHOT);
                     break;
                 case NS.NOTE_ESTAGE_REFRESH:
                     pnl.initEStage(estageProxy.witdth,estageProxy.height,estageProxy.color);
@@ -97,8 +102,11 @@ package feditor.views
             var touch:Touch = e.getTouch(Starling.current.stage);
             if (touch == null)
             {
+				_isActive = false;
                 return;
             }
+			
+			_isActive = e.getTouch(pnl)!=null;
             
             switch (touch.phase) 
             {
@@ -120,11 +128,8 @@ package feditor.views
             var touch:Touch = e.getTouch(pnl, TouchPhase.BEGAN);
             if (touch == null)
             {
-                _isActive = false;
                 return;
             }
-            
-            _isActive = true;
             
             pnl.validate();
             var touchObj:DisplayObject = touchChild(e);
@@ -269,6 +274,12 @@ package feditor.views
 						sendNotification(NS.CMD_UNDO);
 					}
                     break;
+				case Keyboard.U:
+					if (e.ctrlKey)
+					{
+						sendNotification(NS.CMD_REDO);
+					}
+					break;
                 default:
             }
         }
@@ -300,6 +311,11 @@ package feditor.views
         public function get estageProxy():EStageProxy
         {
             return facade.retrieveProxy(EStageProxy.NAME) as EStageProxy;
+        }
+		
+		public function get snapshotProxy():SnapshotProxy
+        {
+            return facade.retrieveProxy(SnapshotProxy.NAME) as SnapshotProxy;
         }
     }
 

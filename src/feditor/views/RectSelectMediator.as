@@ -8,7 +8,7 @@ package feditor.views
     import feditor.utils.Geom;
     import feditor.utils.ObjectUtil;
     import feditor.utils.Reflect;
-    import feditor.views.cmp.RectSelect;
+    import feditor.views.pnl.RectSelect;
     import feditor.vo.CreateVO;
     import feditor.vo.FieldVO;
     import flash.geom.Rectangle;
@@ -17,6 +17,7 @@ package feditor.views
     import org.puremvc.as3.multicore.patterns.mediator.Mediator;
     import starling.display.DisplayObject;
     import starling.events.Event;
+	import starling.events.TouchPhase;
     
     /**
      * ...
@@ -36,10 +37,16 @@ package feditor.views
         {
             super.onRegister();
             pnl.addEventListener(Event.CHANGE, changeHandler);
-			pnl.addEventListener(EventType.DROP,dropHandler);
+			pnl.addEventListener(TouchPhase.ENDED, touchEndHandler);
+			pnl.addEventListener(TouchPhase.BEGAN, touchBegnHandler);
         }
 		
-		private function dropHandler(e:Event):void 
+		private function touchBegnHandler(e:Event):void 
+		{
+			isChanged = false;
+		}
+		
+		private function touchEndHandler(e:Event):void 
 		{
 			isChanged = false;
 		}
@@ -60,7 +67,8 @@ package feditor.views
                 NS.NOTE_RECT_SELECT,
                 NS.NOTE_UN_RECT_SELECT,
                 NS.NOTE_SELECT_ITEM_DATA_UPDATE,
-                NS.NOTE_CREATE_PORJECT
+                NS.NOTE_CREATE_PORJECT,
+				NS.NOTE_RECT_FOCUS_UPDATE
             ];
         }
 		
@@ -70,7 +78,10 @@ package feditor.views
             {
                 case NS.NOTE_CREATE_PORJECT:
                     selectProxy.clear();
-                    break;
+					break;
+				case NS.NOTE_RECT_FOCUS_UPDATE:
+					pnl.updateFocus();
+					break;
                 case NS.NOTE_RECT_SELECT:
                     break;
                 case NS.NOTE_SELECT_ITEM_DATA_UPDATE:

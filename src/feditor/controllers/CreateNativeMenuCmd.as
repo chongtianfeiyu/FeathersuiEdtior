@@ -26,7 +26,7 @@ package feditor.controllers
             var menuTree:Array = [
                 {
                     "name":"Poject", 
-                    "sub":["New","Open","Import","Save",] 
+                    "sub":["New","Open","Import","Save"] 
                 },
                 {
                     "name":"tools",

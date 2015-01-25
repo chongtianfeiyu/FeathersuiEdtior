@@ -1,11 +1,14 @@
 package feditor.views 
 {
+	import feathers.controls.ScrollContainer;
+	import feathers.controls.supportClasses.LayoutViewPort;
 	import feditor.models.ColorDropperProxy;
 	import feditor.NS;
-	import feditor.views.cmp.ColorDropper;
+	import feditor.views.pnl.ColorDropper;
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	
 	/**
 	 * ...
@@ -36,7 +39,7 @@ package feditor.views
 					colorDropperProxy.color = pnl.color;
 					break;
 				case NS.NOTE_SHOW_COLOR_DROPPER:
-					pnl.show(pnl.parent,colorDropperProxy.getSource());
+					pnl.show(colorDropperProxy.getSource());
 					break;
 				default:
 			}

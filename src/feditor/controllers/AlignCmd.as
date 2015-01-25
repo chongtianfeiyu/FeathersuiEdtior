@@ -24,10 +24,16 @@ package feditor.controllers
 			var displayList:Array = notification.getBody() as Array;
 			if (!displayList || displayList.length == 0) return;
 			
+			sendNotification(NS.CMD_CREATE_SNAPSHOT);
+			
 			var rect:Rectangle = Geom.getBound(displayList);
+			var centerX:int = rect.x + rect.width * 0.5;
+			var centerY:int = rect.y + rect.height * 0.5;
+			var type:String = notification.getType();
+			
 			for each (var item:DisplayObject in displayList) 
 			{
-				switch (notification.getType) 
+				switch (type) 
 				{
 					case "left":
 						item.x = rect.x;
@@ -41,9 +47,17 @@ package feditor.controllers
 					case "bottom":
 						item.y = rect.y + rect.height - item.height;
 						break;
+					case "horizontalCenter":
+						item.x = centerX - item.width*0.5;
+						break;
+					case "verticalMiddle":
+						item.y = centerY - item.height*0.5;
+						break;
 					default:
 				}
 			}
+			
+			sendNotification(NS.NOTE_RECT_FOCUS_UPDATE);
 		}
 		
 	}

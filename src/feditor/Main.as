@@ -30,7 +30,7 @@ package feditor
 	import feditor.Root;
 	import feditor.utils.Assets;
 	import feditor.utils.Builder;
-	import feditor.views.cmp.ColorDropper;
+	import feditor.views.pnl.ColorDropper;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.filesystem.File;
@@ -116,10 +116,7 @@ package feditor
         private function rootCreateHandler(e:*):void
         {
             stage.nativeWindow.maximize();
-            
             new MetalWorksDesktopTheme();
-			//new MinimalDesktopTheme();
-			//new AeonDesktopTheme();
 			
             (starling.root as Root).setSize(stage.stageWidth, stage.stageHeight);
             

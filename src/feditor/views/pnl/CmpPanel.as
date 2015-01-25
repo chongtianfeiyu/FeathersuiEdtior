@@ -1,13 +1,16 @@
 package feditor.views.pnl 
 {
 	import feathers.controls.Button;
+	import feathers.controls.Header;
 	import feathers.controls.LayoutGroup;
 	import feathers.controls.List;
+	import feathers.controls.Panel;
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.TabBar;
 	import feathers.data.ListCollection;
 	import feathers.layout.VerticalLayout;
 	import feditor.AppFacade;
+	import feditor.events.EventType;
 	import feditor.views.cmp.AssetListItemRenderer;
 	import feditor.views.cmp.ControlListItenRenderer;
 	import flash.events.MouseEvent;
@@ -24,10 +27,10 @@ package feditor.views.pnl
         public var cmpList:List;
         public var tabBar:TabBar;
         public var assetsList:List;
-        
-        
-        private var handle:Button;
+		
+		private var assetName:Object;
         private var box:ScrollContainer;
+		private var header:Header;
         
         public function CmpPanel() 
         {
@@ -37,9 +40,13 @@ package feditor.views.pnl
         override protected function initialize():void 
         {
             super.initialize();
-            
+			
             var boxLayout:VerticalLayout = new VerticalLayout();
-            layout = boxLayout;            
+            layout = boxLayout;
+			
+			header = new Header();
+			header.title = "Library";
+			addChild(header);
             
             tabBar = new TabBar();
             tabBar.dataProvider = new ListCollection([ { "label":"Controls" }, { "label":"Assets" } ]);
@@ -61,9 +68,15 @@ package feditor.views.pnl
             assetsList.visible = false;
             
             //evts
+			assetsList.addEventListener(EventType.PREVIEW,previewHandler);
             tabBar.addEventListener(Event.CHANGE, tabChangeHandler);
 			Starling.current.nativeStage.addEventListener(MouseEvent.CLICK, nativeStageClickHandler);
         }
+		
+		private function previewHandler(e:Event):void 
+		{
+			assetName = String((e.data as Array || [])[0]);
+		}
 		
 		private function nativeStageClickHandler(e:MouseEvent):void 
 		{
@@ -74,17 +87,21 @@ package feditor.views.pnl
 				e.stageY < assetsList.y + assetsList.height
 				)
 			{
-				System.setClipboard(String(assetsList.selectedItem));
+				System.setClipboard(String(assetName));
 			}
 		}
-        
-        override protected function refreshViewPortBounds():void 
-        {
-            super.refreshViewPortBounds();
-            cmpList.maxHeight = Starling.current.stage.stageHeight -10;
-            assetsList.maxHeight = Starling.current.stage.stageHeight -10;
-        }
-        
+		
+		override public function validate():void 
+		{
+			super.validate();
+			header.width = width;
+			cmpList.height = height - tabBar.height - header.height;
+			assetsList.height = height - tabBar.height - header.height;
+			cmpList.width = width;
+			assetsList.width = width;
+			
+		}
+		
         private function tabChangeHandler(e:Event):void 
         {
             switch(tabBar.selectedIndex)

@@ -2,14 +2,21 @@ package feditor.views.pnl
 {
 	import adobe.utils.CustomActions;
 	import feathers.controls.Button;
+	import feathers.controls.Callout;
+	import feathers.controls.Label;
 	import feathers.controls.LayoutGroup;
+	import feathers.controls.Panel;
 	import feathers.layout.HorizontalLayout;
+	import feathers.layout.TiledColumnsLayout;
+	import feathers.layout.TiledRowsLayout;
+	import feathers.layout.VerticalLayout;
 	import feditor.events.EventType;
 	import feditor.views.EmbedAssets;
 	import flash.display.BitmapData;
 	import flash.ui.Mouse;
 	import flash.ui.MouseCursor;
 	import flash.ui.MouseCursorData;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.events.Event;
@@ -19,7 +26,7 @@ package feditor.views.pnl
 	 * ...
 	 * @author gray
 	 */
-	public class ToolPanel extends LayoutGroup 
+	public class ToolPanel extends Panel 
 	{	
 		private var buttonArr:Array;
 		
@@ -32,47 +39,46 @@ package feditor.views.pnl
 		{
 			super.initialize();
 			
-			var boxLayout:HorizontalLayout = new HorizontalLayout();
-			boxLayout.gap = 5;
-			boxLayout.horizontalAlign = HorizontalLayout.HORIZONTAL_ALIGN_CENTER;
-			boxLayout.verticalAlign = HorizontalLayout.VERTICAL_ALIGN_MIDDLE;
-			this.layout = boxLayout;
+			this.headerProperties.title = "Tool Box";
 			
-			buttonArr = [EmbedAssets.ICON_DROPPER];
-				
-			var img:Image;
+			var button:Button = new Button();
+			button.defaultIcon = new Image(Texture.fromBitmap(new EmbedAssets.ICON_DROPPER()));
+			button.width = 32;
+			button.height = 32;
+			button.addEventListener(Event.TRIGGERED, toolTriggeredHandler);
+			addChild(button);
+			
+			buttonArr = ["╞","╡","╤","╧","═","║"];
+			var tileLayout:TiledRowsLayout = new TiledRowsLayout();
+			tileLayout.requestedColumnCount = 2;
+			tileLayout.gap = 0;
+			//this.layout = tileLayout;
+			this.layout = new HorizontalLayout();
+			tileLayout.padding = 0;
 			for (var i:int = 0; i < buttonArr.length; i++) 
 			{
-				var def:* = buttonArr[i];
-				img = new Image(Texture.fromBitmap(new def()));
-				img.color = 0xffffffff;
 				var btn:Button = new Button();
-				buttonArr[i] = btn;
-				btn.width = 20;
-				btn.height = 20;
-				btn.defaultIcon = img;
-				
-				addChild(btn);
+				btn.label = buttonArr[i];
 				btn.addEventListener(Event.TRIGGERED, toolTriggeredHandler);
+				btn.width = 32;
+				btn.height = 32;
+				addChild(btn);
+				buttonArr[i] = btn;
 			}
 			
-			backgroundSkin = new Quad(20, 20, 0xff262626);
-			
-			var dropperCursor:MouseCursorData = new MouseCursorData();
-			var cursorData:Vector.<BitmapData> = new Vector.<BitmapData>();
-			cursorData.push(new EmbedAssets.ICON_DROPPER().bitmapData);
-			dropperCursor.data = cursorData;
-			Mouse.registerCursor("dropper", dropperCursor);
+			buttonArr.unshift(button);
 		}
 		
 		private function toolTriggeredHandler(e:Event):void 
 		{
-			switch (buttonArr.indexOf(e.currentTarget)) 
+			var index:int = buttonArr.indexOf(e.currentTarget);
+			dispatchEventWith(Event.SELECT, false, index);
+			
+			if (index == 0)
 			{
-				case 0:
-					dispatchEventWith(EventType.DROPPER);
-				break;
-				default:
+				var tip:Label = new Label();
+				tip.text = "background picture only";
+				Callout.show(tip, e.currentTarget as DisplayObject);
 			}
 		}
 		

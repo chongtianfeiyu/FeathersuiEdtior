@@ -1,8 +1,8 @@
-package feditor.views.cmp 
-{
+package feditor.views.pnl {
     import feathers.controls.Button;
     import feathers.controls.LayoutGroup;
 	import feditor.events.EventType;
+	import feditor.views.cmp.DragClip;
     import flash.geom.Rectangle;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -10,6 +10,7 @@ package feditor.views.cmp
     import starling.events.Event;
     import starling.events.Touch;
     import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
     
     /**
      * ...
@@ -81,6 +82,11 @@ package feditor.views.cmp
             refreshControlsByClip();
 			hasChanged = false;
         }
+		
+		public function updateFocus():void
+		{
+			refreshFocusByChildren();
+		}
         
         protected function getActiveControl(e:TouchEvent):Button
         {
@@ -107,7 +113,7 @@ package feditor.views.cmp
             }
             else
             {
-                clearFocus();
+                //clearFocus();
             }
             
             if (handObj)
@@ -119,6 +125,8 @@ package feditor.views.cmp
             oldW = clip.width;
             oldH = clip.height;
 			hasChanged = false;
+			
+			dispatchEventWith(TouchPhase.BEGAN);
         }
         
         override protected function touchError(e:TouchEvent):void 
@@ -134,7 +142,7 @@ package feditor.views.cmp
 			
 			if (e.getTouch(this) && hasChanged)
 			{
-				dispatchEventWith(EventType.DROP);
+				dispatchEventWith(TouchPhase.ENDED);
 			}
 			
 			hasChanged = false;

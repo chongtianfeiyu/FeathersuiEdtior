@@ -62,7 +62,7 @@ package feditor.controllers
             selectProxy.addItem(box);
             
             //UI 不会立即重绘。延时20ms 再次发送更新命令
-            setTimeout(sendNotification, 20, NS.NOTE_SELECT_ITEM_DATA_UPDATE);
+            setTimeout(sendNotification, 20, NS.NOTE_RECT_FOCUS_UPDATE);
         }
         
         private function get selectProxy():SelectElementsProxy

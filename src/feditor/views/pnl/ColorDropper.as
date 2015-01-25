@@ -1,5 +1,4 @@
-package feditor.views.cmp 
-{
+package feditor.views.pnl {
 	import feathers.controls.Label;
 	import feathers.controls.LayoutGroup;
 	import feathers.controls.TextInput;
@@ -8,6 +7,7 @@ package feditor.views.cmp
 	import flash.display.BitmapDataChannel;
 	import flash.events.MouseEvent;
 	import flash.geom.Matrix;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.system.System;
 	import starling.core.Starling;
@@ -31,22 +31,30 @@ package feditor.views.cmp
 		private var _color:uint;
 		private var target:DisplayObject;
 		private var bitmapdata:BitmapData;
+		private var localPos:Point = new Point();
+		private var globalPos:Point = new Point();
+		private var image:Image;
 		
 		public function ColorDropper() 
 		{
 			super();
 			
 			input = new TextInput();
-			input.width = 70;
-			addChild(input);
+			input.width = 85;
 			
-			layout = new HorizontalLayout();
+			image = new Image(Texture.fromColor(10, 10));
+			image.x = input.width - 20;
+			image.y = 5;
+			
+			addChild(input);
+			addChild(image);
+			this.visible = false;
 		}
 		
-		public function show(target:DisplayObject,imgData:BitmapData):void
+		public function show(imgData:BitmapData):void
 		{
 			this.visible = true;
-			this.target = target;
+			this.x = -300;
 			this.bitmapdata = imgData;
 			
 			Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
@@ -61,8 +69,13 @@ package feditor.views.cmp
 		
 		private function touchHandler(e:TouchEvent):void 
 		{
-			var touch:Touch = e.getTouch(Starling.current.stage);
-			if (touch == null || touch.phase == TouchPhase.ENDED)
+			var touch:Touch = e.getTouch(parent);
+			if (touch == null)
+			{
+				return;
+			}
+			
+			if (touch.phase == TouchPhase.ENDED)
 			{
 				hide();
 				return;
@@ -71,20 +84,24 @@ package feditor.views.cmp
 			{
 				if (bitmapdata)
 				{
-					var posx:int = touch.globalX - target.x;
-					var posy:int = touch.globalY - target.y;
-					this.x = posx+15;
-					this.y = posy+15;
+					globalPos.x = touch.globalX;
+					globalPos.y = touch.globalY;
 					
-					if (posx > 0 && posx < bitmapdata.width && posy > 0 && posy < bitmapdata.height)
+					parent.globalToLocal(globalPos, localPos);
+					
+					this.x = localPos.x + 15;
+					this.y = localPos.y + 15;
+					
+					if (localPos.x > 0 && localPos.x < bitmapdata.width && localPos.y > 0 && localPos.y < bitmapdata.height)
 					{
-						_color = bitmapdata.getPixel(touch.globalX - target.x,touch.globalY - target.y);
+						_color = bitmapdata.getPixel(localPos.x,localPos.y);
 					}
 					else
 					{
 						_color = 0;
 					}
 					
+					image.color = 0xff000000 | _color;
 					input.text = "0x" + (color & 0x00ffffff).toString(16);
 				}
 			}
@@ -93,8 +110,7 @@ package feditor.views.cmp
 		public function hide():void
 		{
 			this.visible = false;
-			//target = null;
-			//bitmapdata = null;
+			bitmapdata = null;
 			Starling.current.stage.removeEventListener(TouchEvent.TOUCH,touchHandler);
 		}
 		

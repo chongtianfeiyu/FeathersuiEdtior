@@ -47,7 +47,7 @@ package feditor.controllers
             
             if (selectProxy.selectedItems.length)
             {
-                sendNotification(NS.NOTE_SELECT_ITEM_DATA_UPDATE,selectProxy.selectedItems);
+                sendNotification(NS.NOTE_RECT_FOCUS_UPDATE);
             }
         }
         

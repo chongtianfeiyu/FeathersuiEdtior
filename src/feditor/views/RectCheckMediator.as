@@ -2,7 +2,7 @@ package feditor.views
 {
     import feditor.events.EventType;
     import feditor.NS;
-    import feditor.views.cmp.RectCheck;
+    import feditor.views.pnl.RectCheck;
     import flash.geom.Rectangle;
     import org.puremvc.as3.multicore.interfaces.INotification;
     import org.puremvc.as3.multicore.patterns.mediator.Mediator;
