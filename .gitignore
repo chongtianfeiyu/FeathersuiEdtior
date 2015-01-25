@@ -1,5 +1,4 @@
 # Build and Release Folders
-bin/embed/
 bin/FeathersuiEditor.swf
 bin-debug/
 bin-release/
