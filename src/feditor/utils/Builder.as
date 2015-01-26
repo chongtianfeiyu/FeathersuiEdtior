@@ -413,7 +413,8 @@ package feditor.utils
                         name == "touchable" || 
                         name == "isSelected" || 
                         name == "isEditable" ||
-                        name == "displayAsPassword"
+                        name == "displayAsPassword" ||
+                        name == "maintainAspectRatio"
                         )
                     {
                         display[name] = valueMap[name]=="false"?false:true;
@@ -765,9 +766,9 @@ package feditor.utils
         
         private static function setListFields(list:List,valueMap:Object):List
         {
-            if ((isEditor || building) && list.itemRendererProperties.name != valueMap[FieldConst.LIST_ITEM_RENDERER])
+            if ((isEditor || building))// && list.itemRendererProperties.name != valueMap[FieldConst.LIST_ITEM_RENDERER]
             {
-                //list.styleProvider = null;
+                list.styleProvider = null;
             }
             
             if (FieldConst.LIST_ITEM_RENDERER in valueMap)
@@ -825,13 +826,9 @@ package feditor.utils
                 delete valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
             }
             
-            if (FieldConst.LAYOUT in valueMap ||
-                FieldConst.LAYOUT_GAP in valueMap ||
-                FieldConst.LAYOUT_HORIZONTAL_ALIGN in valueMap ||
-                FieldConst.LAYOUT_VERTICAL_ALIGN in valueMap
-            )
+            if (FieldConst.LAYOUT in valueMap)
             {
-                var layout:*=list.layout;
+                var layout:*= list.layout;
                 if (valueMap[FieldConst.LAYOUT] == FieldConst.LAYOUT_HORIZONTAL)
                 {
                     layout = (list.layout is HorizontalLayout)?list.layout:new HorizontalLayout();
@@ -841,12 +838,16 @@ package feditor.utils
                     layout = (list.layout is VerticalLayout)?list.layout:new VerticalLayout();
                 }
                 
-                if (layout)
-                {
-                   list.layout = setLayoutFields(layout, valueMap);
-                }
-                
+                list.layout = layout;
                 delete valueMap[FieldConst.LAYOUT];
+            }
+            
+            if (FieldConst.LAYOUT_GAP in valueMap ||
+                FieldConst.LAYOUT_HORIZONTAL_ALIGN in valueMap ||
+                FieldConst.LAYOUT_VERTICAL_ALIGN in valueMap
+            )
+            {
+                list.layout = setLayoutFields(list.layout||new VerticalLayout(), valueMap);
             }
             
             setDisplayObjectFields(list, valueMap);

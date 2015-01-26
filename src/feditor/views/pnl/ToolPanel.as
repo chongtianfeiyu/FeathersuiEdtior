@@ -49,7 +49,7 @@ package feditor.views.pnl
 			button.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
 			addChild(button);
 			
-			buttonArr = ["╞","╡","╤","╧","═","║"];
+			buttonArr = ["╞","╡","╤","╧","║","═"];
 			var tileLayout:TiledRowsLayout = new TiledRowsLayout();
 			tileLayout.requestedColumnCount = 2;
 			tileLayout.gap = 0;

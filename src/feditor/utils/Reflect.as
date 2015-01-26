@@ -90,6 +90,7 @@ package feditor.utils
             result ||= { };
             if (display)
             {
+                
                 result.x = display.x;
                 result.y = display.y;
                 result.width = display.width;
@@ -98,6 +99,8 @@ package feditor.utils
                 result.name = display.name;
                 result.touchable = display.touchable;
                 result.visible = display.visible;
+                result.scaleX = display.scaleX;
+                result.scaleY = display.scaleY;
             }
             
             return result;

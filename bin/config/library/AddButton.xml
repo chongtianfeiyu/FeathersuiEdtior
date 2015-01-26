@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<Button defaultSkin="+btn-up"
-			downSkin="+btn-down" />
+	<Button defaultSkin="btn-add-up"
+			downSkin="btn-add-down" />
 </data>
