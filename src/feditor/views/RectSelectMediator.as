@@ -5,6 +5,7 @@ package feditor.views
     import feditor.models.SelectElementsProxy;
     import feditor.NS;
     import feditor.utils.Builder;
+	import feditor.utils.FieldConst;
     import feditor.utils.Geom;
     import feditor.utils.ObjectUtil;
     import feditor.utils.Reflect;
@@ -140,26 +141,26 @@ package feditor.views
             {
                 cvo.fields = [];
                 var tvo:FieldVO = new FieldVO();
-                tvo.name = "The Type";
+                tvo.name = FieldConst.THE_TYPE;
                 tvo.value = "editor stage";
                 tvo.editable = false;
                 cvo.fields.push(tvo);
                 
                 //w
                 var w:FieldVO = new FieldVO();
-                w.name = "witdh";
+                w.name = FieldConst.WIDTH;
                 w.value = String(estageoProxy.witdth);
                 w.editable = false;
                 cvo.fields.push(w);
                 
                 var h:FieldVO = new FieldVO();
-                h.name = "height";
+                h.name = FieldConst.HEIGHT;
                 h.value = String(estageoProxy.height);
                 h.editable = false;
                 cvo.fields.push(h);
                 
                 var p:FieldVO = new FieldVO();
-                p.name = "bg alpha";
+                p.name = FieldConst.BG_ALPHA;
                 p.value = String(estageoProxy.designImageAlpha);
                 cvo.fields.push(p);
             }

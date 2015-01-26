@@ -7,6 +7,12 @@ package feditor.utils
      */
     public class FieldConst 
     {
+		//
+		static public const THE_TYPE:String = "The Type";
+		static public const HEIGHT:String = "height";
+		static public const WIDTH:String = "width";
+		static public const BG_ALPHA:String = "bg alpha";
+		
         //label
         static public const FONT_COLOR:String = "color";
         static public const FONT_SIZE:String = "fontSize";

@@ -8,6 +8,7 @@ package feditor.views
     import feditor.Root;
     import feditor.utils.Assets;
     import feditor.utils.Builder;
+	import feditor.utils.FieldConst;
     import feditor.utils.ObjectUtil;
     import feditor.utils.Reflect;
     import feditor.views.pnl.LibraryPanel;
@@ -77,7 +78,7 @@ package feditor.views
         private function propertyChangeHandler(e:Event):void 
         {
             var fvo:FieldVO = e.data as FieldVO;
-            if (fvo.name == "img alpha")
+            if (fvo.name == FieldConst.BG_ALPHA)
             {
                 sendNotification(NS.NOTE_IMPORT_PICTURE_APLHA,parseFloat(fvo.value));
             }
