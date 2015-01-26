@@ -10,25 +10,45 @@ package feditor.utils
     {
         public static function getBound(displayList:Array):Rectangle 
         {
-            var left:int = int.MAX_VALUE;
-            var top:int = int.MAX_VALUE;
-            var right:int = int.MIN_VALUE;
-            var bottom:int = int.MIN_VALUE;
+            //var left:int = int.MAX_VALUE;
+            //var top:int = int.MAX_VALUE;
+            //var right:int = int.MIN_VALUE;
+            //var bottom:int = int.MIN_VALUE;
+            //
+            //for each (var item:DisplayObject in displayList) 
+            //{
+                //if (item == null) continue;
+                //left = left > item.x?item.x:left;
+                //top = top > item.y?item.y:top;
+                //right = right < (item.x + item.width)?(item.x + item.width):right;
+                //bottom = bottom < (item.y +item.height)?(item.y +item.height):bottom;
+            //}
+            //
+            //var w:int = right - left;
+            //var h:int = bottom - top;
+            //
+            //return  new Rectangle(left, top, w, h);
             
+            var rect:Rectangle = null;
             for each (var item:DisplayObject in displayList) 
             {
-                if (item == null) continue;
-                left = left > item.x?item.x:left;
-                top = top > item.y?item.y:top;
-                right = right < (item.x + item.width)?(item.x + item.width):right;
-                bottom = bottom < (item.y +item.height)?(item.y +item.height):bottom;
+                var childRect:Rectangle;
+                if (item.parent)
+                {
+                    childRect = item.getBounds(item.parent);
+                }
+                else
+                {
+                    childRect = new Rectangle(item.x,item.y,item.height,item.width);
+                }
+                
+                if (rect == null) rect = childRect;
+                else rect = rect.union(childRect);
             }
-            
-            var w:int = right - left;
-            var h:int = bottom - top;
-            
-            return  new Rectangle(left,top,w,h);
+            return rect||new Rectangle();
         }
+        
+        
         
         /**
          * 

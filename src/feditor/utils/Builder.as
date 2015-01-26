@@ -413,7 +413,8 @@ package feditor.utils
                         name == "touchable" || 
                         name == "isSelected" || 
                         name == "isEditable" ||
-                        name == "displayAsPassword"
+                        name == "displayAsPassword" ||
+                        name == "maintainAspectRatio"
                         )
                     {
                         display[name] = valueMap[name]=="false"?false:true;

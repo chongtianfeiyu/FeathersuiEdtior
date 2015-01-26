@@ -2,6 +2,7 @@ package feditor.views.pnl {
     import feathers.controls.Button;
     import feathers.controls.LayoutGroup;
 	import feditor.events.EventType;
+    import feditor.utils.Geom;
 	import feditor.views.cmp.DragClip;
     import flash.geom.Rectangle;
     import starling.display.DisplayObject;
@@ -177,7 +178,7 @@ package feditor.views.pnl {
             }
             else if (handObj is Button )
             {
-                if ((childrens.length = 1) && !(childrens[0] is LayoutGroup))
+                if ((childrens.length = 1))// && !(childrens[0] is LayoutGroup)
                 {
                     if (handObj == controls[1] || handObj == controls[5])
                     {
@@ -284,28 +285,6 @@ package feditor.views.pnl {
             return rect;
         }
         
-        protected function measuseChildren():Rectangle
-        {
-            var left:int = int.MAX_VALUE;
-            var top:int = int.MAX_VALUE;
-            var right:int = int.MIN_VALUE;
-            var bottom:int = int.MIN_VALUE;
-            
-            for each (var item:DisplayObject in childrens) 
-            {
-                if (item == null) continue;
-                left = left > item.x?item.x:left;
-                top = top > item.y?item.y:top;
-                right = right < (item.x + item.width)?(item.x + item.width):right;
-                bottom = bottom < (item.y +item.height)?(item.y +item.height):bottom;
-            }
-            
-            var w:int = right - left;
-            var h:int = bottom - top;
-            
-            return  new Rectangle(left,top,w,h);
-        }
-        
         protected function refreshControlsByClip():void
         {
             var left:int = clip.x;
@@ -357,7 +336,7 @@ package feditor.views.pnl {
         
         protected function refreshFocusByChildren():void
         {
-            var rect:Rectangle = measuseChildren();
+            var rect:Rectangle = Geom.getBound(childrens);
             
             clip.x = rect.x;
             clip.y = rect.y;
@@ -369,7 +348,7 @@ package feditor.views.pnl {
         
         private function resizeChildren():void
         {
-            if (childrens.length == 1 && !(childrens[0] is LayoutGroup))
+            if (childrens.length == 1 )//&& !(childrens[0] is LayoutGroup)
             {
                 var display:DisplayObject = childrens[0];
                 display.width = clip.width;
