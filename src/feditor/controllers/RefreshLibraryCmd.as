@@ -22,23 +22,22 @@ package feditor.controllers
 		
 		override public function execute(notification:INotification):void 
 		{
-			var file:File = File.applicationDirectory.resolvePath("config/" + DefaultControlProxy.CONFIG + ".xml");
+			var file:File = File.applicationDirectory.resolvePath(DefaultControlProxy.CONFIG);
 			if (file.exists)
 			{
-				file.load();
-				file.addEventListener(Event.COMPLETE, fileLoadCompleteHandler);
-			}
-		}
-		
-		private function fileLoadCompleteHandler(e:Event):void 
-		{
-			var file:File = e.currentTarget as File;
-			var xml:XML = new XML(file.data);
-			if (xml)
-			{
-				defaultControlProxy.updateXML();
-				AppFacade(facade).assets.addXml(DefaultControlProxy.CONFIG, xml);
-				sendNotification(NS.NOTE_CONTROL_LIBRARY_UPDATE);
+				for each (var item:File in file.getDirectoryListing()) 
+				{
+					AppFacade(facade).assets.removeXml(item.name.replace(".xml",""));
+				}
+				
+				AppFacade(facade).assets.enqueue(file);
+				AppFacade(facade).assets.loadQueue(
+					function(ratio:Number):void {
+						if (ratio == 1){
+							defaultControlProxy.updateXML();
+							sendNotification(NS.NOTE_CONTROL_LIBRARY_UPDATE);
+					}
+				});
 			}
 		}
 		

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<LayoutGroup touchGroup="false">
+		<Scale9Image texture="bg-renderer-light[60,60,120,120]"
+					 width="911"
+					 height="244"
+					 name="itemRenderBg" />
+		<Scale9Image texture="bg-photo[60,60,160,160]"
+					 y="24"
+					 width="200"
+					 height="200"
+					 x="43" />
+		<Label text="Ingame Name"
+			   x="279"
+			   y="29"
+			   width="461"
+			   fontSize="46"
+			   height="52"
+			   color="16777215" />
+		<Label text="999,999,888"
+			   x="285"
+			   y="101"
+			   width="274"
+			   fontSize="46"
+			   height="52"
+			   color="16777215" />
+		<Image texture="Accomplished"
+			   y="127"
+			   width="124"
+			   height="98"
+			   x="151" />
+	</LayoutGroup>
+</data>

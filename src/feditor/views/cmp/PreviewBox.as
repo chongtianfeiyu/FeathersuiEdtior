@@ -90,6 +90,10 @@ package feditor.views.cmp
 			{
 				control.y = childY - control.height * 0.5;
 				if (control.y < 0) control.y = 0;
+				else if (control.height + control.y > Starling.current.stage.stageHeight)
+				{
+					control.y = Starling.current.stage.stageHeight - control.height;
+				}
 			}
 		}
         

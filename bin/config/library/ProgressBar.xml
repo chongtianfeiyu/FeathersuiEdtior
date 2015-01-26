@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<ProgressBar backgroundSkin="progress-track-s[18,1]"
+				 fillSkin="progress-blue-fill-s[18,1]"
+				 width="150" />
+</data>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<ToggleButton label="Label"
+				  isSelected="false"
+				  defaultSkin="tab-up[60,60,100,100]"
+				  defaultSelectedSkin="tab-down[60,60,100,100]"
+				  fontSize="70"
+				  color="0xffffff" />
+</data>

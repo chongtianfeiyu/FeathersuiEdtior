@@ -2,6 +2,7 @@ package feditor.models
 {
     import feditor.AppFacade;
     import feditor.utils.ObjectUtil;
+	import flash.filesystem.File;
     import org.puremvc.as3.multicore.patterns.proxy.Proxy;
     
     /**
@@ -10,8 +11,8 @@ package feditor.models
      */
     public class DefaultControlProxy extends Proxy 
     {
-        public static const LIB_NAME:String = "libName";
-        public static const CONFIG:String = "default";
+		public static const LIB_SORT:String = "library_sort";
+        public static const CONFIG:String = "config/library";
         public static const NAME:String = "DefaultControlProxy";
         
         private var _xml:XML;
@@ -36,15 +37,28 @@ package feditor.models
         {
             if (!nameList)
             {
-                nameList = [];
-                for each (var item:XML in xml.children()) 
-                {
-                    var libName:String = String(item.@[LIB_NAME]);
-                    if (libName)
-                    {
-                        nameList.push(libName);
-                    }
-                }
+				var sortArr:Array = [];
+				var sorterXML:XML =  AppFacade(facade).assets.getXml(LIB_SORT);
+				if (sorterXML)
+				{
+					for each (var item:* in sorterXML.children()) 
+					{
+						sortArr.push(String(item.name()));
+					}
+				}
+				
+				var file:File = File.applicationDirectory.resolvePath(CONFIG);
+				var nameList:Array = file.getDirectoryListing().map(
+					function(childFile:File, index:int, array:Array):String {
+						return String(childFile.name).replace(".xml","");
+				});
+				
+				nameList = nameList.sort(function(a:String, b:String):int {
+					var indexA:int = sortArr.indexOf(a);
+					var indexB:int = sortArr.indexOf(b);
+					if (indexA == -1 || indexA > indexB) return 1;
+					return -1;
+				});
             }
             
             return nameList;
@@ -52,8 +66,13 @@ package feditor.models
         
         public function getControlXML(libName:String):*
         {
-            var result:* = xml.children().(@[LIB_NAME] == libName);
-            return result;
+			var xml:XML = AppFacade(facade).assets.getXml(libName);
+			var result:XMLList = xml?xml.children():null;
+			if (result && !String(result.@libName))
+			{
+				result.@libName = libName;
+			}
+            return result
         }
         
         private function getDefaultProperties(libName:String):Object
@@ -62,7 +81,7 @@ package feditor.models
             if (!result)
             {
                 result = { };
-                var node:* = xml.children().(@[LIB_NAME] == libName);
+                var node:* = getControlXML(libName);
                 for each (var item:* in node.children()) 
                 {
                     result[String(item.name())] = String(item);
@@ -78,22 +97,12 @@ package feditor.models
             var result:String = classMap[libName];
             if (!result)
             {
-                var node:* = xml.children().(@[LIB_NAME] == libName);
+                var node:* = getControlXML(libName);
                 result = String(node.name());
                 classMap[libName] = result;
             }
             
             return result;
-        }
-        
-        private function get xml():XML
-        {
-            if (!_xml)
-            {
-                _xml = AppFacade.getInstance().assets.getXml(CONFIG);
-            }
-            
-            return _xml;
         }
     }
 

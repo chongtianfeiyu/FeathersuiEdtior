@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<Button label="label"
+			defaultSkin="btn-green-M-up[100,80]"
+			downSkin="btn-green-M-down[100,80]"
+			fontSize="60"
+			color="0xffffff" />
+</data>

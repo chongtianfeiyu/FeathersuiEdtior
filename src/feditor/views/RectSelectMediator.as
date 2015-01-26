@@ -115,7 +115,7 @@ package feditor.views
             {
                 cvo.target == "group";
                 var fvo:FieldVO = new FieldVO();
-                fvo.name = "The Type";
+                fvo.name = FieldConst.THE_TYPE;
                 fvo.value = "multiple elements";
                 fvo.editable = false;
                 cvo.fields = [fvo];

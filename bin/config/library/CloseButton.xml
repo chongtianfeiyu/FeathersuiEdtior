@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<Button defaultIcon="icon-close"
+			defaultSkin="btn-blue-small-up"
+			downSkin="btn-blue-small-down" />
+</data>
