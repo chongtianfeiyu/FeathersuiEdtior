@@ -768,7 +768,7 @@ package feditor.utils
         {
             if ((isEditor || building) && list.itemRendererProperties.name != valueMap[FieldConst.LIST_ITEM_RENDERER])
             {
-                //list.styleProvider = null;
+                list.styleProvider = null;
             }
             
             if (FieldConst.LIST_ITEM_RENDERER in valueMap)
