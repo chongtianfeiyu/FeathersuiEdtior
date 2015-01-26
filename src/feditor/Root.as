@@ -113,7 +113,7 @@ package feditor
             stageContainer.addChild(editorStage);
 			
 			colorDropper = new ColorDropper();
-			stageContainer.addChild(colorDropper);
+			editorStage.addChild(colorDropper);
 			
             addEventListener(EditorStage.INIT_EDITOR, updateLayout);
             Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);

@@ -51,11 +51,17 @@ package feditor.views.pnl {
 			this.visible = false;
 		}
 		
-		public function show(imgData:BitmapData):void
+		private var _imgScaleX:Number = 0;
+		private var _imgScaleY:Number = 0;
+		
+		public function show(imgData:BitmapData,w:int,h:int):void
 		{
 			this.visible = true;
 			this.x = -300;
 			this.bitmapdata = imgData;
+			
+			_imgScaleX = imgData.width / w;
+			_imgScaleY = imgData.height / h;
 			
 			Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
 			Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP,nativeMouseEvtHandler);
@@ -94,7 +100,7 @@ package feditor.views.pnl {
 					
 					if (localPos.x > 0 && localPos.x < bitmapdata.width && localPos.y > 0 && localPos.y < bitmapdata.height)
 					{
-						_color = bitmapdata.getPixel(localPos.x,localPos.y);
+						_color = bitmapdata.getPixel(localPos.x*_imgScaleX,localPos.y*_imgScaleY);
 					}
 					else
 					{

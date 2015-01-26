@@ -3,6 +3,7 @@ package feditor.views
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.supportClasses.LayoutViewPort;
 	import feditor.models.ColorDropperProxy;
+	import feditor.models.EStageProxy;
 	import feditor.NS;
 	import feditor.views.pnl.ColorDropper;
 	import org.puremvc.as3.multicore.interfaces.INotification;
@@ -39,7 +40,7 @@ package feditor.views
 					colorDropperProxy.color = pnl.color;
 					break;
 				case NS.NOTE_SHOW_COLOR_DROPPER:
-					pnl.show(colorDropperProxy.getSource());
+					pnl.show(colorDropperProxy.getSource(),estageProxy.witdth,estageProxy.height);
 					break;
 				default:
 			}
@@ -53,6 +54,11 @@ package feditor.views
 		private function get colorDropperProxy():ColorDropperProxy
 		{
 			return facade.retrieveProxy(ColorDropperProxy.NAME) as ColorDropperProxy;
+		}
+		
+		private function get estageProxy():EStageProxy
+		{
+			return facade.retrieveProxy(EStageProxy.NAME) as EStageProxy;
 		}
 	}
 
