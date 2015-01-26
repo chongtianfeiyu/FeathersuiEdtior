@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:3b6642d0d487fff4abe9789b482233e8$ -->
+<!-- $TexturePacker:SmartUpdate:e9db09c91cdc949c912f30609cab1029$ -->
 <TextureAtlas imagePath="gui2.png">
     <SubTexture name="bg-brick-wall" x="2" y="2" width="1242" height="360"/>
     <SubTexture name="bg-light" x="1246" y="2" width="800" height="612" frameX="0" frameY="-24" frameWidth="800" frameHeight="660"/>

@@ -232,8 +232,40 @@
 			   y="77"
 			   width="14.85"
 			   fontWeight="bold" />
-	</LayoutGroup>
-	<List libName="List"
+	</LayoutGroup>	
+    <LayoutGroup libName="InboxItemRenderer" touchGroup="false" width="1170" x="52" height="214" y="133" scaleY="1" scaleX="1">
+        <Scale9Image name="itemRenderBg" height="214" scaleY="1" scaleX="1" texture="bg-renderer-light[60,60,120,120]" width="1170"/>
+        <Label fontName="BRLN" color="16777215" fontSize="60" name="dateLabel" text="2015/1/10" x="239" height="67.8" y="110" scaleY="1" fontWeight="bold" scaleX="1" width="304.9"/>
+        <Label fontName="BRLN" color="0" fontSize="60" name="titleLabel" text="Daliy Login Reward" x="230" height="67" y="20" scaleY="1" fontWeight="bold" scaleX="1" width="547"/>
+        <Button paddingRight="0" paddingBottom="0" paddingTop="0" fontSize="46" fontWeight="bold" defaultSkin="btn-bule-ss-up" fontName="BRLN" color="16777215" label="Accept" downSkin="btn-bule-ss-down" name="acceptBtn" width="228" gap="0" paddingLeft="0" height="165" y="21" scaleY="1" padding="0" x="904" scaleX="1" iconPosition="left"/>
+        <Scale9Image height="167" y="26" scaleY="1" scaleX="1" texture="bg-item-list[40,40,200,200]" width="164" x="32"/>
+        <Image height="158" y="31" scaleY="4.9375" scaleX="4.8125" texture="empty" name="image" width="154" x="37"/>
+      </LayoutGroup>
+    <LayoutGroup libName="HeroItemRenderer" touchGroup="false" width="287" x="335" height="356" y="1459" scaleY="1" scaleX="1">
+        <Image name="itemRenderBg" height="338" scaleX="0.6612903225806451" texture="bg-hero-level" scaleY="0.6563106796116505" width="287"/>
+        <Image height="260" y="43" scaleX="6.5625" texture="empty" scaleY="8.125" width="210" x="45"/>
+        <Label fontName="BRLN" color="0" fontSize="46" name="star" text="4" x="25" height="52" scaleY="1" fontWeight="bold" scaleX="1" y="5" width="25.4"/>
+        <LayoutGroup padding="0" paddingRight="0" paddingTop="0" layout="horizontal" paddingBottom="0" horizontalAlign="left" verticalAlign="top" touchGroup="false" width="202.55" gap="5" height="52" y="304" scaleY="1" x="34" scaleX="1" paddingLeft="0">
+          <Label fontName="BRLN" color="0" fontSize="46" text="lvl:" height="52" scaleY="1" fontWeight="bold" scaleX="1" width="60.7"/>
+          <Label fontName="BRLN" color="16777215" fontSize="46" text="10/" x="65.7" height="52" scaleY="1" fontWeight="bold" scaleX="1" width="59.05"/>
+          <Label fontName="BRLN" color="0" fontSize="46" text="100" x="129.75" height="52" scaleY="1" fontWeight="bold" scaleX="1" width="72.8"/>
+        </LayoutGroup>
+    </LayoutGroup>
+    
+    <LayoutGroup libName="BattleLogItemRenderer" touchGroup="false" width="1170" x="37" height="214" y="87" scaleY="1" scaleX="1">
+        <Scale9Image height="214" scaleY="1" texture="bg-renderer-light[60,60,120,120]" scaleX="1" name="itemRenderBg" width="1170"/>
+        <Label fontName="BRLN" color="16777215" fontSize="60" name="dateLabel" text="2015/1/10" x="360" height="67" scaleY="1" fontWeight="bold" scaleX="1" y="138" width="529"/>
+        <Label fontName="BRLN" color="0" fontSize="60" name="nameLabel" text="Daliy Login Reward" x="360" height="67" scaleY="1" fontWeight="bold" scaleX="1" y="9" width="540"/>
+        <Button scaleX="1" paddingTop="0" paddingBottom="0" fontSize="46" fontWeight="bold" defaultSkin="btn-play2-up" fontName="BRLN" downSkin="btn-play2-down" color="16777215" name="btn" width="224" x="914" height="167" y="16" scaleY="1" iconPosition="left" padding="0" paddingLeft="0" gap="0" paddingRight="0"/>
+        <Scale9Image height="167" y="26" scaleY="1" texture="bg-item-list[40,40,200,200]" scaleX="1" width="164" x="166"/>
+        <Image height="158" y="31" scaleY="4.9375" texture="empty" scaleX="4.8125" name="image" width="154" x="174"/>
+        <Label fontName="BRLN" color="6684672" fontSize="60" name="detailLabel" text="2015/1/10" x="360" height="67" scaleY="1" fontWeight="bold" scaleX="1" y="76" width="522"/>
+        <Image height="118" y="34" scaleY="1" texture="icon-tpoint" scaleX="1" name="tpointIcon" width="118" x="32"/>
+        <Image height="116" y="35" scaleY="1" texture="icon-cup" scaleX="1" name="cupIcon" width="156" x="13"/>
+        <Label fontName="BRLN" color="16777215" fontSize="46" name="numLabel" text="text" x="50" height="52" scaleY="1" fontWeight="bold" scaleX="1" y="149" width="80.3"/>
+    </LayoutGroup>
+    
+    <List libName="List"
 		  itemRenderer="FriendItemRenderer"
 		  backgroundSkin="bg-item-list[40,40,200,200]"
 		  dataNum="3"
@@ -241,7 +273,7 @@
 		  gap="5"
 		  padding="10"
 		  x="100"
-		  y="100" />
+		  y="100" />  
     <List libName="HomeList" paddingLeft="5" backgroundSkin="bg[38,38,46,46]" padding="5" gap="5" scaleX="1" verticalAlign="top" width="1181" horizontalAlign="left" dataNum="3" height="952" y="777" scaleY="1" paddingBottom="5" x="30" paddingTop="5" itemRenderer="FriendItemRenderer" paddingRight="5" layout="vertical"/>
 	<!-- -->
 </lib>
