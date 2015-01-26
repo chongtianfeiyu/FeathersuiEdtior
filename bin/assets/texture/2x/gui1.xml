@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:8aab05b91a08f051f45bcd32473b5b8b$ -->
+<!-- $TexturePacker:SmartUpdate:95b0c8b5d5c95e5637f41b52b2b42d70$ -->
 <TextureAtlas imagePath="gui1.png">
-    <SubTexture name="+btn-down" x="268" y="1932" width="106" height="112" frameX="-8" frameY="-8" frameWidth="122" frameHeight="120"/>
-    <SubTexture name="+btn-up" x="160" y="1932" width="106" height="112" frameX="-8" frameY="-8" frameWidth="122" frameHeight="120"/>
-    <SubTexture name="4guang" x="1246" y="2" width="800" height="612" frameX="0" frameY="-24" frameWidth="800" frameHeight="660"/>
-    <SubTexture name="Accomplished" x="1110" y="754" width="124" height="98"/>
-    <SubTexture name="bg-cell[36,36,118,118]" x="1856" y="987" width="184" height="184"/>
+    <SubTexture name="Accomplished" x="1917" y="242" width="124" height="98"/>
+    <SubTexture name="bg-cell[36,36,118,118]" x="462" y="1832" width="184" height="184"/>
     <SubTexture name="bg-game-bottom" x="2" y="2" width="1242" height="240"/>
-    <SubTexture name="bg-head[46,32]" x="1910" y="921" width="114" height="64" frameX="-3" frameY="-2" frameWidth="120" frameHeight="66"/>
-    <SubTexture name="bg-input[40,80]" x="1534" y="1655" width="164" height="164"/>
-    <SubTexture name="bg-item-list[40,40,200,200]" x="1232" y="927" width="292" height="292"/>
-    <SubTexture name="bg-item[60,60,120,120]" x="1182" y="1377" width="260" height="260"/>
-    <SubTexture name="bg-name" x="674" y="244" width="440" height="162" frameX="0" frameY="-4" frameWidth="440" frameHeight="166"/>
-    <SubTexture name="bg-photo[60,60,160,160]" x="2" y="1646" width="284" height="284"/>
-    <SubTexture name="bg-photo[60,60,160,160]" x="2" y="1646" width="284" height="284"/>
-    <SubTexture name="bg-renderer-dark[0,0,60,120]" x="248" y="1221" width="244" height="244"/>
-    <SubTexture name="bg-renderer-light[60,60,120,120]" x="2" y="1221" width="244" height="244"/>
-    <SubTexture name="bg-result-panel[140,130,90]" x="2" y="470" width="416" height="348" frameX="-2" frameY="-3" frameWidth="420" frameHeight="352"/>
-    <SubTexture name="bg-reward-itemrender" x="1582" y="733" width="326" height="200" frameX="0" frameY="-10" frameWidth="326" frameHeight="210"/>
-    <SubTexture name="bg-score-result[100,80]" x="1226" y="1221" width="276" height="154"/>
-    <SubTexture name="bg-top" x="2" y="820" width="394" height="118"/>
-    <SubTexture name="bg[38,38,46,46]" x="1110" y="854" width="120" height="120"/>
-    <SubTexture name="btn-blue-down[100,80]" x="668" y="976" width="258" height="236" frameX="-1" frameY="-11" frameWidth="260" frameHeight="248"/>
-    <SubTexture name="btn-blue-small-down" x="1368" y="1655" width="164" height="164" frameX="0" frameY="-8" frameWidth="164" frameHeight="172"/>
-    <SubTexture name="btn-blue-small-up" x="854" y="1457" width="164" height="164" frameX="0" frameY="-8" frameWidth="164" frameHeight="172"/>
-    <SubTexture name="btn-blue-up[100,80]" x="494" y="1221" width="258" height="236" frameX="-1" frameY="-11" frameWidth="260" frameHeight="248"/>
-    <SubTexture name="btn-bule-ss-down" x="1114" y="1639" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-bule-ss-down[100,100]" x="1114" y="1639" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-bule-ss-up" x="1444" y="1467" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-bule-ss-up[100,100]" x="1444" y="1467" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-green-L-down[110,80]" x="1526" y="1201" width="288" height="264" frameX="-1" frameY="-9" frameWidth="290" frameHeight="274"/>
-    <SubTexture name="btn-green-L-up[110,80]" x="1566" y="935" width="288" height="264" frameX="-1" frameY="-9" frameWidth="290" frameHeight="274"/>
-    <SubTexture name="btn-green-M-down[100,80]" x="754" y="1221" width="268" height="234" frameX="-1" frameY="-11" frameWidth="270" frameHeight="250"/>
-    <SubTexture name="btn-green-M-up[100,80]" x="398" y="846" width="268" height="234" frameX="-1" frameY="-11" frameWidth="270" frameHeight="250"/>
-    <SubTexture name="btn-hero-down" x="288" y="1646" width="172" height="270" frameX="-4" frameY="-10" frameWidth="182" frameHeight="284"/>
-    <SubTexture name="btn-hero-up" x="1856" y="1173" width="172" height="270" frameX="-4" frameY="-10" frameWidth="182" frameHeight="284"/>
-    <SubTexture name="btn-my-down" x="1343" y="1827" width="252" height="184" frameX="-4" frameY="-10" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-my-up" x="600" y="1459" width="252" height="184" frameX="-4" frameY="-10" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-note-down-s" x="1024" y="1215" width="104" height="108" frameX="-8" frameY="-9" frameWidth="120" frameHeight="120"/>
-    <SubTexture name="btn-note-up-s" x="376" y="1918" width="104" height="108" frameX="-8" frameY="-9" frameWidth="120" frameHeight="120"/>
-    <SubTexture name="btn-play2-down" x="420" y="658" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-play2-up" x="420" y="470" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
-    <SubTexture name="btn-regular-bluish-down-m[100,60]" x="1114" y="1827" width="227" height="199" frameX="-1" frameY="-14" frameWidth="229" frameHeight="215"/>
-    <SubTexture name="btn-regular-bluish-up-m[100,60]" x="1816" y="1445" width="227" height="199" frameX="-1" frameY="-14" frameWidth="229" frameHeight="215"/>
-    <SubTexture name="btn-sale-down" x="386" y="1467" width="212" height="166" frameX="-1" frameY="0" frameWidth="214" frameHeight="166"/>
-    <SubTexture name="btn-sale-up" x="172" y="1467" width="212" height="166" frameX="-1" frameY="0" frameWidth="214" frameHeight="166"/>
-    <SubTexture name="check-default" x="1024" y="1407" width="74" height="74" frameX="-1" frameY="-1" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="check-select" x="1106" y="1376" width="74" height="74" frameX="-1" frameY="-1" frameWidth="76" frameHeight="76"/>
-    <SubTexture name="dengji" x="674" y="408" width="434" height="491" frameX="0" frameY="0" frameWidth="434" frameHeight="515"/>
-    <SubTexture name="dian1" x="1984" y="728" width="38" height="68"/>
-    <SubTexture name="dian2" x="1984" y="658" width="38" height="68"/>
-    <SubTexture name="guoqi" x="1116" y="356" width="126" height="126"/>
-    <SubTexture name="icon-close" x="1142" y="976" width="88" height="88" frameX="-11" frameY="-14" frameWidth="110" frameHeight="110"/>
-    <SubTexture name="icon-cup" x="2" y="1932" width="156" height="114" frameX="0" frameY="-2" frameWidth="156" frameHeight="116"/>
-    <SubTexture name="icon-gem" x="222" y="1112" width="92" height="106" frameX="-13" frameY="-8" frameWidth="118" frameHeight="118"/>
-    <SubTexture name="icon-heart" x="984" y="901" width="110" height="98" frameX="0" frameY="-11" frameWidth="110" frameHeight="118"/>
-    <SubTexture name="icon-help" x="482" y="1912" width="68" height="100" frameX="-21" frameY="-9" frameWidth="110" frameHeight="110"/>
-    <SubTexture name="icon-inbox" x="820" y="901" width="88" height="68" frameX="-1" frameY="-15" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="icon-invite" x="1142" y="1134" width="84" height="66" frameX="-3" frameY="-15" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="icon-no" x="1142" y="1202" width="82" height="84" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="icon-return-m" x="668" y="901" width="76" height="72" frameX="-7" frameY="-13" frameWidth="90" frameHeight="90"/>
-    <SubTexture name="icon-return" x="1130" y="1288" width="92" height="86" frameX="-10" frameY="-16" frameWidth="110" frameHeight="110"/>
-    <SubTexture name="icon-setting" x="316" y="1112" width="104" height="104" frameX="-3" frameY="-6" frameWidth="110" frameHeight="110"/>
-    <SubTexture name="icon-skill-1" x="746" y="901" width="72" height="70" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
-    <SubTexture name="icon-skill-2" x="910" y="901" width="72" height="68" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
-    <SubTexture name="icon-skill-3" x="1910" y="733" width="72" height="70" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
-    <SubTexture name="icon-stop" x="1024" y="1325" width="80" height="80" frameX="-15" frameY="-18" frameWidth="110" frameHeight="110"/>
-    <SubTexture name="icon-tpoint" x="1910" y="805" width="114" height="114" frameX="-4" frameY="-2" frameWidth="118" frameHeight="118"/>
-    <SubTexture name="icon-yes" x="1142" y="1066" width="84" height="66" frameX="-1" frameY="-9" frameWidth="86" frameHeight="86"/>
-    <SubTexture name="ko" x="2" y="1467" width="168" height="168"/>
-    <SubTexture name="line" x="1856" y="935" width="28" height="46"/>
-    <SubTexture name="lose3" x="1613" y="616" width="369" height="115" frameX="0" frameY="0" frameWidth="373" frameHeight="115"/>
-    <SubTexture name="progress-blue-fill-s[18,1]" x="1526" y="997" width="32" height="30" frameX="-3" frameY="-3" frameWidth="38" frameHeight="36"/>
-    <SubTexture name="progress-track-s[18,1]" x="1526" y="927" width="38" height="36"/>
-    <SubTexture name="progress-vip-fill[18,1]" x="1526" y="965" width="34" height="30" frameX="-4" frameY="-5" frameWidth="42" frameHeight="40"/>
-    <SubTexture name="progress-vip-track[18,1]" x="1984" y="616" width="42" height="40"/>
-    <SubTexture name="rewards-list-title-img" x="2" y="940" width="370" height="170"/>
-    <SubTexture name="tab-down[60,60,100,100]" x="928" y="1001" width="212" height="212" frameX="-4" frameY="-4" frameWidth="220" frameHeight="220"/>
-    <SubTexture name="tab-up[60,60,100,100]" x="1597" y="1821" width="220" height="220"/>
-    <SubTexture name="time" x="1242" y="733" width="338" height="192" frameX="0" frameY="0" frameWidth="346" frameHeight="192"/>
-    <SubTexture name="toggle-button-down[60,18]" x="1116" y="244" width="128" height="110" frameX="-5" frameY="-5" frameWidth="138" frameHeight="120"/>
-    <SubTexture name="toggle-button-up[60,18]" x="1110" y="484" width="132" height="116" frameX="-3" frameY="-4" frameWidth="138" frameHeight="120"/>
-    <SubTexture name="vip-button-down" x="854" y="1623" width="258" height="264" frameX="-3" frameY="0" frameWidth="264" frameHeight="264"/>
-    <SubTexture name="vip-button-note-down" x="112" y="1112" width="108" height="106" frameX="-2" frameY="-6" frameWidth="112" frameHeight="112"/>
-    <SubTexture name="vip-button-note-up" x="2" y="1112" width="108" height="106" frameX="-2" frameY="-6" frameWidth="112" frameHeight="112"/>
-    <SubTexture name="vip-button-up" x="462" y="1646" width="260" height="264" frameX="-2" frameY="0" frameWidth="264" frameHeight="264"/>
-    <SubTexture name="vip-info" x="2" y="244" width="670" height="224" frameX="0" frameY="-13" frameWidth="670" frameHeight="240"/>
-    <SubTexture name="win" x="1110" y="602" width="130" height="150" frameX="0" frameY="-10" frameWidth="130" frameHeight="160"/>
-    <SubTexture name="win3" x="1242" y="616" width="369" height="115" frameX="0" frameY="0" frameWidth="373" frameHeight="115"/>
+    <SubTexture name="bg-game-tile[0,0,0,0]" x="856" y="533" width="344" height="344"/>
+    <SubTexture name="bg-head[46,32]" x="1914" y="850" width="114" height="64" frameX="-3" frameY="-2" frameWidth="120" frameHeight="66"/>
+    <SubTexture name="bg-hero-level" x="2" y="244" width="434" height="491" frameX="0" frameY="0" frameWidth="434" frameHeight="515"/>
+    <SubTexture name="bg-input[40,80]" x="862" y="1791" width="164" height="164"/>
+    <SubTexture name="bg-item-list[40,40,200,200]" x="1202" y="831" width="292" height="292"/>
+    <SubTexture name="bg-item[60,60,120,120]" x="1196" y="1125" width="260" height="260"/>
+    <SubTexture name="bg-name" x="1246" y="228" width="440" height="162" frameX="0" frameY="-4" frameWidth="440" frameHeight="166"/>
+    <SubTexture name="bg-photo[60,60,160,160]" x="1606" y="961" width="284" height="284"/>
+    <SubTexture name="bg-renderer-dark[60,60,120,120]" x="938" y="1384" width="244" height="244"/>
+    <SubTexture name="bg-renderer-light[60,60,120,120]" x="2" y="1693" width="244" height="244"/>
+    <SubTexture name="bg-result-panel[140,130,90]" x="438" y="244" width="416" height="348" frameX="-2" frameY="-3" frameWidth="420" frameHeight="352"/>
+    <SubTexture name="bg-reward-itemrender" x="1202" y="629" width="326" height="200" frameX="0" frameY="-10" frameWidth="326" frameHeight="210"/>
+    <SubTexture name="bg-score-result[100,80]" x="2" y="737" width="276" height="154"/>
+    <SubTexture name="bg-top" x="1228" y="392" width="394" height="118"/>
+    <SubTexture name="bg-txt-lose" x="1227" y="512" width="369" height="115" frameX="0" frameY="0" frameWidth="373" frameHeight="115"/>
+    <SubTexture name="bg-txt-win" x="856" y="416" width="369" height="115" frameX="0" frameY="0" frameWidth="373" frameHeight="115"/>
+    <SubTexture name="bg[38,38,46,46]" x="1917" y="342" width="120" height="120"/>
+    <SubTexture name="btn-add-down" x="1892" y="1130" width="106" height="112" frameX="-8" frameY="-8" frameWidth="122" frameHeight="120"/>
+    <SubTexture name="btn-add-up" x="1892" y="1016" width="106" height="112" frameX="-8" frameY="-8" frameWidth="122" frameHeight="120"/>
+    <SubTexture name="btn-blue-down[100,80]" x="1458" y="1247" width="258" height="236" frameX="-1" frameY="-11" frameWidth="260" frameHeight="248"/>
+    <SubTexture name="btn-blue-small-down" x="256" y="1571" width="164" height="164" frameX="0" frameY="-8" frameWidth="164" frameHeight="172"/>
+    <SubTexture name="btn-blue-small-up" x="272" y="963" width="164" height="164" frameX="0" frameY="-8" frameWidth="164" frameHeight="172"/>
+    <SubTexture name="btn-blue-up[100,80]" x="698" y="1145" width="258" height="236" frameX="-1" frameY="-11" frameWidth="260" frameHeight="248"/>
+    <SubTexture name="btn-bule-ss-down" x="2" y="1505" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-bule-ss-down[100,100]" x="2" y="1505" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-bule-ss-up" x="430" y="1290" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-bule-ss-up[100,100]" x="430" y="1290" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-green-L-down[110,80]" x="1624" y="695" width="288" height="264" frameX="-1" frameY="-9" frameWidth="290" frameHeight="274"/>
+    <SubTexture name="btn-green-L-up[110,80]" x="1624" y="429" width="288" height="264" frameX="-1" frameY="-9" frameWidth="290" frameHeight="274"/>
+    <SubTexture name="btn-green-M-down[100,80]" x="2" y="893" width="268" height="234" frameX="-1" frameY="-11" frameWidth="270" frameHeight="250"/>
+    <SubTexture name="btn-green-M-up[100,80]" x="438" y="788" width="268" height="234" frameX="-1" frameY="-11" frameWidth="270" frameHeight="250"/>
+    <SubTexture name="btn-hero-down" x="256" y="1129" width="172" height="270" frameX="-4" frameY="-10" frameWidth="182" frameHeight="284"/>
+    <SubTexture name="btn-hero-up" x="1718" y="1247" width="172" height="270" frameX="-4" frameY="-10" frameWidth="182" frameHeight="284"/>
+    <SubTexture name="btn-my-down" x="426" y="1478" width="252" height="184" frameX="-4" frameY="-10" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-my-up" x="684" y="1383" width="252" height="184" frameX="-4" frameY="-10" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-note-down-s" x="280" y="853" width="104" height="108" frameX="-8" frameY="-9" frameWidth="120" frameHeight="120"/>
+    <SubTexture name="btn-note-up-s" x="1892" y="1244" width="104" height="108" frameX="-8" frameY="-9" frameWidth="120" frameHeight="120"/>
+    <SubTexture name="btn-play2-down" x="2" y="1317" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-play2-up" x="2" y="1129" width="252" height="186" frameX="-4" frameY="-8" frameWidth="260" frameHeight="194"/>
+    <SubTexture name="btn-regular-bluish-down-m[100,60]" x="958" y="1183" width="227" height="199" frameX="-1" frameY="-14" frameWidth="229" frameHeight="215"/>
+    <SubTexture name="btn-regular-bluish-up-m[100,60]" x="1688" y="228" width="227" height="199" frameX="-1" frameY="-14" frameWidth="229" frameHeight="215"/>
+    <SubTexture name="btn-sale-down" x="648" y="1832" width="212" height="166" frameX="-1" frameY="0" frameWidth="214" frameHeight="166"/>
+    <SubTexture name="btn-sale-up" x="462" y="1664" width="212" height="166" frameX="-1" frameY="0" frameWidth="214" frameHeight="166"/>
+    <SubTexture name="btn-toggle-down[60,18]" x="1918" y="2" width="128" height="110" frameX="-5" frameY="-5" frameWidth="138" frameHeight="120"/>
+    <SubTexture name="btn-toggle-up[60,18]" x="1914" y="464" width="132" height="116" frameX="-3" frameY="-4" frameWidth="138" frameHeight="120"/>
+    <SubTexture name="btn-vip-down" x="438" y="1024" width="258" height="264" frameX="-3" frameY="0" frameWidth="264" frameHeight="264"/>
+    <SubTexture name="btn-vip-note-down" x="1496" y="1023" width="108" height="106" frameX="-2" frameY="-6" frameWidth="112" frameHeight="112"/>
+    <SubTexture name="btn-vip-note-up" x="1496" y="915" width="108" height="106" frameX="-2" frameY="-6" frameWidth="112" frameHeight="112"/>
+    <SubTexture name="btn-vip-up" x="852" y="879" width="260" height="264" frameX="-2" frameY="0" frameWidth="264" frameHeight="264"/>
+    <SubTexture name="check-default" x="778" y="744" width="74" height="74" frameX="-1" frameY="-1" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="check-select" x="778" y="668" width="74" height="74" frameX="-1" frameY="-1" frameWidth="76" frameHeight="76"/>
+    <SubTexture name="dian1" x="2000" y="1128" width="38" height="68"/>
+    <SubTexture name="dian2" x="2000" y="1058" width="38" height="68"/>
+    <SubTexture name="empty" x="1624" y="392" width="32" height="32"/>
+    <SubTexture name="guoqi" x="1918" y="114" width="126" height="126"/>
+    <SubTexture name="icon-close" x="1530" y="825" width="88" height="88" frameX="-11" frameY="-14" frameWidth="110" frameHeight="110"/>
+    <SubTexture name="icon-cup" x="280" y="737" width="156" height="114" frameX="0" frameY="-2" frameWidth="156" frameHeight="116"/>
+    <SubTexture name="icon-gem" x="1530" y="629" width="92" height="106" frameX="-13" frameY="-8" frameWidth="118" frameHeight="118"/>
+    <SubTexture name="icon-heart" x="1914" y="916" width="110" height="98" frameX="0" frameY="-11" frameWidth="110" frameHeight="118"/>
+    <SubTexture name="icon-help" x="708" y="788" width="68" height="100" frameX="-21" frameY="-9" frameWidth="110" frameHeight="110"/>
+    <SubTexture name="icon-inbox" x="708" y="998" width="88" height="68" frameX="-1" frameY="-15" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="icon-invite" x="1114" y="947" width="84" height="66" frameX="-3" frameY="-15" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="icon-no" x="1114" y="1015" width="82" height="84" frameX="-1" frameY="0" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="icon-return-m" x="778" y="594" width="76" height="72" frameX="-7" frameY="-13" frameWidth="90" frameHeight="90"/>
+    <SubTexture name="icon-return" x="1530" y="737" width="92" height="86" frameX="-10" frameY="-16" frameWidth="110" frameHeight="110"/>
+    <SubTexture name="icon-setting" x="708" y="892" width="104" height="104" frameX="-3" frameY="-6" frameWidth="110" frameHeight="110"/>
+    <SubTexture name="icon-skill-1" x="1458" y="1131" width="72" height="70" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
+    <SubTexture name="icon-skill-2" x="1532" y="1131" width="72" height="68" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
+    <SubTexture name="icon-skill-3" x="778" y="820" width="72" height="70" frameX="0" frameY="-1" frameWidth="72" frameHeight="72"/>
+    <SubTexture name="icon-stop" x="1114" y="1101" width="80" height="80" frameX="-15" frameY="-18" frameWidth="110" frameHeight="110"/>
+    <SubTexture name="icon-tpoint" x="1914" y="734" width="114" height="114" frameX="-4" frameY="-2" frameWidth="118" frameHeight="118"/>
+    <SubTexture name="icon-yes" x="1114" y="879" width="84" height="66" frameX="-1" frameY="-9" frameWidth="86" frameHeight="86"/>
+    <SubTexture name="ko" x="256" y="1401" width="168" height="168"/>
+    <SubTexture name="line" x="1496" y="863" width="28" height="46"/>
+    <SubTexture name="progress-blue-fill-s[18,1]" x="1496" y="831" width="32" height="30" frameX="-3" frameY="-3" frameWidth="38" frameHeight="36"/>
+    <SubTexture name="progress-track-s[18,1]" x="2000" y="1198" width="38" height="36"/>
+    <SubTexture name="progress-vip-fill[18,1]" x="2000" y="1236" width="34" height="30" frameX="-4" frameY="-5" frameWidth="42" frameHeight="40"/>
+    <SubTexture name="progress-vip-track[18,1]" x="2000" y="1016" width="42" height="40"/>
+    <SubTexture name="rewards-list-title-img" x="856" y="244" width="370" height="170"/>
+    <SubTexture name="tab-down[60,60,100,100]" x="248" y="1791" width="212" height="212" frameX="-4" frameY="-4" frameWidth="220" frameHeight="220"/>
+    <SubTexture name="tab-up[60,60,100,100]" x="680" y="1569" width="220" height="220"/>
+    <SubTexture name="time" x="438" y="594" width="338" height="192" frameX="0" frameY="0" frameWidth="346" frameHeight="192"/>
+    <SubTexture name="vip-info" x="1246" y="2" width="670" height="224" frameX="0" frameY="-13" frameWidth="670" frameHeight="240"/>
+    <SubTexture name="win" x="1914" y="582" width="130" height="150" frameX="0" frameY="-10" frameWidth="130" frameHeight="160"/>
 </TextureAtlas>

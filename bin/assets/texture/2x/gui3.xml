@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:8f92a2a8e81bd5cb548927fdab16ca60$ -->
+<!-- $TexturePacker:SmartUpdate:99a4ff21aa9d1b7d4152a3eeb0b1eb82$ -->
 <TextureAtlas imagePath="gui3.png">
     <SubTexture name="game-graphics" x="2" y="2" width="1242" height="930"/>
-    <SubTexture name="bg-game-tile[0,0,0,0]" x="1246" y="2" width="344" height="344"/>
+    <SubTexture name="game-tile" x="1246" y="2" width="344" height="344"/>
     <SubTexture name="logo" x="2" y="934" width="816" height="412" frameX="-10" frameY="-22" frameWidth="826" frameHeight="434"/>
 </TextureAtlas>
