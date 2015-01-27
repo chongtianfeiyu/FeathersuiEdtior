@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<List libName="List"
+		  itemRenderer="FriendItemRenderer"
+		  backgroundSkin="bg-list-default[44,44,40,40]"
+		  dataNum="3"
+		  layout="vertical"
+		  gap="5"
+		  padding="10"
+		  x="100"
+		  y="100" />
+</data>

@@ -778,10 +778,10 @@ package feditor.utils
                 delete valueMap[FieldConst.LIST_ITEM_RENDERER];
             }
             
-            if (FieldConst.LIST_DATA_NUM in valueMap && isEditor)
+            if (isEditor)
             {
                 var arr:Array = [];
-                for (var i:int = 0; i < valueMap[FieldConst.LIST_DATA_NUM]; i++) 
+                for (var i:int = 0; i < (valueMap[FieldConst.LIST_DATA_NUM]||3); i++) 
                 {
                     //this is very import
                     arr.push({"label":String(i)+"?????"});
@@ -804,25 +804,25 @@ package feditor.utils
             
             if (FieldConst.LAYOUT_PADDING_LEFT in valueMap)
             {
-                list.padding = valueMap[FieldConst.LAYOUT_PADDING_LEFT];
+                list.paddingLeft = valueMap[FieldConst.LAYOUT_PADDING_LEFT];
                 delete valueMap[FieldConst.LAYOUT_PADDING_LEFT];
             }
             
             if (FieldConst.LAYOUT_PADDING_RIGHT in valueMap)
             {
-                list.padding = valueMap[FieldConst.LAYOUT_PADDING_RIGHT];
+                list.paddingRight = valueMap[FieldConst.LAYOUT_PADDING_RIGHT];
                 delete valueMap[FieldConst.LAYOUT_PADDING_RIGHT];
             }
             
             if (FieldConst.LAYOUT_PADDING_TOP in valueMap)
             {
-                list.padding = valueMap[FieldConst.LAYOUT_PADDING_TOP];
+                list.paddingTop = valueMap[FieldConst.LAYOUT_PADDING_TOP];
                 delete valueMap[FieldConst.LAYOUT_PADDING_TOP];
             }
             
             if (FieldConst.LAYOUT_PADDING_BOTTOM in valueMap)
             {
-                list.padding = valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
+                list.paddingBottom = valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
                 delete valueMap[FieldConst.LAYOUT_PADDING_BOTTOM];
             }
             

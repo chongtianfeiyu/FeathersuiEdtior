@@ -18,7 +18,7 @@
     <SubTexture name="bg-photo[60,60,160,160]" x="414" y="939" width="284" height="284"/>
     <SubTexture name="bg-renderer-dark[60,60,120,120]" x="453" y="1225" width="244" height="244"/>
     <SubTexture name="bg-renderer-light[60,60,120,120]" x="2" y="1776" width="244" height="244"/>
-    <SubTexture name="bg-result-panel[140,130,90]" x="2" y="408" width="416" height="348" frameX="-2" frameY="-3" frameWidth="420" frameHeight="352"/>
+    <SubTexture name="bg-result-panel[140,130,90,90]" x="2" y="408" width="416" height="348" frameX="-2" frameY="-3" frameWidth="420" frameHeight="352"/>
     <SubTexture name="bg-reward-itemrender" x="420" y="737" width="326" height="200" frameX="0" frameY="-10" frameWidth="326" frameHeight="210"/>
     <SubTexture name="bg-score-result[100,80]" x="1598" y="610" width="276" height="154"/>
     <SubTexture name="bg-top" x="1226" y="344" width="394" height="118"/>

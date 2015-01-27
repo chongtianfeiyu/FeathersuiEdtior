@@ -138,11 +138,11 @@ package feditor.views.cmp
                 }
             }
             
-            image.x = posx;
-            image.y = posy - image.height*0.5;
             image.name = imageName;
             image.width = textrue.width;
             image.height = textrue.height;
+			image.x = posx;
+            image.y = posy - image.height*0.5;
             
             if (image.y + image.height > Starling.current.stage.stageHeight)
             {
