@@ -15,6 +15,7 @@ package feditor.models
         private var _height:Number = 0;
         private var _color:Number = 0;
         private var _designImageAlpha:Number = 0.5;
+		private var _isDrop:Boolean = false;
         
         public function EStageProxy(data:Object=null) 
         {
@@ -63,6 +64,16 @@ package feditor.models
         {
             _designImageAlpha = value;
         }
+		
+		public function get isDrop():Boolean 
+		{
+			return _isDrop;
+		}
+		
+		public function set isDrop(value:Boolean):void 
+		{
+			_isDrop = value;
+		}
     }
 
 }

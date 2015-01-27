@@ -15,6 +15,7 @@ package feditor.views.pnl {
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.display.Sprite;
+	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
@@ -64,7 +65,7 @@ package feditor.views.pnl {
 			_imgScaleY = imgData.height / h;
 			
 			Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
-			Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP,nativeMouseEvtHandler);
+			//Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP,nativeMouseEvtHandler);
 		}
 		
 		private function nativeMouseEvtHandler(e:MouseEvent):void 
@@ -84,6 +85,7 @@ package feditor.views.pnl {
 			if (touch.phase == TouchPhase.ENDED)
 			{
 				hide();
+				dispatchEventWith(Event.SELECT,false,this._color);
 				return;
 			}
 			else

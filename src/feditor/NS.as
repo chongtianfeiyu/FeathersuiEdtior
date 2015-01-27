@@ -62,6 +62,7 @@ package feditor
 		public static const NOTE_HIDE_COLOR_DROPPER:String			= "note_hide_color_dropper";
 		public static const NOTE_RECT_FOCUS_UPDATE:String			= "note_rect_focus_update";
 		public static const NOTE_CONTROL_LIBRARY_UPDATE:String		= "note_control_library_update";
+		public static const NOTE_ERROR_NOTIFICATION:String			= "note_error_notification";		
         
         
         public function NS() 

@@ -66,10 +66,13 @@ package feditor.views.cmp
                 }
                 
                 this.xmlDefine = xmlDefine;
-                Builder.build(this, xmlDefine);
-                control = getChildAt(0);
-                control.x = posx;
-				control.y = posy;
+				Builder.build(this, xmlDefine);					
+				control = getChildAt(0);
+				if (control)
+				{
+					control.x = posx;
+					control.y = posy;
+				}
             }
             else
             {

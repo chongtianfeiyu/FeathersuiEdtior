@@ -3,6 +3,7 @@ package feditor.models
     import feditor.NS;
     import org.puremvc.as3.multicore.patterns.proxy.Proxy;
     import starling.display.DisplayObject;
+	import starling.display.DisplayObjectContainer;
     
     /**
      * ...
@@ -36,7 +37,7 @@ package feditor.models
                     changed = true;
                 }
             }
-            
+            sort();
             if(changed) sendNotification(NS.NOTE_SELECT_ITEM_DATA_UPDATE,_selectedItems);
         }
         
@@ -45,6 +46,7 @@ package feditor.models
             if (_selectedItems.indexOf(display)==-1)
             {
                 _selectedItems.push(display);
+				sort();
                 sendNotification(NS.NOTE_SELECT_ITEM_DATA_UPDATE,_selectedItems);
             }
         }
@@ -58,6 +60,21 @@ package feditor.models
                 sendNotification(NS.NOTE_SELECT_ITEM_DATA_UPDATE,_selectedItems);
             }
         }
+		
+		private function sort():void
+		{
+			if (_selectedItems.length)
+			{
+				var item:DisplayObject = _selectedItems[0];
+				var parent:DisplayObjectContainer = item.parent;
+				if (parent)
+				{
+					_selectedItems.sort(function(a:*, b:*):int {
+						return parent.getChildIndex(a) > parent.getChildIndex(b)?1: -1;
+					});
+				}
+			}
+		}
         
         public function getSelectedControl():*
         {

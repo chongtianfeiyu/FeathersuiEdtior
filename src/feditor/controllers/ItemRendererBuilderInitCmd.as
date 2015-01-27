@@ -38,8 +38,6 @@ package feditor.controllers
             }
             
             ItemRendererBuilder.initialize( map, VirtualItemRenderer);
-            
-            facade.removeCommand(NS.CMD_RENER_BUILDER_INIT);
         }
         
         private function get defaultControlProxy():DefaultControlProxy

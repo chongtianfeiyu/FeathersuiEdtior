@@ -55,7 +55,15 @@ package feditor.views
                     var xml:XML = notification.getBody() as XML;
                     if (xml)
                     {
-                        Builder.build(pnl.childContainer,xml);
+						try 
+						{
+							Builder.build(pnl.childContainer,xml);
+						}
+						catch (err:Error)
+						{
+							sendNotification(NS.NOTE_ERROR_NOTIFICATION,NAME+"-"+err.message);
+						}
+                        
                     }
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
@@ -99,6 +107,7 @@ package feditor.views
         
         private function editorStageTouchHandler(e:TouchEvent):void 
         {
+			if (estageProxy.isDrop) return;
             var touch:Touch = e.getTouch(Starling.current.stage);
             if (touch == null)
             {

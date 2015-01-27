@@ -15,7 +15,6 @@ package feditor.models
         public static const CONFIG:String = "config/library";
         public static const NAME:String = "DefaultControlProxy";
         
-        private var _xml:XML;
         private var nameList:Array; 
         private var propertiesMap:Object = { };
         private var classMap:Object = { };
@@ -27,7 +26,6 @@ package feditor.models
 		
 		public function updateXML():void
 		{
-			_xml = null;
 			nameList = null;
 			propertiesMap = { };
 			classMap = { };

@@ -75,13 +75,6 @@ package feditor.views.pnl
 		{
 			var index:int = buttonArr.indexOf(e.currentTarget);
 			dispatchEventWith(Event.SELECT, false, index);
-			
-			if (index == 0)
-			{
-				var tip:Label = new Label();
-				tip.text = "background picture only";
-				Callout.show(tip, e.currentTarget as DisplayObject);
-			}
 		}
 		
 	}

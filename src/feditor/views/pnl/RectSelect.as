@@ -4,6 +4,7 @@ package feditor.views.pnl {
 	import feditor.events.EventType;
     import feditor.utils.Geom;
 	import feditor.views.cmp.DragClip;
+	import flash.geom.Point;
     import flash.geom.Rectangle;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -140,6 +141,19 @@ package feditor.views.pnl {
         {
             super.touchEndHandler(e);
             handObj = null;
+			
+			if (e.ctrlKey)
+			{
+				var touch:Touch = e.getTouch(this);
+				if (touch)
+				{
+					var touchObj:DisplayObject = getHitChild(new Point(touch.globalX,touch.globalY));
+					if (touchObj)
+					{
+						dispatchEventWith(EventType.UNSELECT_CMP,false,touchObj);
+					}
+				}
+			}
 			
 			if (e.getTouch(this) && hasChanged)
 			{
@@ -370,6 +384,28 @@ package feditor.views.pnl {
             }
             return result;
         }
+		
+		private function getHitChild(globalPoint:Point):DisplayObject
+		{
+			var localPoint:Point=new Point();
+			var result:DisplayObject;
+			var last:int = childrens.length -1;
+			for (var i:int = last; i >=0 ; i--) 
+			{
+				var item:DisplayObject = childrens[i];
+				if (item)
+				{
+					localPoint = item.globalToLocal(globalPoint);
+					
+					if (item.hitTest(localPoint))
+					{
+						result = item;
+						break;
+					}
+				}
+			}
+			return result;
+		}
         
         public function getClip():Image
         {

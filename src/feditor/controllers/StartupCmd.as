@@ -11,7 +11,9 @@ package feditor.controllers
 	import feditor.models.SnapshotProxy;
 	import feditor.NS;
 	import feditor.Root;
+	import feditor.views.NotificationPnlMediator;
 	import feditor.views.pnl.ColorDropper;
+	import feditor.views.pnl.NotificationPanel;
 	import feditor.views.pnl.RectCheck;
 	import feditor.views.pnl.RectSelect;
 	import feditor.views.LibraryMediator;
@@ -117,6 +119,7 @@ package feditor.controllers
             facade.registerMediator(new RectSelectMediator(new RectSelect(root.editorStage.selectContainer)));
 			facade.registerMediator(new ColorDropperMediator(root.colorDropper));
 			facade.registerMediator(new ToolPanelMeditor(root.toolBox));
+			facade.registerMediator(new NotificationPnlMediator(new NotificationPanel()));
         }
         
     }

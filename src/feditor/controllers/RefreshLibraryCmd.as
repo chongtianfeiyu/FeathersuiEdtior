@@ -29,13 +29,13 @@ package feditor.controllers
 				{
 					AppFacade(facade).assets.removeXml(item.name.replace(".xml",""));
 				}
-				
+				defaultControlProxy.updateXML();
 				AppFacade(facade).assets.enqueue(file);
 				AppFacade(facade).assets.loadQueue(
 					function(ratio:Number):void {
 						if (ratio == 1){
-							defaultControlProxy.updateXML();
 							sendNotification(NS.NOTE_CONTROL_LIBRARY_UPDATE);
+							sendNotification(NS.CMD_RENER_BUILDER_INIT);
 					}
 				});
 			}

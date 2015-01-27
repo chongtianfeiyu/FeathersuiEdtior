@@ -5,11 +5,14 @@ package feditor.views
 	import feditor.models.ColorDropperProxy;
 	import feditor.models.EStageProxy;
 	import feditor.NS;
+	import feditor.utils.FieldConst;
 	import feditor.views.pnl.ColorDropper;
+	import feditor.vo.FieldVO;
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
+	import starling.events.Event;
 	
 	/**
 	 * ...
@@ -21,6 +24,21 @@ package feditor.views
 		public function ColorDropperMediator(viewComponent:Object=null) 
 		{
 			super(NAME, viewComponent);
+		}
+		
+		override public function onRegister():void 
+		{
+			super.onRegister();
+			pnl.addEventListener(Event.SELECT,colorSelectHandler);
+		}
+		
+		private function colorSelectHandler(e:Event):void 
+		{
+			var fieldVO:FieldVO = new FieldVO();
+			fieldVO.name = FieldConst.FONT_COLOR;
+			fieldVO.value = String(e.data);
+			sendNotification(NS.CMD_FIELD_UPDATE, fieldVO);
+			estageProxy.isDrop = false;
 		}
 		
 		override public function listNotificationInterests():Array 
@@ -38,9 +56,11 @@ package feditor.views
 				case NS.NOTE_HIDE_COLOR_DROPPER:
 					pnl.hide();
 					colorDropperProxy.color = pnl.color;
+					estageProxy.isDrop = false;
 					break;
 				case NS.NOTE_SHOW_COLOR_DROPPER:
-					pnl.show(colorDropperProxy.getSource(),estageProxy.witdth,estageProxy.height);
+					pnl.show(colorDropperProxy.getSource(), estageProxy.witdth, estageProxy.height);
+					estageProxy.isDrop = true;
 					break;
 				default:
 			}

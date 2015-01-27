@@ -47,14 +47,22 @@ package feditor.views
                     var arr:Array = notification.getBody() as Array;
                     if (arr) 
                     {
-                        if (arr[0] is XML || arr[0] is XMLList)
-                        {
-                            pnl.previewControl.apply(null,arr)
-                        }
-                        else
-                        {
-                            pnl.previewImage.apply(null, arr);
-                        }
+						try 
+						{
+							if (arr[0] is XML || arr[0] is XMLList)
+							{
+								pnl.previewControl.apply(null,arr)
+							}
+							else
+							{
+								pnl.previewImage.apply(null, arr);
+							}
+						}
+						catch (err:Error)
+						{
+							sendNotification(NS.NOTE_ERROR_NOTIFICATION,NAME + "-" +err.message);
+						}
+                        
                     }
                     break;
                 case NS.NOTE_PREVIEW_HIDE:

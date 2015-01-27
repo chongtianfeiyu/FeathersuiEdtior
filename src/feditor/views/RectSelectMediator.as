@@ -40,7 +40,13 @@ package feditor.views
             pnl.addEventListener(Event.CHANGE, changeHandler);
 			pnl.addEventListener(TouchPhase.ENDED, touchEndHandler);
 			pnl.addEventListener(TouchPhase.BEGAN, touchBegnHandler);
+			pnl.addEventListener(EventType.UNSELECT_CMP, unselectHandler);
         }
+		
+		private function unselectHandler(e:Event):void 
+		{
+			selectProxy.removeItem(e.data as DisplayObject);
+		}
 		
 		private function touchBegnHandler(e:Event):void 
 		{

@@ -36,20 +36,8 @@ package feditor.controllers
             if (first == null && first.parent == null) return;
             
             var parent:DisplayObjectContainer = first.parent;
-            
-            var index:int = int.MAX_VALUE;
-            var childIndex:int;
-            for each (var item:DisplayObject in selectProxy.selectedItems) 
-            {
-                childIndex = parent.getChildIndex(item);
-                index = index > childIndex?childIndex:index;
-            }
-            
-            if (index < 0 || index == int.MAX_VALUE)
-            {
-                trace("GroupCmd -> unkown error");
-                return;
-            }
+			
+			var index:int = parent.getChildIndex(selectProxy.selectedItems[0]);
             
             
             var box:LayoutGroup = GroupUtil.group(selectProxy.selectedItems, LayoutGroup) as LayoutGroup;
