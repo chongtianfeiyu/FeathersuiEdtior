@@ -10,7 +10,10 @@
 	<CloseButton />
 	<RegularGreenButton />
 	<ProgressBar />
+    <List/>
+    <HeroList/>
 	<VIPProgressBar />
 	<TestItemRenderer />
 	<FriendItemRenderer />
+    <InboxItemRenderer />
 </data>

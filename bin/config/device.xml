@@ -4,8 +4,8 @@
 TODO --- 各种分辨率配置
 -->
 <data>
-	<device name="iphone6+ x2" width="1242" height="2208" color="0x333333" />
 	<device name="iphone6+" width="1080" height="1920" color="0x333333" />
+    <device name="iphone6" width="750" height="1334" color="0x333333" />
 	<device name="iphone5" width="640" height="1136" color="0x333333" />
 	<device name="iphone4" width="640" height="960" color="0x333333" />
 	<device name="ipad4" width="1536" height="2048" color="0x333333" />

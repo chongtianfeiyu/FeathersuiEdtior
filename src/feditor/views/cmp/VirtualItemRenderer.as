@@ -40,10 +40,11 @@ package feditor.views.cmp
             var xml:* = defaultControlProxy.getControlXML(libName);
             if (xml)
             {
+                xml = new XML(xml);
+                xml.setName(Builder.XMLROOT);
+                this.width = xml.@width;
+                this.height = xml.@height;
                 Builder.build(this, xml);
-                var child:DisplayObject = getChildAt(0);
-                child.x = 0;
-                child.y = 0;
             }
         }
         

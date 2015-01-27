@@ -27,7 +27,7 @@ package feditor.controllers
 			{
 				for each (var item:File in file.getDirectoryListing()) 
 				{
-					AppFacade(facade).assets.removeXml(item.name.replace(".xml",""));
+					AppFacade(facade).assets.removeXml(item.name.replace(".xml", ""));
 				}
 				
 				AppFacade(facade).assets.enqueue(file);
