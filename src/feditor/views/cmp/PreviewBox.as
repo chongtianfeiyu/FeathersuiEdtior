@@ -44,7 +44,7 @@ package feditor.views.cmp
         {
 			childX = posx;
 			childY = posy;
-			
+            
             if (image)
             {
                 image.dispose();
@@ -64,7 +64,7 @@ package feditor.views.cmp
                     control.dispose();
                     control = null;
                 }
-                
+                removeChildren();
                 this.xmlDefine = xmlDefine;
 				Builder.build(this, xmlDefine);					
 				control = getChildAt(0);
@@ -114,12 +114,7 @@ package feditor.views.cmp
                 return;
             }
             
-            if (control && contains(control))
-            {
-                control.dispose();
-                removeChild(control);
-                control = null;
-            }
+            removeChildren();
             
             if (!image)
             {
@@ -189,18 +184,18 @@ package feditor.views.cmp
         {
             if (image && contains(image))
             {
-                removeChild(image);
+                image.dispose();
+                image = null;
             }
             
             xmlDefine = null;
             if (control)
             {
-                if (contains(control))
-                {
-                    removeChild(control);
-                }
                 control.dispose();
+                control = null;
             }
+            
+            removeChildren();
             
             if (PopUpManager.isPopUp(this))
             {

@@ -1,86 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<LayoutGroup touchGroup="false"
-				 width="287"
-				 x="624"
-				 height="357"
-				 y="1459"
-				 scaleY="1"
-				 scaleX="1">
-		<Image height="338"
-			   scaleX="0.6612903225806451"
-			   texture="bg-hero-level"
-			   scaleY="0.6563106796116505"
-			   name="itemRenderBg"
-			   width="287" />
-		<Image height="260"
-			   y="43"
-			   scaleX="6.5625"
-			   texture="empty"
-			   scaleY="8.125"
-			   name="heroImage"
-			   width="210"
-			   x="45" />
-		<Label fontName="BRLN"
-			   color="6244115"
-			   fontSize="46"
-			   name="starLabel"
-			   text="4"
-			   x="25"
-			   height="52"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="5"
-			   width="25.4" />
-		<Label fontName="BRLN"
-			   color="6244115"
-			   fontSize="46"
-			   text="lvl:"
-			   x="36"
-			   height="52"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="304"
-			   width="60.7" />
-		<LayoutGroup padding="0"
-					 paddingRight="0"
-					 paddingTop="0"
-					 layout="horizontal"
-					 paddingBottom="0"
-					 horizontalAlign="left"
-					 verticalAlign="top"
-					 touchGroup="true"
-					 width="131.85"
-					 gap="0"
-					 height="52"
-					 y="305"
-					 scaleY="1"
-					 x="107.70000000000005"
-					 scaleX="1"
-					 paddingLeft="0">
-			<Label fontName="BRLN"
-				   color="16777215"
-				   fontSize="46"
-				   name="curExpLabel"
-				   text="10/"
-				   height="52"
-				   scaleY="1"
-				   fontWeight="bold"
-				   scaleX="1"
-				   width="59.05" />
-			<Label fontName="BRLN"
-				   color="3936768"
-				   fontSize="46"
-				   name="totalExpLabel"
-				   text="100"
-				   x="59.05"
-				   height="52"
-				   scaleY="1"
-				   fontWeight="bold"
-				   scaleX="1"
-				   width="72.8" />
-		</LayoutGroup>
-	</LayoutGroup>
+	<LayoutGroup touchGroup="false" scaleY="1" x="172" y="870" scaleX="1" width="176" height="217">
+    <Image scaleY="0.5023148148148148" name="itemRenderBg" x="3" scaleX="0.3888888888888889" width="168" texture="bg-hero-level" height="216.99999999999997"/>
+    <Image scaleY="11.263157894736842" name="heroImage" scaleX="9.263157894736842" width="176" texture="empty" height="214"/>
+    <LayoutGroup touchGroup="true" scaleX="1" layout="horizontal" scaleY="1" verticalAlign="top" horizontalAlign="left" width="94" paddingBottom="0" height="32" paddingTop="0" paddingRight="0" paddingLeft="0" padding="0" x="67" y="185" gap="0">
+      <Label text="10/" scaleX="1" scaleY="1" fontWeight="bold" fontSize="30" color="16777215" fontName="BRLN" width="42" name="curExpLabel" height="31"/>
+      <Label text="100" scaleX="1" scaleY="1" x="42" fontWeight="bold" fontSize="30" color="3936768" fontName="BRLN" width="52" name="totalExpLabel" height="32"/>
+    </LayoutGroup>
+    <Label text="lvl:" scaleX="1" scaleY="1" x="20" fontWeight="bold" y="185" fontSize="30" color="6244115" fontName="BRLN" width="41" height="30"/>
+    <LayoutGroup touchGroup="false" scaleY="1" x="9" y="7" scaleX="1" width="36" height="36">
+      <Image scaleY="0.1565217391304348" scaleX="0.15126050420168066" width="36" texture="Star" height="36"/>
+      <Label text="4" scaleX="1" scaleY="1" x="8" fontWeight="bold" y="1" fontSize="30" color="6244115" fontName="BRLN" width="25" name="starLabel" height="31"/>
+    </LayoutGroup>
+  </LayoutGroup>
 </data>

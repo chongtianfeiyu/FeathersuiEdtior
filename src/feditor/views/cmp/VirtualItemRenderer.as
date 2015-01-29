@@ -20,12 +20,11 @@ package feditor.views.cmp
      */
     public class VirtualItemRenderer extends DefaultListItemRenderer 
     {
-        private var _itemRenderBg:DisplayObject;
         private var libName:String;
         public function VirtualItemRenderer(libName:String) 
         {
             super();
-            
+            hasLabelTextRenderer = false;
             this.libName = libName;
         }
         
@@ -48,42 +47,9 @@ package feditor.views.cmp
             }
         }
         
-        override protected function commitData():void 
-        {
-            super.commitData();
-            this.label = "";
-            
-        }
-        
         private function get defaultControlProxy():DefaultControlProxy
         {
             return AppFacade.getInstance().retrieveProxy(DefaultControlProxy.NAME) as DefaultControlProxy;
-        }
-        
-        public function get itemRenderBg():DisplayObject 
-        {
-            return _itemRenderBg;
-        }
-        
-        override public function get width():Number 
-        {
-            return super.width;
-        }
-        
-        override public function set width(value:Number):void 
-        {
-            super.width = value;
-        }
-        
-        public function set itemRenderBg(value:DisplayObject):void 
-        {
-            _itemRenderBg = value;
-            defaultSkin = value;
-            if (_itemRenderBg)
-            {
-                _itemRenderBg.x = 0;
-                _itemRenderBg.y = 0;
-            }
         }
     }
 

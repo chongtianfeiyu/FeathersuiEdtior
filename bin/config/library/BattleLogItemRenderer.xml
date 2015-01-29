@@ -1,124 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<LayoutGroup touchGroup="false"
-				 width="1170"
-				 x="119"
-				 height="266"
-				 y="284"
-				 scaleY="1"
-				 scaleX="1">
-		<Scale9Image height="266"
-					 scaleX="1"
-					 texture="bg-renderer-light[60,60,120,120]"
-					 scaleY="1"
-					 name="itemRenderBg"
-					 width="1170" />
-		<Label fontName="BRLN"
-			   color="16777215"
-			   fontSize="50"
-			   name="dateLabel"
-			   text="2015/1/10"
-			   x="442"
-			   height="67"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="173"
-			   width="447" />
-		<Label fontName="BRLN"
-			   color="5053726"
-			   fontSize="60"
-			   name="titleLabel"
-			   text="Daliy Login Reward"
-			   x="435"
-			   height="67"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="25"
-			   width="437" />
-		<Button scaleX="1"
-				paddingRight="0"
-				paddingTop="0"
-				fontSize="46"
-				fontWeight="bold"
-				downSkin="btn-play2-down"
-				paddingBottom="0"
-				fontName="BRLN"
-				color="16777215"
-				name="btn"
-				width="260"
-				x="878"
-				height="194"
-				defaultSkin="btn-play2-up"
-				y="29"
-				scaleY="1"
-				iconPosition="left"
-				gap="0"
-				padding="0"
-				paddingLeft="0" />
-		<Scale9Image height="233"
-					 y="10"
-					 scaleX="1"
-					 texture="bg-item-list[40,40,200,200]"
-					 scaleY="1"
-					 width="241"
-					 x="166" />
-		<Image height="221"
-			   y="15"
-			   scaleX="7.0625"
-			   texture="empty"
-			   scaleY="6.90625"
-			   name="photoImage"
-			   width="226"
-			   x="174" />
-		<Label fontName="BRLN"
-			   color="9581568"
-			   fontSize="54"
-			   name="detailLabel"
-			   text="Defeated you"
-			   x="440"
-			   height="67"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="109"
-			   width="431" />
-		<Image height="116"
-			   y="54"
-			   scaleX="1"
-			   texture="icon-cup"
-			   scaleY="1"
-			   name="cupIcon"
-			   width="156"
-			   x="6" />
-		<Image height="118"
-			   y="56"
-			   scaleX="1"
-			   texture="icon-tpoint"
-			   scaleY="1"
-			   name="tpointIcon"
-			   width="118"
-			   x="30" />
-		<Label fontName="BRLN"
-			   color="16777215"
-			   fontSize="46"
-			   name="numLabel"
-			   text="-10"
-			   x="40"
-			   height="52"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="191"
-			   width="80.3" />
-		<Image height="80"
-			   y="167"
-			   scaleX="2.5"
-			   texture="empty"
-			   scaleY="2.5"
-			   name="flagImage"
-			   width="80"
-			   x="342" />
-	</LayoutGroup>
+	<LayoutGroup touchGroup="false" scaleY="1" x="17" y="549" scaleX="1" width="711" height="157">
+    <Scale9Image scaleY="1" name="itemRenderBg" scaleX="1" width="711" texture="bg-renderer-light[30,30,50,50]" height="157"/>
+    <Label text="2015/1/10" scaleX="1" scaleY="1" x="265" fontWeight="bold" y="108" fontSize="38" color="16777215" fontName="BRLN" width="264" name="dateLabel" height="40"/>
+    <Label text="Daliy Login Reward" scaleX="1" scaleY="1" x="265" fontWeight="bold" y="21" fontSize="38" color="5054494" fontName="BRLN" width="263" name="titleLabel" height="43"/>
+    <Button scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-play2-down" width="156" name="btn" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="531" fontWeight="bold" y="18" gap="0" fontSize="46" defaultSkin="btn-play2-up"/>
+    <Scale9Image y="6" scaleY="1" x="102" scaleX="1" width="145" texture="bg-item-list[6,6,40,40]" height="145"/>
+    <Image y="9" scaleY="7.368421052631579" name="photoImage" x="106" scaleX="7.315789473684211" width="139" texture="empty" height="140"/>
+    <Label text="Defeated you" scaleX="1" scaleY="1" x="265" fontWeight="bold" y="69" fontSize="38" color="9581568" fontName="BRLN" width="260" name="detailLabel" height="44"/>
+    <Image y="38" scaleY="1" name="cupIcon" x="5" scaleX="1" width="94" texture="icon-cup" height="70"/>
+    <Image y="37.5" scaleY="1" name="tpointIcon" x="16.5" scaleX="1" width="71" texture="icon-tpoint" height="71"/>
+    <Label text="-10" scaleX="1" scaleY="1" x="20" fontWeight="bold" y="112" fontSize="38" color="16777215" fontName="BRLN" width="68" name="numLabel" height="40"/>
+    <Image y="106" scaleY="2.526315789473684" name="flagImage" x="207" scaleX="2.526315789473684" width="48" texture="empty" height="48"/>
+  </LayoutGroup>
 </data>

@@ -38,6 +38,7 @@ package feditor.views.pnl
 			confirmButton = new Button();
 			confirmButton.styleName = Button.ALTERNATE_NAME_DANGER_BUTTON;
 			confirmButton.label = "close";
+            addChild(confirmButton);
 			
 			this.minWidth = 500;
 			
@@ -58,7 +59,7 @@ package feditor.views.pnl
 			
 			if (notificationList.dataProvider)
 			{
-				notificationList.dataProvider.addItem(note);
+				notificationList.dataProvider.addItemAt(note,0)
 			}
 			else
 			{

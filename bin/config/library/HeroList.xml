@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
 	<List paddingLeft="5"
-		  backgroundSkin="bg-list-default[44,44,40,40]"
+		  backgroundSkin="bg-list-default[30,30,12,12]"
 		  padding="10"
 		  gap="5"
 		  verticalAlign="top"
-		  width="1174"
+		  width="710"
 		  horizontalAlign="left"
 		  dataNum="3"
-		  height="370"
+		  height="226"
 		  paddingBottom="5"
 		  paddingTop="5"
 		  itemRenderer="HeroItemRenderer"

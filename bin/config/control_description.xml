@@ -27,6 +27,8 @@
         <alpha/>
         <visible/>
         <touchable/>
+        <scaleX/>
+        <scaleY/>
     </Scale3Image>
     <Scale9Image>
         <name/>

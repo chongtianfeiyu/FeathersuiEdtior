@@ -1,73 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<LayoutGroup width="1170"
-				 height="265"
-				 touchGroup="false">
-		<Scale9Image height="265"
-					 scaleX="1"
-					 texture="bg-renderer-light[60,60,120,120]"
-					 scaleY="1"
-					 name="itemRenderBg"
-					 width="1170" />
-		<Label fontName="BRLN"
-			   color="16777215"
-			   fontSize="50"
-			   name="dateLabel"
-			   text="2014/12/21"
-			   x="288"
-			   height="67.8"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="172"
-			   width="304.9" />
-		<Label fontName="BRLN"
-			   color="9844224"
-			   fontSize="55"
-			   name="titleLabel"
-			   text="Daily Login Reward"
-			   x="281"
-			   height="67"
-			   scaleY="1"
-			   fontWeight="bold"
-			   scaleX="1"
-			   y="50"
-			   width="583" />
-		<Button scaleX="1"
-				paddingRight="0"
-				paddingTop="0"
-				fontSize="60"
-				fontWeight="bold"
-				paddingBottom="0"
-				iconPosition="left"
-				fontName="BRLN"
-				color="16777215"
-				label="Help!"
-				name="btn"
-				width="267"
-				x="881"
-				height="196"
-				defaultSkin="btn-green-M-up[100,80]"
-				y="32"
-				scaleY="1"
-				downSkin="btn-green-M-down[100,80]"
-				gap="0"
-				padding="0"
-				paddingLeft="0" />
-		<Scale9Image height="230"
-					 y="20"
-					 scaleX="1"
-					 texture="bg-item-list[40,40,200,200]"
-					 scaleY="1"
-					 width="230"
-					 x="21" />
-		<Image height="220"
-			   y="26"
-			   scaleX="6.875"
-			   texture="empty"
-			   scaleY="6.875"
-			   name="image"
-			   width="220"
-			   x="26" />
-	</LayoutGroup>
+	<LayoutGroup touchGroup="false" scaleY="1" x="20" y="707" scaleX="1" width="705" height="156">
+    <Scale9Image scaleY="1" name="itemRenderBg" scaleX="1" width="705" texture="bg-renderer-light[30,30,50,50]" height="156"/>
+    <Label text="2014/12/21" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="72" fontSize="38" color="16777215" fontName="BRLN" width="329" name="dateLabel" height="43"/>
+    <Label text="Daily Login Reward" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="19" fontSize="38" color="9844224" fontName="BRLN" width="357" name="titleLabel" height="49"/>
+    <Button scaleY="1" fontName="BRLN" scaleX="1" label="Help!" color="16777215" downSkin="btn-green-M-down[70,30]" width="162" name="btn" paddingBottom="0" height="128" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="526" fontWeight="bold" y="13" gap="0" fontSize="36" defaultSkin="btn-green-M-up[70,30]"/>
+    <Scale9Image y="7" scaleY="1" x="12" scaleX="1" width="140" texture="bg-item-list[6,6,40,40]" height="140"/>
+    <Image y="9" scaleY="7.157894736842105" name="image" x="14" scaleX="7.157894736842105" width="136" texture="empty" height="136"/>
+  </LayoutGroup>
 </data>

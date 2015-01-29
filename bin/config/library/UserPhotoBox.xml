@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+    <LayoutGroup touchGroup="false" scaleX="1" scaleY="1" x="211" y="120" width="187" height="238">
+        <Scale9Image scaleY="1" texture="bg-photo[30,30,50,50]" scaleX="1" width="170" height="170"/>
+        <Image y="14" scaleY="7.578947368421052" x="12" texture="empty" scaleX="7.578947368421052" width="144" name="photoImage" height="144"/>
+        <Label text="lvl.999" scaleX="1" scaleY="1" x="21" fontWeight="bold" y="168.64999999999998" fontSize="36" fontName="BRLN" width="109.7" name="levelLabel" color="6447714" height="40.7"/>
+        <Image y="103" scaleY="3.789473684210526" x="115" texture="empty" scaleX="3.789473684210526" width="72" name="flagImage" height="72"/>
+        <ProgressBar backgroundSkin="progress-track-s[10,1]" scaleX="1" scaleY="1" x="7" y="216" width="150" name="expProgressBar" fillSkin="progress-blue-fill-s[10,1]" height="22"/>
+      </LayoutGroup>
+</data>

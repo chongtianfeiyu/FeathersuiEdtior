@@ -1,82 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<LayoutGroup touchGroup="false"
-				 width="1170"
-				 height="214">
-		<Scale9Image height="214"
-					 texture="bg-renderer-light[60,60,120,120]"
-					 name="itemRenderBg"
-					 width="1170" />
-		<Label fontName="BRLN"
-			   color="16777215"
-			   fontSize="60"
-			   text="99,999,999"
-			   x="345"
-			   height="67.8"
-			   y="93"
-			   width="304.9"
-			   fontWeight="bold" />
-		<Label fontName="BRLN"
-			   color="65280"
-			   fontSize="60"
-			   text="Me"
-			   x="342"
-			   height="67.8"
-			   y="34"
-			   width="79.2"
-			   fontWeight="bold" />
-		<Button gap="0"
-				paddingRight="0"
-				paddingTop="0"
-				fontSize="48"
-				fontWeight="bold"
-				paddingBottom="0"
-				downSkin="btn-play2-down"
-				fontName="BRLN"
-				color="16777215"
-				defaultSkin="btn-play2-up"
-				width="260"
-				x="874"
-				height="190"
-				y="6"
-				iconPosition="left"
-				padding="0"
-				paddingLeft="0" />
-		<Button gap="0"
-				paddingRight="0"
-				paddingTop="0"
-				fontSize="48"
-				fontWeight="bold"
-				paddingBottom="0"
-				downSkin="btn-my-down"
-				fontName="BRLN"
-				color="16777215"
-				defaultSkin="btn-my-up"
-				width="260"
-				x="874"
-				height="190"
-				y="6"
-				iconPosition="left"
-				padding="0"
-				paddingLeft="0" />
-		<Scale9Image height="200"
-					 y="8"
-					 texture="bg-photo[60,60,160,160]"
-					 width="200"
-					 x="117" />
-		<Scale3Image height="80"
-					 y="132"
-					 texture="bg-item[60,60,120,120]"
-					 width="80"
-					 x="255" />
-		<Label fontName="BRLN"
-			   color="16777215"
-			   fontSize="46"
-			   text="1"
-			   x="58"
-			   height="52"
-			   y="77"
-			   width="14.85"
-			   fontWeight="bold" />
-	</LayoutGroup>
+	<LayoutGroup touchGroup="false" scaleY="1" x="20" y="598" scaleX="1" width="708" height="127">
+    <Scale9Image scaleY="1" name="itemRenderBg" scaleX="1" width="708" texture="bg-renderer-light[30,30,50,50]" height="127"/>
+    <Label text="Sunny" scaleX="1" scaleY="1" x="201" fontWeight="bold" y="23" fontSize="38" color="5184801" fontName="BRLN" width="260" name="nameLabel" height="52"/>
+    <Scale9Image y="5" scaleY="1" x="69" scaleX="1" width="120" texture="bg-photo[30,30,50,50]" height="120"/>
+    <Image y="15" scaleY="5.2631578947368425" name="photoImage" x="80" scaleX="5.2631578947368425" width="100" texture="empty" height="100"/>
+    <Label text="99,999,999" scaleX="1" scaleY="1" x="203" fontWeight="bold" y="67" fontSize="38" color="16777215" fontName="BRLN" width="208" name="scoreLabel" height="44"/>
+    <Image y="74" scaleY="2.6315789473684212" name="flagImage" x="147" scaleX="2.6315789473684212" width="50" texture="empty" height="50"/>
+    <Label text="1" scaleX="1" scaleY="1" x="31" fontWeight="bold" y="41.299999999999955" fontSize="34" color="16777215" fontName="BRLN" width="10.95" name="rankLabel" height="38.45"/>
+    <Button scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-play2-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-play2-up"/>
+    <Button scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-my-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-my-up"/>
+  </LayoutGroup>
 </data>

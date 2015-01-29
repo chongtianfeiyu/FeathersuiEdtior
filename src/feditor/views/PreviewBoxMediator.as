@@ -3,6 +3,7 @@ package feditor.views
     import feditor.events.EventType;
     import feditor.NS;
     import feditor.views.cmp.PreviewBox;
+    import flash.utils.getTimer;
     import org.puremvc.as3.multicore.interfaces.INotification;
     import org.puremvc.as3.multicore.patterns.mediator.Mediator;
     import starling.display.DisplayObject;

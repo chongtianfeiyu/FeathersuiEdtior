@@ -2,6 +2,7 @@ package feditor.views
 {
 	import feditor.NS;
 	import feditor.views.pnl.NotificationPanel;
+    import flash.utils.getTimer;
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
 	
@@ -30,7 +31,7 @@ package feditor.views
 			switch (notification.getName()) 
 			{
 				case NS.NOTE_ERROR_NOTIFICATION:
-					pnl.showNotification(notification.getBody());
+					pnl.showNotification(notification.getBody()+"-"+getTimer());
 				break;
 				default:
 			}

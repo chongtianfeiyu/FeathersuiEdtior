@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:9c035b13ee3c18c6460305b70b7881f8$ -->
-<TextureAtlas imagePath="gui4.png">
-    <SubTexture name="duizhan-lose" x="662" y="2" width="658" height="1304"/>
-    <SubTexture name="duizhan-win" x="2" y="2" width="658" height="1304"/>
-</TextureAtlas>

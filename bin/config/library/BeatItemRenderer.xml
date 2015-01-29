@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
-	<LayoutGroup touchGroup="true"
-				 width="298"
-				 x="87"
-				 height="342"
-				 y="1180"
-				 scaleY="1"
-				 scaleX="1">
-		<Image height="110"
-			   y="174"
-			   scaleX="1"
-			   texture="icon-help"
-			   scaleY="1"
-			   name="questionImage"
-			   width="110"
-			   x="74" />
-		<Image height="168"
-			   scaleX="1"
-			   texture="ko"
-			   scaleY="1"
-			   name="koImage"
-			   width="168"
-			   x="130" />
-		<Image height="310"
-			   y="32"
-			   scaleX="8.125"
-			   texture="empty"
-			   scaleY="9.6875"
-			   name="bossImage"
-			   width="260" />
-	</LayoutGroup>
+	<LayoutGroup touchGroup="false" scaleY="1" x="50" y="712" scaleX="1" width="183" height="212.99999999999997">
+    <Image y="20" scaleY="10.157894736842104" name="bossImage" scaleX="8.736842105263158" width="166" texture="empty" height="192.99999999999997"/>
+    <Image y="93" scaleY="1" name="questionImage" x="46" scaleX="1" width="66" texture="icon-help" height="66"/>
+    <Image scaleY="1" name="koImage" x="82" scaleX="1" width="101" texture="ko" height="101"/>
+  </LayoutGroup>
 </data>

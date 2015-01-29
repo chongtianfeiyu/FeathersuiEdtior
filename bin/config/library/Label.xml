@@ -2,6 +2,6 @@
 <data>
 	<Label text="text"
 		   color="0xffffff"
-		   fontSize="46"
+		   fontSize="36"
 		   fontWeight="bold" />
 </data>
