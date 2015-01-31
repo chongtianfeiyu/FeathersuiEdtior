@@ -1,5 +1,6 @@
 package feditor.controllers 
 {
+	import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
     import feditor.models.ControlDescriptionProxy;
     import feditor.NS;
@@ -57,40 +58,17 @@ package feditor.controllers
                         return -1;
                     });
                 }
-                
-                //if (cvo.target is LayoutGroup)
-                //{
-                    //var hasLayout:Boolean = false;
-                    //for each (var item:FieldVO in cvo.fields) 
-                    //{
-                        //if (item.name == FieldConst.LAYOUT)
-                        //{
-                            //if (item.value == FieldConst.LAYOUT_HORIZONTAL || item.value == FieldConst.LAYOUT_VERTICAL)
-                            //{
-                                //hasLayout = true;
-                            //}
-                            //break;
-                        //}
-                    //}
-                    //
-                    //for each (item in cvo.fields) 
-                    //{
-                        //switch (item.name) 
-                        //{
-                            //case FieldConst.LAYOUT_GAP:
-                            //case FieldConst.LAYOUT_PADDING:
-                            //case FieldConst.LAYOUT_PADDING_LEFT:
-                            //case FieldConst.LAYOUT_PADDING_RIGHT:
-                            //case FieldConst.LAYOUT_PADDING_TOP:
-                            //case FieldConst.LAYOUT_PADDING_BOTTOM:
-                            //case FieldConst.LAYOUT_HORIZONTAL_ALIGN:
-                            //case FieldConst.LAYOUT_VERTICAL_ALIGN:
-                                //item.editable = hasLayout;
-                            //break;
-                            //default:
-                        //}
-                    //}
-                //}
+				
+				if (cvo.target is Label)
+				{
+					for each (var item:FieldVO in cvo.fields) 
+					{
+						if (item.name == "width" || item.name == "height")
+						{
+							item.editable = false;
+						}
+					}
+				}
                 
                 var typeDes:FieldVO = new FieldVO();
                 typeDes.name = FieldConst.THE_TYPE;

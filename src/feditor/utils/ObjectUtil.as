@@ -42,6 +42,7 @@ package feditor.utils
                     }
                     catch (err:Error)
                     {
+						trace(err);
                     }
                 }
             }

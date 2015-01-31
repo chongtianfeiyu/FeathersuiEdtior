@@ -49,6 +49,9 @@ package feditor.views
 				case 6:
 					sendNotification(NS.CMD_ALIGN, selectProxy.selectedItems, "verticalMiddle");
 					break;
+				case 7:
+					sendNotification(NS.NOTE_STRUCTURE_SHOW);
+					break;
 				default:
 			}
 		}

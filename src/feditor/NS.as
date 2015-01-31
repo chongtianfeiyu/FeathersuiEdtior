@@ -41,6 +41,7 @@ package feditor
 		public static const CMD_UNDO:String           				= "cmd_undo";
 		public static const CMD_REDO:String           				= "cmd_redo";
 		public static const CMD_CONTROL_LIBRARY_REFRESH:String		= "cmd_control_library_refresh";
+		public static const CMD_EXPORT_AS_CODE:String				= "cmd_exprot_as_code";
         
         public static const NOTE_WELLECOM:String                    = "note_wellcome";
         public static const NOTE_SHOW_PROPERTY:String               = "note_show_property";
@@ -62,7 +63,9 @@ package feditor
 		public static const NOTE_HIDE_COLOR_DROPPER:String			= "note_hide_color_dropper";
 		public static const NOTE_RECT_FOCUS_UPDATE:String			= "note_rect_focus_update";
 		public static const NOTE_CONTROL_LIBRARY_UPDATE:String		= "note_control_library_update";
-		public static const NOTE_ERROR_NOTIFICATION:String			= "note_error_notification";		
+		public static const NOTE_ERROR_NOTIFICATION:String			= "note_error_notification";
+		public static const NOTE_STRUCTURE_SHOW:String				= "note_structure_show";
+		public static const NOTE_STRUCTURE_HIDE:String				= "note_structure_hide";
         
         
         public function NS() 

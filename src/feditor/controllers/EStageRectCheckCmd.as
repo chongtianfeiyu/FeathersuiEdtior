@@ -33,11 +33,14 @@ package feditor.controllers
             
             for each (var item:DisplayObject in editorStage.getChildrens()) 
             {
-                itemRect = new Rectangle(item.x, item.y, item.width, item.height);
-                if(Geom.isCross(rect,itemRect))
-                {
-                    inRectElements.push(item);
-                }
+				if (item.visible)
+				{
+					itemRect = new Rectangle(item.x, item.y, item.width, item.height);
+					if(Geom.isCross(rect,itemRect))
+					{
+						inRectElements.push(item);
+					}
+				}
             }
             
             sendNotification(NS.NOTE_RESULT_RECT_CHECK, inRectElements);

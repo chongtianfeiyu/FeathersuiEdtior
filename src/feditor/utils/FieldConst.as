@@ -69,6 +69,12 @@ package feditor.utils
         static public const LIST_BACKGROUND_SKIN:String = "backgroundSkin";
         static public const LIST_ITEM_RENDERER:String = "itemRenderer";
         static public const LIST_DATA_NUM:String = "dataNum";
+		
+		//script
+		static public const SCRIPT:String = "script";
+		
+		//empty
+		static public const EMPTY:String = "empty";
     }
 
 }

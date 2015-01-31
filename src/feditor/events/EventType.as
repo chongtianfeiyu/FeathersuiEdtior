@@ -14,6 +14,8 @@ package feditor.events
 		
 		public static const DRAG_RECT:String = "drag_select";
 		public static const DROPPER:String = "dropper";
+		
+		public static const REFRESH:String = "refresh";
     }
 
 }

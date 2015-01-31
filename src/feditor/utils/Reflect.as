@@ -13,6 +13,7 @@ package feditor.utils
     import feathers.controls.text.TextFieldTextRenderer;
     import feathers.controls.TextInput;
     import feathers.controls.ToggleButton;
+	import feathers.core.FeathersControl;
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
     import feathers.display.TiledImage;
@@ -90,7 +91,6 @@ package feditor.utils
             result ||= { };
             if (display)
             {
-                
                 result.x = display.x;
                 result.y = display.y;
                 result.width = display.width;
@@ -101,6 +101,10 @@ package feditor.utils
                 result.visible = display.visible;
                 result.scaleX = display.scaleX;
                 result.scaleY = display.scaleY;
+				if (display as FeathersControl)
+				{
+					result.script = FeathersControl(display).styleName;
+				}
             }
             
             return result;
@@ -164,6 +168,8 @@ package feditor.utils
                 result = getElementFormatProperties(label.textRendererProperties.elementFormat,result);
                 result.text = label.text;
                 result.touchable = label.touchable;
+				result.maxWidth = label.maxWidth;
+                result.maxHeight = label.maxHeight;
             }
             return result;
         }
@@ -254,7 +260,7 @@ package feditor.utils
             if (image is Image)
             {
                 var img:Image = image as Image;
-                result[FieldConst.IMAGE_TEXTURE] = TextureMap.getTextureName(img.texture);
+                result[FieldConst.IMAGE_TEXTURE] = TextureMap.getTextureName(img.texture) || FieldConst.EMPTY;
             }
             else if (image is Scale3Image)
             {

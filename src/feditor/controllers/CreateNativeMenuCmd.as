@@ -26,7 +26,7 @@ package feditor.controllers
             var menuTree:Array = [
                 {
                     "name":"Poject", 
-                    "sub":["New","Open","Import","Save"] 
+                    "sub":["New","Open","Import","Exprot AS Code","Save"] 
                 },
                 {
                     "name":"tools",
@@ -64,6 +64,9 @@ package feditor.controllers
                     case "config":
                         AppFacade.getInstance().sendNotification(NS.CMD_OPEN_CONFIG);
                         break;
+					case "Exprot AS Code":
+						AppFacade.getInstance().sendNotification(NS.CMD_EXPORT_AS_CODE);
+						break;
                     default:
                 }
             }

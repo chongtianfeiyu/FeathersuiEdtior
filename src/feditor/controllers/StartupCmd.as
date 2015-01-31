@@ -26,6 +26,7 @@ package feditor.controllers
 	import feditor.views.RectCheckMediator;
 	import feditor.views.RectSelectMediator;
 	import feditor.views.RootMediator;
+	import feditor.views.StructurePnlMediator;
 	import feditor.views.ToolPanelMeditor;
 	import feditor.views.WellcomPnlMediator;
 	import org.puremvc.as3.multicore.interfaces.INotification;
@@ -92,6 +93,7 @@ package feditor.controllers
 			facade.registerCommand(NS.CMD_UNDO, UndoCmd);
 			facade.registerCommand(NS.CMD_REDO, RedoCmd);
 			facade.registerCommand(NS.CMD_CONTROL_LIBRARY_REFRESH, RefreshLibraryCmd);
+			facade.registerCommand(NS.CMD_EXPORT_AS_CODE, ExportAsCodeCmd);
         }
         
         private function regiseterProxy():void
@@ -120,6 +122,7 @@ package feditor.controllers
 			facade.registerMediator(new ColorDropperMediator(root.colorDropper));
 			facade.registerMediator(new ToolPanelMeditor(root.toolBox));
 			facade.registerMediator(new NotificationPnlMediator(new NotificationPanel()));
+			facade.registerMediator(new StructurePnlMediator());
         }
         
     }

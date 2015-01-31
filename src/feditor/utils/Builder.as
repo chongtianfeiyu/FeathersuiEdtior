@@ -13,6 +13,7 @@ package feditor.utils
     import feathers.controls.text.TextFieldTextRenderer;
     import feathers.controls.TextInput;
     import feathers.controls.ToggleButton;
+	import feathers.core.FeathersControl;
     import feathers.data.ListCollection;
     import feathers.display.Scale3Image;
     import feathers.display.Scale9Image;
@@ -40,7 +41,6 @@ package feditor.utils
     public class Builder 
     {
         //default
-        public static const LIB_NAME:String = "libName";
         public static const INJECT_FLAG:String = "name";
         public static const SCRIPT_FLAG:String = "script";
         public static const XMLROOT:String = "View";
@@ -78,29 +78,15 @@ package feditor.utils
             return surportClassPool[className] as Class;
         }
         
-        public static function build(container:DisplayObjectContainer, xml:*):DisplayObject
+        public static function build(container:DisplayObjectContainer, xml:*,scriptOwner:Object=null):DisplayObject
         {
             building = true;
-            var scriptResult:Object = {};
-            var result:* = createView(container, xml, container,scriptResult);
-            building = false;
-            
-            for(var funcName:String in scriptResult) 
-            {
-                try 
-                {
-                    scriptResult[funcName]();
-                }
-                catch (err:Error)
-                {
-                    trace("Builder.build - script call error: -" + funcName);
-                }
-            }
-            
+            var result:* = createView(container, xml, container,scriptOwner);
+            building = false;            
             return result;
         }
         
-        private static function createView(container:DisplayObjectContainer, xml:*,root:DisplayObjectContainer,scriptResult:Object):DisplayObject
+        private static function createView(container:DisplayObjectContainer, xml:*,root:DisplayObjectContainer,scriptOwner:Object):DisplayObject
         {
             var son:*;
             
@@ -111,6 +97,7 @@ package feditor.utils
                 var properties:Object = { };
                 
                 var inject:String;
+				var sciptParser:ScriptParser;
                 //self attributes
                 for each (var attr:XML in xml.attributes()) 
                 {
@@ -118,24 +105,25 @@ package feditor.utils
                     
                     switch (fieldName) 
                     {
-                        case LIB_NAME:
-                            break;
                         case INJECT_FLAG:
                             inject = String(attr);
-                            properties[fieldName] = String(attr);
+                            properties[fieldName] = parseString(String(attr));
                             break;
                         case SCRIPT_FLAG:
-                            if (scriptResult && root.hasOwnProperty(fieldName) && root[fieldName] is Function)
-                            {
-                                scriptResult[fieldName] = root[String(attr)];
-                            }
+                            if (scriptOwner) sciptParser = ScriptParser.parse(String(attr));
                             break;
                         default:
-                            properties[fieldName] = String(attr);
+							properties[fieldName] = parseString(String(attr));
                     }
                 }
-                
                 son = createInstance(def, properties);
+				
+				//execute script
+				if (sciptParser)
+				{
+					sciptParser.execute(scriptOwner,son);
+				}
+				
                 container.addChild(son);
             }
             
@@ -156,7 +144,7 @@ package feditor.utils
             //grandson nodes
             for each (var grandson:* in xml.children()) 
             {
-                DisplayObjectContainer(son).addChild(createView(son,grandson,root,scriptResult));
+                DisplayObjectContainer(son).addChild(createView(son,grandson,root,scriptOwner));
             }
             return son;
         }
@@ -167,6 +155,21 @@ package feditor.utils
             switch (def) 
             {
                 case Image:
+					if (args[FieldConst.IMAGE_TEXTURE] == FieldConst.EMPTY)
+					{
+						result = new Image(Texture.fromColor(args["width"], args["height"], isEditor?0x1fff0000:0));
+						delete args['width'];
+						delete args['height'];
+						delete args['scaleX'];
+						delete args['scaleY'];
+						//result = Assets.getImage(args[FieldConst.IMAGE_TEXTURE]);
+					}
+					else
+					{
+						result = Assets.getImage(args[FieldConst.IMAGE_TEXTURE]);
+					}
+                    delete args[FieldConst.IMAGE_TEXTURE];
+					break;
                 case Scale3Image:
                 case Scale9Image:
                 case TiledImage:
@@ -178,6 +181,14 @@ package feditor.utils
                     break;
             }
             
+			if (isEditor && def == Label)
+			{
+				delete args["width"];
+				delete args["height"];
+				delete args["maxWidth"];
+				delete args["maxHeight"];
+			}			
+			
             if(result) setFields(result,args);
             
             return result;
@@ -216,7 +227,7 @@ package feditor.utils
         
         public static function getFontDescription(properties:Object):FontDescription
         {
-            return new FontDescription(
+            return new FontDescription(  
                 properties.fontName, 
                 properties.fontWeight,
                 properties.fontPosture, 
@@ -259,8 +270,11 @@ package feditor.utils
             if (FieldConst.PROGRESS_BACKGROUND_SKIN in valueMap)
             {
                 progressBar.backgroundSkin = Assets.getImage(valueMap[FieldConst.PROGRESS_BACKGROUND_SKIN]);
-                progressBar.width = progressBar.backgroundSkin.width;
-                progressBar.height = progressBar.backgroundSkin.height;
+				if (progressBar.backgroundSkin)
+				{
+					progressBar.width = progressBar.backgroundSkin.width;
+					progressBar.height = progressBar.backgroundSkin.height;
+				}
                 delete valueMap[FieldConst.PROGRESS_BACKGROUND_SKIN];
             }
             
@@ -279,7 +293,7 @@ package feditor.utils
         {
             if (!label.textRendererProperties.elementFormat)
             {
-                label.styleProvider = null;
+                label.styleProvider = null;				
                 label.textRendererProperties.elementFormat = FontWorker.defaultElementFormat;
             }
             
@@ -300,7 +314,6 @@ package feditor.utils
                 delete valueMap[FieldConst.FONT_NAME];
                 delete valueMap[FieldConst.FONT_WEIGHT];
             }
-            
             setDisplayObjectFields(label,valueMap);
             
             return label;
@@ -404,35 +417,43 @@ package feditor.utils
         }
         
         private static function setDisplayObjectFields(display:DisplayObject,valueMap:Object):DisplayObject
-        {
+        {	
             for (var name:String in valueMap) 
             {
                 try 
-                {    
-                    if (name == "visible" || 
-                        name == "touchable" || 
-                        name == "isSelected" || 
-                        name == "isEditable" ||
-                        name == "displayAsPassword" ||
-                        name == "maintainAspectRatio"
-                        )
-                    {
-                        display[name] = valueMap[name]=="false"?false:true;
-                    }
-                    else if (name == "color")
-                    {
-                        display[name] = parseInt(valueMap[name],16);
-                    }
-                    else
-                    {
-                        display[name] = valueMap[name];
-                    }
+                {
+					display[name] = valueMap[name];
                 }
                 catch (err:Error)
                 {
                     trace("Builder.setDisplayObjectFields ::Set Fields Error - " + name);
                 }
             }
+			
+			if (valueMap)
+			{
+				try 
+				{
+					if ("scaleX" in valueMap["scaleX"] && valueMap["scaleX"] < 0)
+					{
+						display.scaleX = valueMap.scaleX;
+					}
+					
+					if ("scaleY" in valueMap["scaleY"]  && valueMap["scaleY"] < 0)
+					{
+						display.scaleY = valueMap.scaleY;
+					}
+				}
+				catch (err:Error)
+				{
+					trace("scalex scaley set error");
+				}
+				
+				if (isEditor && FieldConst.SCRIPT in valueMap && display as FeathersControl)
+				{
+					FeathersControl(display).styleName = valueMap[FieldConst.SCRIPT];
+				}
+			}
             
             return display;
         }

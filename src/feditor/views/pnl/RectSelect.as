@@ -1,5 +1,6 @@
 package feditor.views.pnl {
     import feathers.controls.Button;
+	import feathers.controls.Label;
     import feathers.controls.LayoutGroup;
 	import feditor.events.EventType;
     import feditor.utils.Geom;
@@ -369,6 +370,12 @@ package feditor.views.pnl {
                 display.height = clip.height;
                 display.x = clip.x;
                 display.y = clip.y;
+				
+				if (display is Label)
+				{
+					Label(display).maxWidth = display.width;
+					Label(display).maxHeight = display.height;
+				}
             }
         }
         
@@ -377,7 +384,7 @@ package feditor.views.pnl {
             var result:DisplayObject;
             for each (var item:DisplayObject in childrens) 
             {
-                if (item && e.getTouch(item))
+                if (item && e.getTouch(item) && item.visible)
                 {
                     return item;
                 }

@@ -193,6 +193,17 @@ package feditor.views
         
         private function editorStageKeyDownHandler(e:KeyboardEvent):void 
         {
+			switch (e.keyCode) 
+			{
+				case Keyboard.S:
+					if (e.ctrlKey)
+					{
+						sendNotification(NS.CMD_EXPORT_XML);
+					}
+				break;
+				default:
+			}
+			
             if (_isActive == false)
             {
                 trace("shortcut is invalid outof eidtor stage");

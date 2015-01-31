@@ -9,26 +9,7 @@ package feditor.utils
     public class Geom 
     {
         public static function getBound(displayList:Array):Rectangle 
-        {
-            //var left:int = int.MAX_VALUE;
-            //var top:int = int.MAX_VALUE;
-            //var right:int = int.MIN_VALUE;
-            //var bottom:int = int.MIN_VALUE;
-            //
-            //for each (var item:DisplayObject in displayList) 
-            //{
-                //if (item == null) continue;
-                //left = left > item.x?item.x:left;
-                //top = top > item.y?item.y:top;
-                //right = right < (item.x + item.width)?(item.x + item.width):right;
-                //bottom = bottom < (item.y +item.height)?(item.y +item.height):bottom;
-            //}
-            //
-            //var w:int = right - left;
-            //var h:int = bottom - top;
-            //
-            //return  new Rectangle(left, top, w, h);
-            
+        {            
             var rect:Rectangle = null;
             for each (var item:DisplayObject in displayList) 
             {
@@ -47,8 +28,6 @@ package feditor.utils
             }
             return rect||new Rectangle();
         }
-        
-        
         
         /**
          * 

@@ -57,6 +57,7 @@ package feditor.views.pnl {
 		
 		public function show(imgData:BitmapData,w:int,h:int):void
 		{
+			if (imgData == null) return;
 			this.visible = true;
 			this.x = -300;
 			this.bitmapdata = imgData;
@@ -65,13 +66,6 @@ package feditor.views.pnl {
 			_imgScaleY = imgData.height / h;
 			
 			Starling.current.stage.addEventListener(TouchEvent.TOUCH, touchHandler);
-			//Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_UP,nativeMouseEvtHandler);
-		}
-		
-		private function nativeMouseEvtHandler(e:MouseEvent):void 
-		{
-			System.setClipboard("0x"+this._color.toString(16));
-			Starling.current.nativeStage.removeEventListener(MouseEvent.MOUSE_UP,nativeMouseEvtHandler);
 		}
 		
 		private function touchHandler(e:TouchEvent):void 

@@ -55,7 +55,8 @@ package feditor.controllers
                 projectVO.width = parseInt(xml.@stageWidth);
                 projectVO.height = parseInt(xml.@stageHeight);
                 projectVO.color = parseInt(xml.@stageColor, 16);
-                projectVO.projectName = xml.@projectName;
+                //projectVO.projectName = xml.@projectName;
+				projectVO.projectName = fileRef.name.split(".")[0];
                 
                 (facade.retrieveProxy(ProjectProxy.NAME) as ProjectProxy).projectName = xml.@projectName;
                 sendNotification(NS.CMD_ESTAGE_INIT,projectVO);

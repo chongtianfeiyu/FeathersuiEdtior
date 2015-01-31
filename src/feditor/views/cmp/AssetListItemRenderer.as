@@ -6,6 +6,7 @@ package feditor.views.cmp
 	import flash.events.MouseEvent;
 	import flash.system.System;
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
     import starling.display.Image;
     import starling.events.Touch;
     import starling.events.TouchEvent;
@@ -20,7 +21,7 @@ package feditor.views.cmp
     {
         
         private var iconSize:int = 40;
-        private var image:Image;
+        private var image:DisplayObject;
         private var defaultTexture:Texture;
         private var w:int;
         
@@ -47,19 +48,22 @@ package feditor.views.cmp
         override protected function commitData():void 
         {
             super.commitData();
-            var texture:Texture = Assets.assets.getTexture(String(data));
-            if (texture)
+			
+			if (image)
+			{
+				image.removeFromParent(true);
+			}
+			
+            image = Assets.getImage(String(data));
+            if (image)
             {
-                var w:int = texture.width;
-                var h:int = texture.height;
+                var w:int = image.width;
+                var h:int = image.height;
                 var scale:Number = w > h?(iconSize / w):(iconSize / h);
-                image.texture = texture;
-                image.visible = true;
                 image.width = scale * w;
                 image.height = scale * h;
                 defaultIcon = image;
             }
-            else image.visible = false;
         }
     }
 

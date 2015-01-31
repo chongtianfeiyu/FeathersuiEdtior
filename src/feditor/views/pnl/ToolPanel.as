@@ -41,21 +41,8 @@ package feditor.views.pnl
 			
 			this.headerProperties.title = "Tool Box";
 			
-			var button:Button = new Button();
-			button.defaultIcon = new Image(Texture.fromBitmap(new EmbedAssets.ICON_DROPPER()));
-			button.width = 32;
-			button.height = 32;
-			button.addEventListener(Event.TRIGGERED, toolTriggeredHandler);
-			button.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
-			addChild(button);
-			
-			buttonArr = ["╞","╡","╤","╧","║","═"];
-			var tileLayout:TiledRowsLayout = new TiledRowsLayout();
-			tileLayout.requestedColumnCount = 2;
-			tileLayout.gap = 0;
-			//this.layout = tileLayout;
+			buttonArr = ["Dropper","╞","╡","╤","╧","║","═","layer"];
 			this.layout = new HorizontalLayout();
-			tileLayout.padding = 0;
 			for (var i:int = 0; i < buttonArr.length; i++) 
 			{
 				var btn:Button = new Button();
@@ -65,10 +52,25 @@ package feditor.views.pnl
 				btn.width = 32;
 				btn.height = 32;
 				addChild(btn);
+				
+				switch (buttonArr[i]) 
+				{
+					case "Dropper":
+						btn.defaultIcon = new Image(Texture.fromBitmap(new EmbedAssets.ICON_DROPPER()));
+						break;
+					case "layer":
+						btn.width = NaN;
+						break;
+					default:
+				}
 				buttonArr[i] = btn;
 			}
-			
-			buttonArr.unshift(button);
+		}
+		
+		override public function validate():void 
+		{
+			padding = 5;
+			super.validate();
 		}
 		
 		private function toolTriggeredHandler(e:Event):void 
