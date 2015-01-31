@@ -1,0 +1,10 @@
+<View stageWidth="750" stageHeight="1334" stageColor="0x333333" projectName="CashItemRenderer">
+  <LayoutGroup touchGroup="false" scaleY="1" x="102" y="600" scaleX="1" width="582" height="127">
+    <Scale9Image scaleY="1" texture="bg-renderer-light[30,30,50,50]" scaleX="1" width="582" name="itemRenderBg" height="127"/>
+    <Label text="Sunny" scaleX="1" scaleY="1" x="146" fontWeight="bold" y="20" fontSize="38" fontName="BRLN" width="260" name="nameLabel" color="3938048" height="52"/>
+    <Image y="11" scaleY="5.2631578947368425" x="24" texture="empty" scaleX="5.2631578947368425" width="100" name="photoImage" height="100"/>
+    <Label text="x5" scaleX="1" scaleY="1" x="146" fontWeight="bold" y="61" fontSize="38" fontName="BRLN" width="208" name="numLabel" color="16709863" height="44"/>
+    <Button defaultSkin="btn-green-M-up[70,30]" scaleX="1" scaleY="1" fontName="BRLN" downSkin="btn-green-M-down[70,30]" gap="0" padding="0" paddingLeft="0" width="224" name="buyBtn" label="x99" height="120" paddingRight="0" paddingTop="0" iconPosition="left" color="16777215" paddingBottom="0" x="338" fontWeight="bold" y="4" fontSize="30" defaultIcon="icon-gem"/>
+    <Image y="4" scaleY="0.8" x="15" texture="bg-item2" scaleX="0.8" width="120" height="120"/>
+  </LayoutGroup>
+</View>

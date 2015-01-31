@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<data>
-	<LayoutGroup touchGroup="false" scaleY="1" x="20" y="707" scaleX="1" width="705" height="156">
-    <Scale9Image scaleY="1" name="itemRenderBg" scaleX="1" width="705" texture="bg-renderer-light[30,30,50,50]" height="156"/>
-    <Label text="2014/12/21" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="72" fontSize="38" color="16777215" fontName="BRLN" width="329" name="dateLabel" height="43"/>
-    <Label text="Daily Login Reward" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="19" fontSize="38" color="9844224" fontName="BRLN" width="357" name="titleLabel" height="49"/>
-    <Button scaleY="1" fontName="BRLN" scaleX="1" label="Help!" color="16777215" downSkin="btn-green-M-down[70,30]" width="162" name="btn" paddingBottom="0" height="128" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="526" fontWeight="bold" y="13" gap="0" fontSize="36" defaultSkin="btn-green-M-up[70,30]"/>
-    <Scale9Image y="7" scaleY="1" x="12" scaleX="1" width="140" texture="bg-item-list[6,6,40,40]" height="140"/>
-    <Image y="9" scaleY="7.157894736842105" name="image" x="14" scaleX="7.157894736842105" width="136" texture="empty" height="136"/>
+<View stageWidth="750" stageHeight="1334" stageColor="0x333333" projectName="InboxItemRenderer">
+  <LayoutGroup touchGroup="false" scaleY="1" x="38" y="255" scaleX="1" width="705" height="156">
+    <Scale9Image scaleY="1" texture="bg-renderer-light[30,30,50,50]" scaleX="1" width="705" name="itemRenderBg" height="156"/>
+    <Label text="2014/12/21" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="72" fontSize="38" fontName="BRLN" width="329" name="dateLabel" color="16777215" height="43"/>
+    <Label text="Daily Login Reward" scaleX="1" scaleY="1" x="170" fontWeight="bold" y="19" fontSize="38" fontName="BRLN" width="357" name="titleLabel" color="9844224" height="49"/>
+    <Button defaultSkin="btn-green-M-up[70,30]" scaleX="1" scaleY="1" fontName="BRLN" downSkin="btn-green-M-down[70,30]" gap="0" padding="0" paddingLeft="0" width="162" name="btn" label="Help!" height="128" paddingRight="0" paddingTop="0" iconPosition="left" color="16777215" paddingBottom="0" x="526" fontWeight="bold" y="13" fontSize="36"/>
+    <Image y="4" scaleY="1" x="7" texture="bg-item2" scaleX="1" width="150" height="150"/>
+    <Image y="9" scaleY="7.157894736842105" x="13" texture="empty" scaleX="7.157894736842105" width="136" name="image" height="136"/>
   </LayoutGroup>
-</data>
+</View>

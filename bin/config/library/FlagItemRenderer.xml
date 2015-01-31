@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
     <LayoutGroup touchGroup="false" scaleX="1" scaleY="1" x="51" y="28" width="582" height="127">
-        <Scale9Image scaleY="1" height="127" scaleX="1" width="582" name="itemRenderBg" texture="bg-renderer-light[30,30,50,50]"/>
+        <Scale9Image scaleY="1" height="127" scaleX="1" width="582" texture="bg-renderer-light[30,30,50,50]"/>
         <Label text="Sunny" scaleX="1" scaleY="1" x="152" fontWeight="bold" y="40" fontSize="38" color="3938048" fontName="BRLN" width="200" name="nameLabel" height="52"/>
         <Image x="10" y="13" scaleY="5.2631578947368425" height="100" scaleX="5.2631578947368425" width="100" name="photoImage" texture="empty"/>
         <Button paddingLeft="0" padding="0" downSkin="btn-green-M-down[70,30]" scaleX="1" gap="0" scaleY="1" fontName="BRLN" label="x99" color="16777215" width="198" name="buyBtn" height="120" iconPosition="left" x="364" fontWeight="bold" y="4" defaultSkin="btn-green-M-up[70,30]" fontSize="30" paddingBottom="0" defaultIcon="icon-gem" paddingTop="0" paddingRight="0"/>

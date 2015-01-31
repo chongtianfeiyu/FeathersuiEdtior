@@ -8,7 +8,7 @@
     <Label text="99,999,999" scaleX="1" scaleY="1" x="203" fontWeight="bold" y="67" fontSize="38" color="16777215" fontName="BRLN" width="208" name="scoreLabel" height="44"/>
     <Image y="74" scaleY="2.6315789473684212" name="flagImage" x="147" scaleX="2.6315789473684212" width="50" texture="empty" height="50"/>
     <Label text="1" scaleX="1" scaleY="1" x="31" fontWeight="bold" y="41.299999999999955" fontSize="34" color="16777215" fontName="BRLN" width="10.95" name="rankLabel" height="38.45"/>
-    <Button scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-play2-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-play2-up"/>
-    <Button scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-my-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-my-up"/>
+    <Button name="pkBtn" scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-play2-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-play2-up"/>
+    <Button name="myProfileBtn" scaleY="1" fontName="BRLN" scaleX="1" color="16777215" downSkin="btn-my-down" width="156" paddingBottom="0" height="116" paddingTop="0" paddingRight="0" paddingLeft="0" iconPosition="left" padding="0" x="530" fontWeight="bold" y="2" gap="0" fontSize="48" defaultSkin="btn-my-up"/>
   </LayoutGroup>
 </data>

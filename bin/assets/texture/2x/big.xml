@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:9ca794daeb2a553a3cb4db986ce9a47f$ -->
+<TextureAtlas imagePath="big.png">
+    <SubTexture name="duizhan-lose" x="399" y="1140" width="395" height="782"/>
+    <SubTexture name="duizhan-win" x="2" y="1140" width="395" height="782"/>
+    <SubTexture name="game-graphics" x="796" y="1140" width="745" height="558"/>
+    <SubTexture name="pve-myself-blue" x="428" y="2" width="400" height="1136" frameX="0" frameY="0" frameWidth="424" frameHeight="1136"/>
+    <SubTexture name="pve-npc-red" x="2" y="2" width="424" height="1136"/>
+</TextureAtlas>
