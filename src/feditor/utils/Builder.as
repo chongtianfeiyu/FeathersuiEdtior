@@ -187,7 +187,21 @@ package feditor.utils
 				delete args["height"];
 				delete args["maxWidth"];
 				delete args["maxHeight"];
-			}			
+			}
+			
+			if (def == Label)
+			{
+				Label(result).styleProvider = null;				
+				setTxtRenderDefaultProperties(Label(result).textRendererProperties,FontWorker.textRenderDef);
+			}
+			else if (def == TextInput)
+			{
+				TextInput(result).styleProvider = null;
+				setTxtRenderDefaultProperties(TextInput(result).textEditorProperties, FontWorker.textEditorDef);
+				
+				TextInput(result).promptProperties.elementFormat = FontWorker.defaultElementFormat;
+				setTxtRenderDefaultProperties(TextInput(result).promptProperties, FontWorker.textRenderDef);
+			}
 			
             if(result) setFields(result,args);
             
@@ -242,21 +256,7 @@ package feditor.utils
             return new ElementFormat(
                 des,
                 properties.fontSize, 
-                properties.color,
-                properties.alpha, 
-                properties.textRotation, 
-                properties.dominantBaseline,
-                properties.alignmentBaseline, 
-                properties.baselineShift, 
-                properties.kerning,
-                properties.trackingRight,
-                properties.trackingLeft,
-                properties.locale,
-                properties.breakOpportunity,
-                properties.digitCase,
-                properties.digitWidth,
-                properties.ligatureLevel,
-                properties.typographicCase
+                properties.color
             );
         }
         
@@ -291,56 +291,21 @@ package feditor.utils
         
         private static function setLabelFields(label:Label,valueMap:Object):Label
         {
-            if (!label.textRendererProperties.elementFormat)
-            {
-                label.styleProvider = null;				
-                label.textRendererProperties.elementFormat = FontWorker.defaultElementFormat;
-            }
-            
-            if (FieldConst.FONT_COLOR in valueMap || 
-                FieldConst.FONT_SIZE in valueMap ||
-                FieldConst.FONT_NAME in valueMap ||
-                FieldConst.FONT_WEIGHT in valueMap
-            )
-            {
-                var fmt:Object = ObjectUtil.copy(label.textRendererProperties.elementFormat);
-                var des:Object = fmt?ObjectUtil.copy(label.textRendererProperties.elementFormat.fontDescription):null;
-                if (fmt) ObjectUtil.mapping(valueMap, fmt);
-                if (des) ObjectUtil.mapping(valueMap,des);
-                if (fmt) label.textRendererProperties.elementFormat = getElementFormat(getFontDescription(des), fmt);
-                
-                delete valueMap[FieldConst.FONT_COLOR];
-                delete valueMap[FieldConst.FONT_SIZE];
-                delete valueMap[FieldConst.FONT_NAME];
-                delete valueMap[FieldConst.FONT_WEIGHT];
-            }
-            setDisplayObjectFields(label,valueMap);
-            
+			setTxtFields(label.textRendererProperties,valueMap,FontWorker.textRenderDef);
+            setDisplayObjectFields(label,valueMap);            
             return label;
         }
         
         private static function setTextInputFields(textInput:TextInput,valueMap:Object):TextInput
         {   
-            if (!textInput.textEditorProperties.elementFormat)
-            {
-                textInput.styleProvider = null;
-                textInput.textEditorProperties.elementFormat = FontWorker.defaultElementFormat;
-            }
-            
-            if (!textInput.promptProperties.elementFormat)
-            {
-				textInput.promptProperties.styleProvider = null;
-                textInput.promptProperties.elementFormat = FontWorker.defaultElementFormat;
-            }
-            
             if (FieldConst.FONT_COLOR in valueMap || 
                 FieldConst.FONT_SIZE in valueMap ||
                 FieldConst.FONT_NAME in valueMap ||
                 FieldConst.FONT_WEIGHT in valueMap
             )
             {
-                textInput.textEditorProperties.elementFormat = buildElementFormat(textInput.textEditorProperties.elementFormat,valueMap);
-                
+				setTxtFields(textInput.textEditorProperties, valueMap,FontWorker.textEditorDef);
+				setTxtFields(textInput.promptProperties, valueMap, FontWorker.textRenderDef);
                 delete valueMap[FieldConst.FONT_COLOR];
                 delete valueMap[FieldConst.FONT_SIZE];
                 delete valueMap[FieldConst.FONT_NAME];
@@ -351,10 +316,11 @@ package feditor.utils
             {
 				var valueMapForPromp:Object = { };
 				valueMapForPromp[FieldConst.FONT_COLOR] = valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR];
-				textInput.promptProperties.elementFormat = buildElementFormat(textInput.promptProperties.elementFormat,valueMapForPromp);
+				setTxtFields(textInput.promptProperties, valueMapForPromp,FontWorker.textRenderDef);				
                 delete valueMap[FieldConst.TEXT_INPUT_PROMPT_COLOR];
             }
-            
+			
+			//
             if (FieldConst.TEXT_INPUT_BACKGROUND_SKIN in valueMap)
             {
                 textInput.backgroundSkin = Assets.getImage(valueMap[FieldConst.TEXT_INPUT_BACKGROUND_SKIN]);
@@ -383,29 +349,51 @@ package feditor.utils
 			ObjectUtil.mapping(valueMap,des);
 			return getElementFormat(getFontDescription(des), fmt);
 		}
+		
+		private static function setTxtRenderDefaultProperties(propertiesHandler:*,type:Class):void
+		{
+			if (type == TextBlockTextEditor || type == TextBlockTextRenderer)
+			{
+				propertiesHandler.elementFormat = FontWorker.defaultElementFormat;
+			}
+			else if (type == TextFieldTextRenderer || TextFieldTextEditor)
+			{
+				propertiesHandler.textFormat = FontWorker.defaultTextFormat;
+			}
+			else if (type == StageTextField || type == StageTextTextEditor)
+			{
+				propertiesHandler.fontFamily = FontWorker.defaultTextFormat.font;
+				propertiesHandler.fontSize = FontWorker.defaultTextFormat.size;
+				propertiesHandler.fontWeight = FontWorker.defaultTextFormat.bold?"bold":"normal";
+			}
+		}
         
-        private static function setTxtFields(txt:*,valueMap:Object):*
+        private static function setTxtFields(textProperties:*,valueMap:Object,type:Class):*
         {
-            if (txt is StageTextTextEditor || txt is StageTextField)
+            if (type == StageTextTextEditor || type == StageTextField)
             {
-                if (FieldConst.FONT_COLOR in valueMap) txt.color = valueMap[FieldConst.FONT_COLOR];
-                if (FieldConst.FONT_NAME in valueMap) txt.fontFamily = valueMap[FieldConst.FONT_NAME];
-                if (FieldConst.FONT_SIZE in valueMap) txt.fontSize = valueMap[FieldConst.FONT_SIZE];
-                if (FieldConst.FONT_WEIGHT in valueMap) txt.fontWeight = valueMap[FieldConst.FONT_WEIGHT];
+                if (FieldConst.FONT_COLOR in valueMap) textProperties.color = valueMap[FieldConst.FONT_COLOR];
+                if (FieldConst.FONT_NAME in valueMap) textProperties.fontFamily = valueMap[FieldConst.FONT_NAME];
+                if (FieldConst.FONT_SIZE in valueMap) textProperties.fontSize = valueMap[FieldConst.FONT_SIZE];
+                if (FieldConst.FONT_WEIGHT in valueMap) textProperties.fontWeight = valueMap[FieldConst.FONT_WEIGHT];
             }
-            else if(txt is TextBlockTextEditor || txt is TextBlockTextRenderer)
+            else if(type == TextBlockTextEditor || type == TextBlockTextRenderer)
             {
-                var elment:ElementFormat = txt.elementFormat || FontWorker.defaultElementFormat;
-                txt.elementFormat = getElementFormat(elment.fontDescription, valueMap);
+				var elment:Object = ObjectUtil.copy(textProperties.elementFormat);
+                var des:Object = elment?ObjectUtil.copy(textProperties.elementFormat.fontDescription):null;
+                if (elment) ObjectUtil.mapping(valueMap, elment);
+                if (des) ObjectUtil.mapping(valueMap,des);
+                if (elment) textProperties.elementFormat = getElementFormat(getFontDescription(des), elment);
+				
             }
-            else if (txt is TextFieldTextEditor || txt is TextFieldTextRenderer)
+            else if (type == TextFieldTextEditor || type == TextFieldTextRenderer)
             {
-                var fmt:TextFormat = txt.textFormat;
+                var fmt:TextFormat = textProperties.textFormat;
                 if (FieldConst.FONT_WEIGHT in valueMap) fmt.bold = valueMap[FieldConst.FONT_WEIGHT] == FieldConst.FONT_BOLD;
                 if (FieldConst.FONT_NAME in valueMap) fmt.font = valueMap[FieldConst.FONT_NAME];
                 if (FieldConst.FONT_SIZE in valueMap) fmt.size = valueMap[FieldConst.FONT_SIZE];
                 if (FieldConst.FONT_COLOR in valueMap) fmt.color = valueMap[FieldConst.FONT_COLOR];
-                txt.textFormat = fmt;
+                textProperties.textFormat = fmt;
             }
             
             delete valueMap[FieldConst.FONT_WEIGHT];
@@ -413,7 +401,7 @@ package feditor.utils
             delete valueMap[FieldConst.FONT_NAME];
             delete valueMap[FieldConst.FONT_COLOR];
             
-            return txt;
+            return textProperties;
         }
         
         private static function setDisplayObjectFields(display:DisplayObject,valueMap:Object):DisplayObject
