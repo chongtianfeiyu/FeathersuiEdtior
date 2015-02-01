@@ -20,6 +20,7 @@ package feditor.utils
         static public const FONT_WEIGHT:String = "fontWeight";
         static public const FONT_BOLD:String = "bold";
         static public const FONT_NORMAL:String = "normal";
+		static public const WORD_WRAP:String = "wordWrap";
         
         //TextInput
         static public const TEXT_INPUT_DEFAULT_ICON:String = "defaultIcon";

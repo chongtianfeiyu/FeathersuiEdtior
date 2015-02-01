@@ -170,6 +170,7 @@ package feditor.utils
                 result.touchable = label.touchable;
 				result.maxWidth = label.maxWidth;
                 result.maxHeight = label.maxHeight;
+				result.wordWrap = label.wordWrap;
             }
             return result;
         }

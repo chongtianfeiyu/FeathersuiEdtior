@@ -101,6 +101,7 @@ package feditor.controllers
 						isDelete = (attrValue == true);
 						break;
 					case "touchGroup":
+					case "wordWrap":
 						isDelete = (attrValue == false);
 						break;
 					case "texture":

@@ -292,7 +292,12 @@ package feditor.utils
         private static function setLabelFields(label:Label,valueMap:Object):Label
         {
 			setTxtFields(label.textRendererProperties,valueMap,FontWorker.textRenderDef);
-            setDisplayObjectFields(label,valueMap);            
+            setDisplayObjectFields(label, valueMap);
+			if (FieldConst.WORD_WRAP in valueMap)
+			{
+				label.wordWrap = valueMap[FieldConst.WORD_WRAP];
+				delete valueMap[FieldConst.WORD_WRAP];
+			}
             return label;
         }
         
