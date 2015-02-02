@@ -1,5 +1,7 @@
 package feditor.utils 
 {
+	import flash.utils.Dictionary;
+	import flash.utils.getQualifiedClassName;
 	/**
 	 * ...
 	 * @author gray
@@ -26,7 +28,13 @@ package feditor.utils
 			
 			for each (var name:String in func) 
 			{
-				if (owner.hasOwnProperty(name))
+				var type:String = getQualifiedClassName(owner);
+				if ((type == "Object" || type == "Array" || type == "Dictionary") && owner[name])
+				{
+					p = owner[name];
+					owner = p;
+				}
+				else if(owner.hasOwnProperty(name))
 				{
 					p = owner[name];
 					owner = p;

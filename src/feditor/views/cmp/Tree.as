@@ -51,8 +51,7 @@ package feditor.views.cmp
 				var check:Check = new Check();
 				check.label = item.name() +"   " + (parseString(item.@name)?"name=" + String(item.@name):"");
 				check.isSelected = parseString(item.@visible) == false;
-				addChild(check);
-				
+				addChild(check);				
 				
 				var nodeVO:TreeNodeVO = new TreeNodeVO();
 				nodeVO.handler = check;

@@ -4,6 +4,7 @@ package feditor.views
     import feditor.models.SelectElementsProxy;
 	import feditor.models.SnapshotProxy;
     import feditor.NS;
+	import feditor.Root;
     import feditor.utils.Builder;
     import feditor.views.pnl.EditorStage;
     import flash.geom.Point;
@@ -61,9 +62,8 @@ package feditor.views
 						}
 						catch (err:Error)
 						{
-							sendNotification(NS.NOTE_ERROR_NOTIFICATION,NAME+"-"+err.message);
+							sendNotification(NS.NOTE_ERROR_NOTIFICATION,NAME+"-"+"The xml you imported is invalid");
 						}
-                        
                     }
                     break;
                 case NS.NOTE_PLACE_CONTROL_TO_STAGE:
@@ -134,7 +134,7 @@ package feditor.views
         
         private function touchBenginHandler(e:TouchEvent):void
         {
-            var touch:Touch = e.getTouch(pnl, TouchPhase.BEGAN);
+            var touch:Touch = e.getTouch(Root(Starling.current.root).stageContainer, TouchPhase.BEGAN);
             if (touch == null)
             {
                 return;

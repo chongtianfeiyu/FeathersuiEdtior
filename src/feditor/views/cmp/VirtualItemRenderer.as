@@ -8,6 +8,7 @@ package feditor.views.cmp
     import feathers.skins.StyleNameFunctionStyleProvider;
     import feditor.AppFacade;
     import feditor.models.DefaultControlProxy;
+	import feditor.NS;
     import feditor.utils.Assets;
     import feditor.utils.Builder;
     import flash.utils.setInterval;
@@ -36,15 +37,22 @@ package feditor.views.cmp
             
             styleProvider = null;
             
-            var xml:* = defaultControlProxy.getControlXML(libName);
-            if (xml)
-            {
-                xml = new XML(xml);
-                xml.setName(Builder.XMLROOT);
-                this.width = xml.@width;
-                this.height = xml.@height;
-                Builder.build(this, xml);
-            }
+			try 
+			{
+				var xml:* = defaultControlProxy.getControlXML(libName);
+				if (xml)
+				{
+					xml = new XML(xml);
+					xml.setName(Builder.XMLROOT);
+					this.width = xml.@width;
+					this.height = xml.@height;
+					Builder.build(this, xml);
+				}
+			}
+			catch (err:Error)
+			{
+				AppFacade.getInstance().sendNotification(NS.NOTE_ERROR_NOTIFICATION,"Your ItemRenderer xml is invalid");
+			}
         }
         
         private function get defaultControlProxy():DefaultControlProxy

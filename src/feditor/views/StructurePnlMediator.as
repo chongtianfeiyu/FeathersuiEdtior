@@ -4,15 +4,18 @@ package feditor.views
 	import feditor.NS;
 	import feditor.Root;
 	import feditor.utils.describeView;
+	import feditor.utils.Reflect;
 	import feditor.views.pnl.EditorStage;
 	import feditor.views.pnl.StructurePanel;
-	import feditor.views.pnl.ToolPanel;
 	import feditor.vo.TreeNodeVO;
+	import flash.utils.getQualifiedClassName;
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
 	import starling.events.Event;
+	
+
 	
 	/**
 	 * ...
@@ -54,7 +57,7 @@ package feditor.views
 		
 		private function refreshHandler(e:Event):void 
 		{
-			pnl.show(describeView(editorRoot));
+			pnl.show(describeView2(editorRoot));
 		}
 		
 		override public function listNotificationInterests():Array 
@@ -70,16 +73,36 @@ package feditor.views
 			switch (notification.getName()) 
 			{
 				case NS.NOTE_STRUCTURE_SHOW:
-					pnl.show(describeView(editorRoot));
+					pnl.show(describeView2(editorRoot));
 					pnl.width = rootPnl.form.width;
 					pnl.height = rootPnl.form.parent.height;
 					pnl.x = rootPnl.form.parent.x;
-				break;
+					break;
 				case NS.NOTE_STRUCTURE_HIDE:
 					pnl.hide();
 				break;
 				default:
 			}
+		}
+		
+		private function describeView2(view:DisplayObjectContainer):XML 
+		{	
+			var xml:XML = <View/>;
+			
+			for (var i:int = 0; i < view.numChildren; i++) 
+			{
+				var child:DisplayObject = view.getChildAt(i);
+				var childXml:XML = new XML("<"+getQualifiedClassName(child).split("::")[1]+"/>");
+				var properties:Object = Reflect.getFieldMap(child);
+				for(var field:String in properties)
+				{
+					childXml.@[field] = properties[field];
+				}
+				
+				xml.appendChild(childXml);
+			}
+			
+			return xml;
 		}
 		
 		public function get pnl():StructurePanel
@@ -98,5 +121,4 @@ package feditor.views
             return (facade.retrieveMediator(RootMediator.NAME) as RootMediator).pnl;
         }
 	}
-
 }

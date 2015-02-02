@@ -638,7 +638,8 @@ package feditor.utils
                     {
                         button.width = image.width;
                     }
-                    else if (image.height > button.height)
+                    
+					if (image.height > button.height)
                     {
                         image.height = image.height;
                     }

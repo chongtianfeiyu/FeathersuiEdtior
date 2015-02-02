@@ -22,6 +22,7 @@ package feditor
     import flash.display.NativeMenu;
 	import flash.utils.setInterval;
     import starling.core.Starling;
+	import starling.display.Quad;
     import starling.display.Sprite;
     import starling.events.Event;
     import starling.events.KeyboardEvent;
@@ -56,7 +57,7 @@ package feditor
 			if (form.height != height) form.height = height - toolBox.height;
             rightBox.x = width - form.width;
 			//toolBox.width = 
-            
+			
             var w:int = width - libraryPanel.width - form.width;
             var h:int = height;
             
