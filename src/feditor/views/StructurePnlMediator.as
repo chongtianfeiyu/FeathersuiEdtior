@@ -24,9 +24,9 @@ package feditor.views
 	public class StructurePnlMediator extends Mediator 
 	{
 		public static const NAME:String = "StructurePnlMediator";
-		public function StructurePnlMediator() 
+		public function StructurePnlMediator(viewComponent:Object=null) 
 		{
-			super(NAME, new StructurePanel());
+			super(NAME, viewComponent);
 		}
 		
 		override public function onRegister():void 
@@ -72,11 +72,8 @@ package feditor.views
 		{
 			switch (notification.getName()) 
 			{
-				case NS.NOTE_STRUCTURE_SHOW:
+				case NS.NOTE_STRUCTURE_SHOW:					
 					pnl.show(describeView2(editorRoot));
-					pnl.width = rootPnl.form.width;
-					pnl.height = rootPnl.form.parent.height;
-					pnl.x = rootPnl.form.parent.x;
 					break;
 				case NS.NOTE_STRUCTURE_HIDE:
 					pnl.hide();

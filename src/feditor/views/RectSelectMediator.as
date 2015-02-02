@@ -169,6 +169,8 @@ package feditor.views
                 p.name = FieldConst.BG_ALPHA;
                 p.value = String(estageoProxy.designImageAlpha);
                 cvo.fields.push(p);
+				
+				//sendNotification(NS.NOTE_STRUCTURE_SHOW);
             }
             
             sendNotification(NS.CMD_FORM_DATA_CREATE,cvo);

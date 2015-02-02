@@ -122,7 +122,7 @@ package feditor.controllers
 			facade.registerMediator(new ColorDropperMediator(root.colorDropper));
 			facade.registerMediator(new ToolPanelMeditor(root.toolBox));
 			facade.registerMediator(new NotificationPnlMediator(new NotificationPanel()));
-			facade.registerMediator(new StructurePnlMediator());
+			facade.registerMediator(new StructurePnlMediator(root.structure));
         }
         
     }

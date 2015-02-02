@@ -41,7 +41,7 @@ package feditor.views.pnl
 			
 			this.headerProperties.title = "Tool Box";
 			
-			buttonArr = ["Dropper","╞","╡","╤","╧","║","═","layer"];
+			buttonArr = ["Dropper","╞","╡","╤","╧","║","═"];
 			this.layout = new HorizontalLayout();
 			for (var i:int = 0; i < buttonArr.length; i++) 
 			{

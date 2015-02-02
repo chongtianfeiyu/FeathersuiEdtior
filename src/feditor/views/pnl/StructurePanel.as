@@ -20,9 +20,10 @@ package feditor.views.pnl
 	 */
 	public class StructurePanel extends Panel 
 	{
-		private var structureContainer:ScrollContainer;
-		private var buttonGroup:ButtonGroup;
 		private var tree:Tree;
+		private var refreshBtn:Button;
+		private var container:ScrollContainer;
+		private var buttonGroup:ButtonGroup;
 		
 		public function StructurePanel() 
 		{
@@ -36,44 +37,48 @@ package feditor.views.pnl
 			this.headerProperties.title = "View Structure";
 			
 			
-			layout = new VerticalLayout();
+			layout = new VerticalLayout();		
 			
-			structureContainer = new ScrollContainer();
-			addChild(structureContainer);
-			
-			tree = new Tree();
-			structureContainer.addChild(tree);
-			
-			buttonGroup = new ButtonGroup();			
-			buttonGroup.dataProvider = new ListCollection(["refresh", "close"]);
+			buttonGroup = new ButtonGroup();
 			buttonGroup.direction = ButtonGroup.DIRECTION_HORIZONTAL;
+			buttonGroup.dataProvider = new ListCollection(["refresh", "select all", "unselect all"]);
+			buttonGroup.buttonProperties.styleName = Button.ALTERNATE_NAME_QUIET_BUTTON;
+			buttonGroup.width = 260;
 			addChild(buttonGroup);
 			buttonGroup.addEventListener(Event.TRIGGERED, buttonGroupChangeHandler);
+			
+			container = new ScrollContainer();
+			addChild(container);
+			tree = new Tree();
+			container.addChild(tree);
 		}
 		
 		private function buttonGroupChangeHandler(e:Event):void 
-		{
-			if (e.data == "close")
+		{	
+			switch (e.data) 
 			{
-				hide();
-			}
-			else
-			{
-				dispatchEventWith(EventType.REFRESH);
+				case "refresh":
+					dispatchEventWith(EventType.REFRESH);
+					break;
+				case "select all":
+					tree.selectAll();
+					break;
+				case "unselect all":
+					tree.unselectAll();
+					break;
+				default:
 			}
 		}
 		
-		override protected function viewPort_resizeHandler(event:Event):void 
+		override public function get height():Number 
 		{
-			super.viewPort_resizeHandler(event);
-			
-			var w:int = width - paddingLeft - paddingRight;
-			var h:int = height - paddingBottom - paddingTop -50;			
-			
-			structureContainer.width = w;
-			structureContainer.height = h;
-			buttonGroup.width = w;
-			buttonGroup.gap = 0;
+			return super.height;
+		}
+		
+		override public function set height(value:Number):void 
+		{
+			super.height = value;
+			container.height = value - paddingBottom - paddingTop - 50;
 		}
 		
 		private function closeHandler(e:Event):void 
@@ -83,25 +88,12 @@ package feditor.views.pnl
 		
 		public function show(xml:*):void
 		{
-			if (PopUpManager.isPopUp(this)==false)
-			{
-				PopUpManager.addPopUp(this, false, false);
-				this.paddingLeft = 0;
-				this.paddingRight = 0;
-				this.padding = 0;
-			}
-			
 			tree.dispose();
 			tree.createTree(xml);
 		}
 		
 		public function hide():void
 		{
-			if (PopUpManager.isPopUp(this))
-			{
-				PopUpManager.removePopUp(this);
-			}
-			
 			tree.dispose();
 		}
 	}

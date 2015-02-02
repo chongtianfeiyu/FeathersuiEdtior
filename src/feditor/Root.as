@@ -18,6 +18,7 @@ package feditor
     import feditor.views.cmp.VirtualItemRenderer;
     import feditor.views.pnl.LibraryPanel;
     import feditor.views.pnl.EditorStage;
+	import feditor.views.pnl.StructurePanel;
 	import feditor.views.pnl.ToolPanel;
     import flash.display.NativeMenu;
 	import flash.utils.setInterval;
@@ -40,6 +41,7 @@ package feditor
         public var editorStage:EditorStage;
         public var stageContainer:ScrollContainer;
 		public var colorDropper:ColorDropper;
+		public var structure:StructurePanel;
         
         private var stageLayout:HorizontalLayout;
         private var hasStartup:Boolean = false;
@@ -54,8 +56,9 @@ package feditor
 		{
 			if (hasStartup == false) return;
 			
-			if (form.height != height) form.height = height - toolBox.height;
+			form.maxHeight = height - toolBox.height;
             rightBox.x = width - form.width;
+			
 			//toolBox.width = 
 			
             var w:int = width - libraryPanel.width - form.width;
@@ -67,6 +70,7 @@ package feditor
             if(h != stageContainer.height) stageContainer.height = h;
             
             stageContainer.x = libraryPanel.width +  0.5 * (w - stageContainer.width);
+			structure.height = h - structure.y;
 			
 			super.refreshViewPortBounds();
 		}
@@ -85,6 +89,10 @@ package feditor
             form.width = 280;
             form.minWidth = 280;
             rightBox.addChild(form);
+			
+			structure = new StructurePanel();
+			structure.width = 280;
+			rightBox.addChild(structure);
             
             //left panel
             var leftBox:LayoutGroup = new LayoutGroup();

@@ -42,6 +42,28 @@ package feditor.views.cmp
 			removeChildren();
 		}
 		
+		public function selectAll():void
+		{
+			for each (var item:TreeNodeVO in nodes) 
+			{
+				if (item && item.handler)
+				{
+					item.handler.isSelected = true;
+				}
+			}
+		}
+		
+		public function unselectAll():void
+		{
+			for each (var item:TreeNodeVO in nodes) 
+			{
+				if (item && item.handler)
+				{
+					item.handler.isSelected = false;
+				}
+			}
+		}
+		
 		public function createTree(node:*):void
 		{
 			if (!node) return;		
