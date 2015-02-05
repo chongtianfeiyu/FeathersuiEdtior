@@ -63,8 +63,8 @@ package feditor.utils
 			_fontSize = defaultFontSize;
 			_fontColor = defaultFontColor;
 			_fontWeight = defaultFontWeight;
-			_textEditorDef = textEditorDef || TextBlockTextRenderer;
-			_textRenderDef = textRendererDef || TextBlockTextEditor;
+			_textEditorDef = textEditorDef || TextBlockTextEditor;
+			_textRenderDef = textRendererDef || TextBlockTextRenderer;
 			
 			_defaultTextFormat = new TextFormat(_fontName,_fontSize,_fontColor,_fontWeight=="bold"?true:false);
         }

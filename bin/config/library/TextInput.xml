@@ -4,7 +4,6 @@
 			   prompt="Plase Input"
 			   promptColor="0xcacaca"
 			   padding="10"
-			   isEditable="false"
 			   color="0x000000"
 			   fontSize="36"
 			   fontWeight="bold"
