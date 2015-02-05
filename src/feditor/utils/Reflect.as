@@ -302,7 +302,7 @@ package feditor.utils
             result ||= { };
             if (textInput)
             {
-                var skins:Array = [FieldConst.TEXT_INPUT_BACKGROUND_SKIN,FieldConst.TEXT_INPUT_BACKGROUND_SKIN];
+                var skins:Array = [FieldConst.TEXT_INPUT_BACKGROUND_SKIN,FieldConst.TEXT_INPUT_DEFAULT_ICON];
                 for each (var skinName:String in skins) 
                 {
                     var skinProperties:Object = getImageProperties(textInput[skinName]);
@@ -322,7 +322,7 @@ package feditor.utils
                 result.paddingLeft = textInput.paddingLeft;
                 result.paddingRight = textInput.paddingRight;
                 result.paddingTop = textInput.paddingTop;
-                result.paddingBottom = textInput.paddingBottom;
+                result.paddingBottom = textInput.paddingBottom;                
             }
             return result;
         }

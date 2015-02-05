@@ -64,6 +64,12 @@ package feditor.controllers
 		
 		private function xmlFilter(xml:*):void
 		{	
+            if (xml && String(xml.name()) == "Label")
+            {
+                delete xml.@width;
+                delete xml.@height;
+            }
+            
 			for each (var attr:* in xml.attributes()) 
 			{
 				var attrName:String = String(attr.name());
