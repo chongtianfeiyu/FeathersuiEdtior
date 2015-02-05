@@ -183,10 +183,15 @@ package feditor.utils
             
 			if (isEditor && def == Label)
 			{
-				delete args["width"];
-				delete args["height"];
-				delete args["maxWidth"];
-				delete args["maxHeight"];
+                if (args["maxWidth"] && args["maxWidth"] != Infinity)
+                {
+                    args["width"] = args["maxWidth"];
+                }
+                
+                if(args["maxHeight"] && args["maxHeight"] != Infinity)
+                {
+                    args["height"] = args["maxHeight"];
+                }
 			}
 			
 			if (def == Label)
