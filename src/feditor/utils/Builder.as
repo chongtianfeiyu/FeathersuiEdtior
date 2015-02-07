@@ -366,7 +366,7 @@ package feditor.utils
 			{
 				propertiesHandler.elementFormat = FontWorker.defaultElementFormat;
 			}
-			else if (type == TextFieldTextRenderer || TextFieldTextEditor)
+			else if (type == TextFieldTextRenderer || type == TextFieldTextEditor)
 			{
 				propertiesHandler.textFormat = FontWorker.defaultTextFormat;
 			}
