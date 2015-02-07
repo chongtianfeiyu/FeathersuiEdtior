@@ -432,14 +432,14 @@ package feditor.utils
 			{
 				try 
 				{
-					if ("scaleX" in valueMap["scaleX"] && valueMap["scaleX"] < 0)
+					if (("scaleX" in valueMap) && parseString(valueMap["scaleX"]) < 0)
 					{
-						display.scaleX = valueMap.scaleX;
+						display.scaleX = parseString(valueMap["scaleX"]);
 					}
 					
-					if ("scaleY" in valueMap["scaleY"]  && valueMap["scaleY"] < 0)
+					if (("scaleY" in valueMap)  && parseString(valueMap["scaleY"]) < 0)
 					{
-						display.scaleY = valueMap.scaleY;
+						display.scaleY = parseString(valueMap["scaleY"]);
 					}
 				}
 				catch (err:Error)
@@ -631,6 +631,36 @@ package feditor.utils
                 image = Assets.getImage(valueMap[FieldConst.BUTTON_DISABLED_SKIN]);
                 button.disabledSkin = image;
                 delete valueMap[FieldConst.BUTTON_DISABLED_SKIN];
+            }
+            
+            if (FieldConst.BUTTON_GAP in valueMap)
+            {
+                button.gap = valueMap[FieldConst.BUTTON_GAP];
+                delete valueMap[FieldConst.BUTTON_GAP];
+            }
+            
+            if (FieldConst.BUTTON_ICON_OFFSETX in valueMap)
+            {
+                button.iconOffsetX = valueMap[FieldConst.BUTTON_ICON_OFFSETX];
+                delete valueMap[FieldConst.BUTTON_ICON_OFFSETX];
+            }
+            
+            if (FieldConst.BUTTON_ICON_OFFSETY in valueMap)
+            {
+                button.iconOffsetY = valueMap[FieldConst.BUTTON_ICON_OFFSETY];
+                delete valueMap[FieldConst.BUTTON_ICON_OFFSETY];
+            }
+            
+            if (FieldConst.BUTTON_LABEL_OFFSETX in valueMap)
+            {
+                button.labelOffsetX = valueMap[FieldConst.BUTTON_LABEL_OFFSETX];
+                delete valueMap[FieldConst.BUTTON_LABEL_OFFSETX];
+            }
+            
+            if (FieldConst.BUTTON_LABEL_OFFSETY in valueMap)
+            {
+                button.labelOffsetY = valueMap[FieldConst.BUTTON_LABEL_OFFSETY];
+                delete valueMap[FieldConst.BUTTON_LABEL_OFFSETY];
             }
             
             setDisplayObjectFields(button, valueMap);

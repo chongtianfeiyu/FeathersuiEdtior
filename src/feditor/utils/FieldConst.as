@@ -44,6 +44,12 @@ package feditor.utils
         static public const BUTTON_DOWN_SKIN:String = "downSkin";
         static public const BUTTON_DISABLED_SKIN:String = "disabledSkin";
         
+        static public const BUTTON_ICON_OFFSETX:String = "iconOffsetX";
+        static public const BUTTON_ICON_OFFSETY:String = "iconOffsetY";
+        static public const BUTTON_LABEL_OFFSETX:String = "labelOffsetX";
+        static public const BUTTON_LABEL_OFFSETY:String = "labelOffsetY";
+        static public const BUTTON_GAP:String = "gap";
+        
         //ProgressBar
         static public const PROGRESS_BACKGROUND_SKIN:String = "backgroundSkin";
         static public const PROGRESS_FILL_SKIN:String = "fillSkin";

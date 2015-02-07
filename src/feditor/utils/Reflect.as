@@ -208,6 +208,8 @@ package feditor.utils
                 result.gap = button.gap;
                 result.iconOffsetX = button.iconOffsetX;
                 result.iconOffsetY = button.iconOffsetY;
+                result.labelOffsetX = button.labelOffsetX;
+                result.labelOffsetY = button.labelOffsetY;
                 result.iconPosition = button.iconPosition;
                 result.minWidth = button.minWidth;
                 result.minHeight = button.minHeight;
